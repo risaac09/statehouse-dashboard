@@ -1,4 +1,4 @@
-// test.mjs — unit tests for the data-cleaning layer. Run: node scripts/test.mjs
+// test.mjs: unit tests for the data-cleaning layer. Run: node scripts/test.mjs
 import assert from 'node:assert';
 import {
   partyCode, plainSummary, deriveStatus, normalizeVote, normalizeBill, buildDataset,

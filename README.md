@@ -8,11 +8,11 @@ No framework, no build step. Static HTML/CSS/JS on GitHub Pages, fed by a daily 
 
 ## What it shows
 
-- **This-week activity feed** — every bill that moved recently, newest first.
-- **Plain-language summaries** — the official abstract, stripped of legalese, in a sentence or two.
-- **How they voted** — vote totals, pass/fail margins, and the party split for each recorded vote.
-- **Topic tracking** — filter the feed by subject (health, housing, labor, and so on).
-- **Search** — by bill number, title, summary, or sponsor.
+- **This-week activity feed:** every bill that moved recently, newest first.
+- **Plain-language summaries:** the official abstract, stripped of legalese, in a sentence or two.
+- **How they voted:** vote totals, pass/fail margins, and the party split for each recorded vote.
+- **Topic tracking:** filter the feed by subject (health, housing, labor, and so on).
+- **Search:** by bill number, title, summary, or sponsor.
 - Works offline once loaded; installable as a PWA.
 
 ## The data pipeline (the interesting part)

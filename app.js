@@ -1,4 +1,4 @@
-/* Statehouse Dashboard — single IIFE, vanilla JS, no build step.
+/* Statehouse Dashboard: single IIFE, vanilla JS, no build step.
    Reads the cleaned JSON snapshots in /data and renders the views:
    activity feed, topic filter, search, and a per-bill vote breakdown. */
 (function () {
@@ -103,7 +103,7 @@
     load('data/' + code + '.json').then(function (ds) {
       state.current = ds;
       els.banner.hidden = !ds.sample;
-      els.updated.textContent = fmtDate((ds.updated || '').slice(0, 10)) || '—';
+      els.updated.textContent = fmtDate((ds.updated || '').slice(0, 10)) || '…';
       renderSummary();
       renderChips();
       renderFeed();

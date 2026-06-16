@@ -1,4 +1,4 @@
-/* Statehouse Dashboard — one stylesheet, no framework.
+/* Statehouse Dashboard: one stylesheet, no framework.
    Design direction: ink/slate structure, warm parchment field, one terracotta
    accent. Serif summaries (read me), mono for data (bill numbers, dates).
    Party colors live ONLY in vote data, never in the chrome. Depth from
@@ -137,7 +137,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 28px 24px 64px; }
 .detail .official-title { color: var(--ink-soft); font-size: 0.9rem; margin: 0 0 16px; }
 .detail h3 { font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 26px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 5px; }
 
-/* vote card — make "party-line vs bipartisan" legible fast */
+/* vote card: make "party-line vs bipartisan" legible fast */
 .vote-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; }
 .vote-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 4px; }
 .vote-motion { font-weight: 600; }
