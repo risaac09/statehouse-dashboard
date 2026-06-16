@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Statehouse Dashboard — logo mark showcase</title>
+<style>
+  :root {
+    --slate: #16323d;
+    --gold: #c79324;
+    --paper: #f4efe6;
+    --ink: #1d2a30;
+    --muted: #5c6b71;
+    --line: #d8cfc0;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 40px 24px 80px; }
+  header.page {
+    border-bottom: 2px solid var(--slate);
+    padding-bottom: 16px;
+    margin-bottom: 40px;
+  }
+  header.page h1 { font-size: 26px; margin: 0 0 4px; color: var(--slate); letter-spacing: -0.01em; }
+  header.page p { margin: 0; color: var(--muted); }
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 56px 0 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace; }
+
+  /* variation card grid */
+  .variations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .vcard {
+    border: 1px solid var(--line);
+    background: #fffdf8;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .vcard .head {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .vcard .head strong { color: var(--slate); font-size: 15px; }
+  .vcard .head span { color: var(--muted); font-size: 12px; }
+  .vcard .desc { padding: 12px 16px 0; color: var(--muted); font-size: 13px; min-height: 56px; }
+
+  /* size rows */
+  .sizes {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 18px 16px 16px;
+  }
+  .size-item { text-align: center; }
+  .size-item .label { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; }
+
+  /* swatch surfaces */
+  .surfaces { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); }
+  .surf { padding: 18px 16px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .surf.light { background: var(--paper); }
+  .surf.dark  { background: var(--slate); }
+  .surf .cap { position: absolute; }
+  .surf-wrap { position: relative; }
+
+  /* big detail */
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .panel.light { background: var(--paper); color: var(--ink); }
+  .panel.dark  { background: var(--slate); color: #e7eef0; }
+  .panel .pcap { font-size: 12px; color: var(--muted); }
+  .panel.dark .pcap { color: #93a7ad; }
+
+  /* header bar mock (real app) */
+  .topbar {
+    background: var(--slate);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .topbar .wordmark h3 { margin: 0; font-size: 19px; letter-spacing: -0.01em; color: #fff; }
+  .topbar .wordmark p { margin: 2px 0 0; font-size: 12.5px; color: #9fc0c8; }
+  .topbar .spacer { flex: 1; }
+  .topbar select {
+    background: #0f262e;
+    color: #e7eef0;
+    border: 1px solid #2b4d59;
+    border-radius: 7px;
+    padding: 7px 10px;
+    font: inherit;
+    font-size: 13px;
+  }
+
+  /* favicon block */
+  .favicon-demo { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 18px; }
+  .browser-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fffdf8;
+    border: 1px solid var(--line);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .browser-tab img { width: 16px; height: 16px; display: block; }
+  .browser-tab.dark { background: #0f262e; border-color: #2b4d59; color: #e7eef0; }
+
+  pre {
+    background: #0f262e;
+    color: #e7eef0;
+    border-radius: 10px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    line-height: 1.6;
+    border: 1px solid #2b4d59;
+  }
+  pre .c { color: #93a7ad; }
+  .copy-note { color: var(--muted); font-size: 12.5px; margin: 0 0 8px; }
+  .rec {
+    background: #fff7e6;
+    border: 1px solid var(--gold);
+    border-left: 5px solid var(--gold);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 8px 0 0;
+  }
+  .rec strong { color: var(--slate); }
+  @media (max-width: 760px) {
+    .variations { grid-template-columns: 1fr; }
+    .detail-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page">
+    <h1>Statehouse Dashboard — the mark</h1>
+    <p>Flat inline-SVG dome/roofline. Slate <span class="mono">#16323d</span>, gold <span class="mono">#c79324</span>. Two strokes max, one fill. No gradients, no 3D.</p>
+  </header>
+
+  <!-- ================= VARIATIONS ================= -->
+  <h2>Three variations</h2>
+  <div class="variations">
+
+    <!-- ===== Variation A: Refined roofline + columns (current app, cleaned) ===== -->
+    <div class="vcard">
+      <div class="head"><strong>A · Capitol front</strong><span>roof + columns</span></div>
+      <p class="desc">The existing mark, tuned. A pediment over three columns on a base line. Reads as a statehouse facade.</p>
+      <div class="sizes">
+        <span class="size-item">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+            <path d="M16 5 L27 13 H5 Z" stroke="#16323d" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M8 14 V23 M16 14 V23 M24 14 V23 M5 24 H27" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">16</span>
+        </span>
+        <span class="size-item">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 5 L27 13 H5 Z" stroke="#16323d" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M8 14 V23 M16 14 V23 M24 14 V23 M5 24 H27" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">32</span>
+        </span>
+        <span class="size-item">
+          <svg width="64" height="64" viewBox="0 0 32 32" fill="none">
+            <path d="M16 5 L27 13 H5 Z" stroke="#16323d" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M8 14 V23 M16 14 V23 M24 14 V23 M5 24 H27" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">64</span>
+        </span>
+      </div>
+      <div class="surfaces">
+        <div class="surf light surf-wrap">
+          <svg width="192" height="192" viewBox="0 0 32 32" fill="none" style="width:120px;height:120px">
+            <path d="M16 5 L27 13 H5 Z" stroke="#16323d" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M8 14 V23 M16 14 V23 M24 14 V23 M5 24 H27" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="surf dark surf-wrap">
+          <svg width="192" height="192" viewBox="0 0 32 32" fill="none" style="width:120px;height:120px">
+            <path d="M16 5 L27 13 H5 Z" stroke="#c79324" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M8 14 V23 M16 14 V23 M24 14 V23 M5 24 H27" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Variation B: Dome on a base (rounded cupola) ===== -->
+    <div class="vcard">
+      <div class="head"><strong>B · The dome</strong><span>cupola + base</span></div>
+      <p class="desc">A rounded capitol dome with a finial, seated on a base line. One filled dome, one base stroke. Softer, more iconic at small sizes.</p>
+      <div class="sizes">
+        <span class="size-item">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+            <line x1="16" y1="4" x2="16" y2="7" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M7 22 C7 12 25 12 25 22 Z" fill="#16323d"/>
+            <line x1="5" y1="24" x2="27" y2="24" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">16</span>
+        </span>
+        <span class="size-item">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <line x1="16" y1="4" x2="16" y2="7" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M7 22 C7 12 25 12 25 22 Z" fill="#16323d"/>
+            <line x1="5" y1="24" x2="27" y2="24" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">32</span>
+        </span>
+        <span class="size-item">
+          <svg width="64" height="64" viewBox="0 0 32 32" fill="none">
+            <line x1="16" y1="4" x2="16" y2="7" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M7 22 C7 12 25 12 25 22 Z" fill="#16323d"/>
+            <line x1="5" y1="24" x2="27" y2="24" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">64</span>
+        </span>
+      </div>
+      <div class="surfaces">
+        <div class="surf light surf-wrap">
+          <svg viewBox="0 0 32 32" fill="none" style="width:120px;height:120px">
+            <line x1="16" y1="4" x2="16" y2="7" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M7 22 C7 12 25 12 25 22 Z" fill="#16323d"/>
+            <line x1="5" y1="24" x2="27" y2="24" stroke="#16323d" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="surf dark surf-wrap">
+          <svg viewBox="0 0 32 32" fill="none" style="width:120px;height:120px">
+            <line x1="16" y1="4" x2="16" y2="7" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M7 22 C7 12 25 12 25 22 Z" fill="#c79324"/>
+            <line x1="5" y1="24" x2="27" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Variation C: Dome in a rounded slate tile (favicon-native) ===== -->
+    <div class="vcard">
+      <div class="head"><strong>C · Tiled dome</strong><span>gold on slate</span></div>
+      <p class="desc">Variation B inside a slate rounded tile, gold dome. This is the favicon/PWA-icon shape: it carries its own background so it never disappears on a busy tab strip.</p>
+      <div class="sizes">
+        <span class="size-item">
+          <svg width="16" height="16" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="7" fill="#16323d"/>
+            <line x1="16" y1="6" x2="16" y2="9" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M8 22 C8 13 24 13 24 22 Z" fill="#c79324"/>
+            <line x1="7" y1="24" x2="25" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">16</span>
+        </span>
+        <span class="size-item">
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="7" fill="#16323d"/>
+            <line x1="16" y1="6" x2="16" y2="9" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M8 22 C8 13 24 13 24 22 Z" fill="#c79324"/>
+            <line x1="7" y1="24" x2="25" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">32</span>
+        </span>
+        <span class="size-item">
+          <svg width="64" height="64" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="7" fill="#16323d"/>
+            <line x1="16" y1="6" x2="16" y2="9" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M8 22 C8 13 24 13 24 22 Z" fill="#c79324"/>
+            <line x1="7" y1="24" x2="25" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="label">64</span>
+        </span>
+      </div>
+      <div class="surfaces">
+        <div class="surf light surf-wrap">
+          <svg viewBox="0 0 32 32" style="width:120px;height:120px">
+            <rect width="32" height="32" rx="7" fill="#16323d"/>
+            <line x1="16" y1="6" x2="16" y2="9" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M8 22 C8 13 24 13 24 22 Z" fill="#c79324"/>
+            <line x1="7" y1="24" x2="25" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="surf dark surf-wrap">
+          <svg viewBox="0 0 32 32" style="width:120px;height:120px">
+            <rect width="32" height="32" rx="7" fill="#16323d"/>
+            <line x1="16" y1="6" x2="16" y2="9" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M8 22 C8 13 24 13 24 22 Z" fill="#c79324"/>
+            <line x1="7" y1="24" x2="25" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= 192px PWA ================= -->
+  <h2>PWA icon · 192px</h2>
+  <div class="detail-grid">
+    <div class="panel light">
+      <svg viewBox="0 0 32 32" style="width:192px;height:192px">
+        <rect width="32" height="32" rx="7" fill="#16323d"/>
+        <line x1="16" y1="6" x2="16" y2="9" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M8 22 C8 13 24 13 24 22 Z" fill="#c79324"/>
+        <line x1="7" y1="24" x2="25" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span class="pcap">Variation C on paper</span>
+    </div>
+    <div class="panel dark">
+      <svg viewBox="0 0 32 32" fill="none" style="width:192px;height:192px">
+        <line x1="16" y1="4" x2="16" y2="7" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M7 22 C7 12 25 12 25 22 Z" fill="#c79324"/>
+        <line x1="5" y1="24" x2="27" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span class="pcap">Variation B on slate</span>
+    </div>
+  </div>
+
+  <!-- ================= FAVICON DATA-URI ================= -->
+  <h2>Favicon · data-URI</h2>
+  <div class="favicon-demo">
+    <span class="browser-tab">
+      <img alt="favicon" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316323d'/%3E%3Cline x1='16' y1='6' x2='16' y2='9' stroke='%23c79324' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M8 22 C8 13 24 13 24 22 Z' fill='%23c79324'/%3E%3Cline x1='7' y1='24' x2='25' y2='24' stroke='%23c79324' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E" />
+      Statehouse Dashboard
+    </span>
+    <span class="browser-tab dark">
+      <img alt="favicon" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316323d'/%3E%3Cline x1='16' y1='6' x2='16' y2='9' stroke='%23c79324' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M8 22 C8 13 24 13 24 22 Z' fill='%23c79324'/%3E%3Cline x1='7' y1='24' x2='25' y2='24' stroke='%23c79324' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E" />
+      Statehouse Dashboard
+    </span>
+  </div>
+  <p class="copy-note">Paste this line into <span class="mono">&lt;head&gt;</span> (favicon = Variation C, the tiled dome — it keeps its own slate background so it never washes out on a light tab strip):</p>
+  <pre>&lt;link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316323d'/%3E%3Cline x1='16' y1='6' x2='16' y2='9' stroke='%23c79324' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M8 22 C8 13 24 13 24 22 Z' fill='%23c79324'/%3E%3Cline x1='7' y1='24' x2='25' y2='24' stroke='%23c79324' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E" /&gt;</pre>
+
+  <!-- ================= HEADER BAR ================= -->
+  <h2>In the header bar (real app, slate)</h2>
+  <div class="topbar">
+    <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <line x1="16" y1="4" x2="16" y2="7" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M7 22 C7 12 25 12 25 22 Z" fill="#c79324"/>
+      <line x1="5" y1="24" x2="27" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <div class="wordmark">
+      <h3>Statehouse Dashboard</h3>
+      <p>What your legislature is actually doing, in plain language.</p>
+    </div>
+    <span class="spacer"></span>
+    <select aria-label="state"><option>California</option><option>Texas</option><option>New York</option></select>
+  </div>
+  <p class="copy-note" style="margin-top:14px;">Same wordmark with Variation A (Capitol front) for comparison:</p>
+  <div class="topbar">
+    <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M16 5 L27 13 H5 Z" stroke="#c79324" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M8 14 V23 M16 14 V23 M24 14 V23 M5 24 H27" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <div class="wordmark">
+      <h3>Statehouse Dashboard</h3>
+      <p>What your legislature is actually doing, in plain language.</p>
+    </div>
+    <span class="spacer"></span>
+    <select aria-label="state"><option>California</option><option>Texas</option><option>New York</option></select>
+  </div>
+
+  <!-- ================= RAW SVG ================= -->
+  <h2>Raw SVG markup (copy)</h2>
+
+  <p class="copy-note"><strong>Variation A — Capitol front</strong> (gold on slate; swap <span class="mono">#c79324</span> → <span class="mono">#16323d</span> for the slate-on-paper version):</p>
+  <pre>&lt;svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"&gt;
+  &lt;path d="M16 5 L27 13 H5 Z" stroke="#c79324" stroke-width="2.4" stroke-linejoin="round"/&gt;
+  &lt;path d="M8 14 V23 M16 14 V23 M24 14 V23 M5 24 H27" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/&gt;
+&lt;/svg&gt;</pre>
+
+  <p class="copy-note"><strong>Variation B — The dome</strong> (one fill, one base stroke, plus the finial tick):</p>
+  <pre>&lt;svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"&gt;
+  &lt;line x1="16" y1="4" x2="16" y2="7" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/&gt;
+  &lt;path d="M7 22 C7 12 25 12 25 22 Z" fill="#c79324"/&gt;
+  &lt;line x1="5" y1="24" x2="27" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/&gt;
+&lt;/svg&gt;</pre>
+
+  <p class="copy-note"><strong>Variation C — Tiled dome</strong> (self-contained favicon/PWA shape, slate tile + gold dome):</p>
+  <pre>&lt;svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"&gt;
+  &lt;rect width="32" height="32" rx="7" fill="#16323d"/&gt;
+  &lt;line x1="16" y1="6" x2="16" y2="9" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/&gt;
+  &lt;path d="M8 22 C8 13 24 13 24 22 Z" fill="#c79324"/&gt;
+  &lt;line x1="7" y1="24" x2="25" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/&gt;
+&lt;/svg&gt;</pre>
+
+  <!-- ================= RECOMMENDATION ================= -->
+  <h2>Recommendation</h2>
+  <p class="rec"><strong>Variation B (the dome)</strong> for the header mark, paired with <strong>Variation C (the tiled dome)</strong> for the favicon and PWA icon. Same dome shape across both, so the brand stays consistent from a 16px tab to a 192px home-screen tile. The rounded cupola survives downscaling far better than the three-column facade, whose verticals merge into a smudge at 16px. The Capitol-front mark (A) is the current app icon and stays a valid fallback if you want the literal facade read.</p>
+
+</div>
+</body>
+</html>

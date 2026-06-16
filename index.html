@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statehouse Dashboard — bills & votes in plain language</title>
+  <meta name="description" content="A plain-language dashboard of what your state legislature is actually doing: recent bills, how they voted, and the topics that affect you." />
+  <meta name="theme-color" content="#16323d" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316323d'/%3E%3Cpath d='M16 6 L25 12 H7 Z' fill='none' stroke='%23c79324' stroke-width='2' stroke-linejoin='round'/%3E%3Cline x1='10' y1='13' x2='10' y2='22' stroke='%23c79324' stroke-width='2'/%3E%3Cline x1='16' y1='13' x2='16' y2='22' stroke='%23c79324' stroke-width='2'/%3E%3Cline x1='22' y1='13' x2='22' y2='22' stroke='%23c79324' stroke-width='2'/%3E%3Cline x1='6' y1='23' x2='26' y2='23' stroke='%23c79324' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M16 4 L27 12 H5 Z" stroke="#c79324" stroke-width="2" stroke-linejoin="round"/>
+        <line x1="8" y1="13" x2="8" y2="23" stroke="#c79324" stroke-width="2"/>
+        <line x1="16" y1="13" x2="16" y2="23" stroke="#c79324" stroke-width="2"/>
+        <line x1="24" y1="13" x2="24" y2="23" stroke="#c79324" stroke-width="2"/>
+        <line x1="4" y1="24" x2="28" y2="24" stroke="#c79324" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>Statehouse Dashboard</h1>
+        <p class="tagline">What your legislature is actually doing, in plain language.</p>
+      </div>
+    </div>
+    <div class="controls">
+      <label class="field">
+        <span class="field-label">State</span>
+        <select id="state-select" aria-label="Choose a state"></select>
+      </label>
+    </div>
+  </header>
+
+  <div id="sample-banner" class="banner" hidden>
+    Showing <strong>sample data</strong>. Add an OpenStates API key and run the fetch to see live bills. <a href="https://github.com/risaac09/statehouse-dashboard#getting-live-data">How.</a>
+  </div>
+
+  <main id="main">
+    <section class="summary" id="summary" aria-label="Overview"></section>
+
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search bills, sponsors, or numbers…" aria-label="Search bills" />
+      <div class="chips" id="topic-chips" role="group" aria-label="Filter by topic"></div>
+    </div>
+
+    <section id="feed" class="feed" aria-live="polite" aria-label="Recent legislative activity"></section>
+    <p id="empty" class="empty" hidden>No bills match that filter.</p>
+  </main>
+
+  <!-- Bill detail drawer -->
+  <div id="overlay" class="overlay" hidden></div>
+  <aside id="detail" class="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden tabindex="-1">
+    <button class="detail-close" id="detail-close" aria-label="Close">×</button>
+    <div id="detail-body"></div>
+  </aside>
+
+  <footer class="footer">
+    <p>Data from <a href="https://openstates.org">OpenStates</a>. Summaries are auto-generated from official text and may simplify. Always check the source before acting.</p>
+    <p>Last updated: <time id="updated">—</time></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

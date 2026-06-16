@@ -1,0 +1,45 @@
+name: Refresh legislative data
+
+on:
+  schedule:
+    - cron: '0 13 * * *'   # daily at 13:00 UTC
+  workflow_dispatch:
+    inputs:
+      states:
+        description: 'Space- or comma-separated state codes (e.g. "ca ny tx")'
+        required: false
+        default: 'ca'
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch and clean data
+        env:
+          OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+          STATES: ${{ github.event.inputs.states || vars.STATES || 'ca' }}
+        run: node scripts/fetch.mjs
+
+      - name: Run tests
+        run: node scripts/test.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "statehouse-bot"
+          git config user.email "actions@github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "data: refresh legislative snapshots ($(date -u +%Y-%m-%d))"
+            git push
+          fi

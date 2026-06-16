@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statehouse Dashboard, supporting states</title>
+<style>
+/* Statehouse Dashboard, supporting UI states.
+   Ink/slate structure, warm parchment field, one terracotta accent.
+   Serif for summary text, mono for data/labels, system sans for chrome.
+   Depth from hairlines + a status spine, never drop shadows. Light + dark. */
+
+:root {
+  --bg: #f4f1e9;
+  --surface: #fffdf8;
+  --ink: #16323d;
+  --ink-soft: #5b6b71;
+  --line: #ddd6c6;
+  --line-strong: #c8bfa9;
+  --slate: #16323d;
+  --slate-2: #244a58;
+  --accent: #b4582a;
+  --gold: #c79324;
+  --pass: #2f7a4f;
+  --fail: #b23b3b;
+  --radius: 12px;
+  --maxw: 980px;
+  --serif: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1a1f;
+    --surface: #15252c;
+    --ink: #edf1ee;
+    --ink-soft: #9fb1b7;
+    --line: #283a42;
+    --line-strong: #35515c;
+    --slate: #0b1c23;
+    --slate-2: #25515f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; }
+
+/* ---- Mockup scaffolding (not part of the app) ---- */
+.gallery { max-width: var(--maxw); margin: 0 auto; padding: 32px 24px 72px; }
+.gallery > header { margin-bottom: 8px; }
+.gallery > header h1 { margin: 0 0 4px; font-size: 1.5rem; letter-spacing: -0.01em; }
+.gallery > header p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; max-width: 60ch; }
+.scheme-note { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin-top: 14px; padding: 8px 12px; border: 1px dashed var(--line-strong); border-radius: 8px; }
+
+.demo-section { margin-top: 44px; }
+.demo-section > h2 { font-size: 1.12rem; margin: 0 0 4px; }
+.demo-section > .desc { margin: 0 0 18px; color: var(--ink-soft); font-size: 0.88rem; max-width: 64ch; }
+
+/* Side-by-side light/dark pair. Each frame forces its own scheme via [data-scheme]. */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.frame { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.frame-label { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 7px 12px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+
+/* Each frame carries its own token set so light and dark show together. */
+.frame[data-scheme="light"] {
+  --bg: #f4f1e9; --surface: #fffdf8; --ink: #16323d; --ink-soft: #5b6b71;
+  --line: #ddd6c6; --line-strong: #c8bfa9; --slate: #16323d; --slate-2: #244a58;
+}
+.frame[data-scheme="dark"] {
+  --bg: #0f1a1f; --surface: #15252c; --ink: #edf1ee; --ink-soft: #9fb1b7;
+  --line: #283a42; --line-strong: #35515c; --slate: #0b1c23; --slate-2: #25515f;
+}
+.frame[data-scheme="light"], .frame[data-scheme="light"] .frame-label { color: #16323d; }
+.frame .stage { background: var(--bg); color: var(--ink); padding: 18px; }
+.frame .stage.flush { padding: 0; }
+
+@media (max-width: 720px) { .pair { grid-template-columns: 1fr; } }
+
+/* ---- Top bar (shared with the app) ---- */
+.topbar { background: var(--slate); color: #fff; padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
+.brand { display: flex; gap: 12px; align-items: center; }
+.brand-mark { color: var(--gold); font-size: 26px; line-height: 1; }
+.topbar h1.app-title { margin: 0; font-size: 1.1rem; letter-spacing: -0.01em; font-weight: 650; }
+.tagline { margin: 2px 0 0; font-size: 0.78rem; color: #b9cbd1; }
+
+/* ---- (1) State picker ---- */
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field-label { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: #93aab1; }
+.state-picker { position: relative; }
+.state-picker select {
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px;
+  padding: 9px 34px 9px 12px; font-size: 0.95rem; min-width: 210px; font-family: inherit;
+  -webkit-appearance: none; appearance: none; cursor: pointer;
+}
+.state-picker::after {
+  content: ""; position: absolute; right: 13px; bottom: 16px; width: 8px; height: 8px;
+  border-right: 2px solid var(--ink-soft); border-bottom: 2px solid var(--ink-soft);
+  transform: rotate(45deg); pointer-events: none;
+}
+.state-picker select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--accent); }
+.field-hint { font-family: var(--mono); font-size: 0.6rem; color: #93aab1; letter-spacing: 0.06em; }
+
+/* ---- (2) Sample-data banner ---- */
+.banner { background: #f7eccf; color: #5a4416; border: 1px solid var(--gold); border-radius: 10px; padding: 12px 16px; font-size: 0.88rem; display: flex; gap: 12px; align-items: flex-start; }
+@media (prefers-color-scheme: dark) { .frame[data-scheme="dark"] .banner { background: #2a2415; color: #e9c46a; } }
+.frame[data-scheme="dark"] .banner { background: #2a2415; color: #e9c46a; }
+.banner .b-mark { font-family: var(--mono); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; border: 1px solid currentColor; border-radius: 5px; padding: 2px 7px; white-space: nowrap; flex: none; margin-top: 1px; }
+.banner .b-body { flex: 1; }
+.banner .b-body p { margin: 0; }
+.banner .b-action { margin-top: 6px; }
+.banner a, .banner .linklike { color: inherit; text-decoration: underline; text-underline-offset: 2px; font-weight: 600; cursor: pointer; background: none; border: none; padding: 0; font: inherit; }
+.banner .linklike:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* ---- (3) Empty result ---- */
+.empty { text-align: center; color: var(--ink-soft); padding: 44px 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.empty .e-mark { font-size: 1.7rem; line-height: 1; color: var(--line-strong); margin-bottom: 12px; }
+.empty .e-title { font-family: var(--serif); font-size: 1.16rem; color: var(--ink); margin: 0 0 6px; }
+.empty .e-text { margin: 0 auto 16px; max-width: 42ch; font-size: 0.9rem; }
+.btn-quiet { background: var(--surface); color: var(--ink); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 16px; font-size: 0.86rem; font-family: inherit; cursor: pointer; }
+.btn-quiet:hover { border-color: var(--accent); color: var(--accent); }
+.btn-quiet:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---- (4) Loading skeletons ---- */
+.feed { display: flex; flex-direction: column; gap: 14px; }
+.sk-card { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px 18px 22px; overflow: hidden; }
+.sk-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--line-strong); }
+.sk-top { display: flex; justify-content: space-between; margin-bottom: 12px; }
+.sk { background: var(--line); border-radius: 6px; height: 12px; }
+.frame[data-scheme="dark"] .sk { background: #21333b; }
+.sk-id { width: 78px; height: 14px; }
+.sk-date { width: 64px; }
+.sk-line { height: 16px; margin-bottom: 9px; }
+.sk-line.w1 { width: 92%; }
+.sk-line.w2 { width: 74%; }
+.sk-meta { display: flex; gap: 10px; margin-top: 14px; }
+.sk-pill { width: 86px; height: 18px; border-radius: 6px; }
+.sk-tag { width: 60px; height: 18px; border-radius: 6px; }
+
+/* shimmer; respects reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  .sk { background-image: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); background-size: 200% 100%; background-repeat: no-repeat; animation: sweep 1.3s ease-in-out infinite; }
+  .frame[data-scheme="dark"] .sk { background-image: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.07) 50%, transparent 100%); }
+  @keyframes sweep { from { background-position: 200% 0; } to { background-position: -120% 0; } }
+}
+.sk-status { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); text-align: center; padding: 8px 0 2px; }
+
+/* ---- (5) Graceful error ---- */
+.notice { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 22px 24px; }
+.notice .n-kicker { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin: 0 0 8px; }
+.notice .n-title { font-family: var(--serif); font-size: 1.2rem; margin: 0 0 8px; color: var(--ink); }
+.notice .n-text { margin: 0 0 16px; font-size: 0.92rem; color: var(--ink-soft); max-width: 56ch; }
+.notice .n-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn-accent { background: var(--accent); color: #fff; border: 1px solid var(--accent); border-radius: 8px; padding: 8px 16px; font-size: 0.86rem; font-family: inherit; cursor: pointer; }
+.btn-accent:hover { background: #9e4c22; border-color: #9e4c22; }
+.btn-accent:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+</style>
+</head>
+<body>
+<main class="gallery">
+  <header>
+    <h1>Statehouse Dashboard, supporting states</h1>
+    <p>The picker, the sample-data banner, the empty result, the loading feed, and the missing-data error. Each is shown in light and dark, side by side, against the real design tokens.</p>
+    <p class="scheme-note">Each pair forces its own scheme so you can compare. The live app follows prefers-color-scheme.</p>
+  </header>
+
+  <!-- (1) State picker -->
+  <section class="demo-section" aria-labelledby="s1">
+    <h2 id="s1">1. State picker</h2>
+    <p class="desc">A plain select in the header. Slate chrome, a parchment control, a mono label that reads as data. The current selection persists; changing it loads that state's feed.</p>
+    <div class="pair">
+      <div class="frame" data-scheme="light">
+        <div class="frame-label">Light</div>
+        <div class="stage flush">
+          <div class="topbar">
+            <div class="brand">
+              <span class="brand-mark" aria-hidden="true">&#9651;</span>
+              <div>
+                <h1 class="app-title">Statehouse Dashboard</h1>
+                <p class="tagline">What your legislature is actually doing</p>
+              </div>
+            </div>
+            <div class="field state-picker">
+              <label class="field-label" for="state-l">State</label>
+              <select id="state-l" name="state">
+                <option>Alabama</option>
+                <option selected>California</option>
+                <option>Colorado</option>
+                <option>Florida</option>
+                <option>New York</option>
+                <option>Texas</option>
+                <option>Washington</option>
+              </select>
+              <span class="field-hint">50 states &middot; updated daily</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame" data-scheme="dark">
+        <div class="frame-label">Dark</div>
+        <div class="stage flush">
+          <div class="topbar">
+            <div class="brand">
+              <span class="brand-mark" aria-hidden="true">&#9651;</span>
+              <div>
+                <h1 class="app-title">Statehouse Dashboard</h1>
+                <p class="tagline">What your legislature is actually doing</p>
+              </div>
+            </div>
+            <div class="field state-picker">
+              <label class="field-label" for="state-d">State</label>
+              <select id="state-d" name="state">
+                <option>Alabama</option>
+                <option selected>California</option>
+                <option>Colorado</option>
+                <option>Florida</option>
+                <option>New York</option>
+                <option>Texas</option>
+                <option>Washington</option>
+              </select>
+              <span class="field-hint">50 states &middot; updated daily</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (2) Sample-data banner -->
+  <section class="demo-section" aria-labelledby="s2">
+    <h2 id="s2">2. Sample-data banner</h2>
+    <p class="desc">Shown before a live API key is added. Honest about what you are looking at, with a clear next step. Gold-keyed, the one color reserved for housekeeping notes.</p>
+    <div class="pair">
+      <div class="frame" data-scheme="light">
+        <div class="frame-label">Light</div>
+        <div class="stage">
+          <div class="banner" role="status">
+            <span class="b-mark">Sample</span>
+            <div class="b-body">
+              <p>You are viewing sample data, not live bills. The numbers and votes here are made up so you can see how the dashboard works.</p>
+              <p class="b-action"><button class="linklike" type="button">Add an API key</button> to pull real bills for your state.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame" data-scheme="dark">
+        <div class="frame-label">Dark</div>
+        <div class="stage">
+          <div class="banner" role="status">
+            <span class="b-mark">Sample</span>
+            <div class="b-body">
+              <p>You are viewing sample data, not live bills. The numbers and votes here are made up so you can see how the dashboard works.</p>
+              <p class="b-action"><button class="linklike" type="button">Add an API key</button> to pull real bills for your state.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (3) Empty result -->
+  <section class="demo-section" aria-labelledby="s3">
+    <h2 id="s3">3. Empty result</h2>
+    <p class="desc">No bills match the current filter. Names the reason, offers the way back. No mascots, no jokes about it being lonely in here.</p>
+    <div class="pair">
+      <div class="frame" data-scheme="light">
+        <div class="frame-label">Light</div>
+        <div class="stage">
+          <div class="empty" role="status" aria-live="polite">
+            <div class="e-mark" aria-hidden="true">&#9633;</div>
+            <p class="e-title">No bills match that filter</p>
+            <p class="e-text">Nothing in California fits &ldquo;Housing&rdquo; with the search &ldquo;rent control.&rdquo; Try a broader topic or clear the search.</p>
+            <button class="btn-quiet" type="button">Clear filters</button>
+          </div>
+        </div>
+      </div>
+      <div class="frame" data-scheme="dark">
+        <div class="frame-label">Dark</div>
+        <div class="stage">
+          <div class="empty" role="status" aria-live="polite">
+            <div class="e-mark" aria-hidden="true">&#9633;</div>
+            <p class="e-title">No bills match that filter</p>
+            <p class="e-text">Nothing in California fits &ldquo;Housing&rdquo; with the search &ldquo;rent control.&rdquo; Try a broader topic or clear the search.</p>
+            <button class="btn-quiet" type="button">Clear filters</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (4) Loading skeletons -->
+  <section class="demo-section" aria-labelledby="s4">
+    <h2 id="s4">4. Loading skeletons</h2>
+    <p class="desc">While a state's JSON loads. Skeletons mirror the bill card's shape, including the status spine, so nothing jumps when real content arrives. The feed carries aria-busy and a live status for screen readers.</p>
+    <div class="pair">
+      <div class="frame" data-scheme="light">
+        <div class="frame-label">Light</div>
+        <div class="stage">
+          <p class="sk-status" role="status" aria-live="polite">Loading bills for California&hellip;</p>
+          <div class="feed" aria-busy="true" aria-label="Bills, loading">
+            <div class="sk-card" aria-hidden="true">
+              <div class="sk-top"><span class="sk sk-id"></span><span class="sk sk-date"></span></div>
+              <div class="sk sk-line w1"></div>
+              <div class="sk sk-line w2"></div>
+              <div class="sk-meta"><span class="sk sk-pill"></span><span class="sk sk-tag"></span><span class="sk sk-tag"></span></div>
+            </div>
+            <div class="sk-card" aria-hidden="true">
+              <div class="sk-top"><span class="sk sk-id"></span><span class="sk sk-date"></span></div>
+              <div class="sk sk-line w1"></div>
+              <div class="sk sk-line w2"></div>
+              <div class="sk-meta"><span class="sk sk-pill"></span><span class="sk sk-tag"></span></div>
+            </div>
+            <div class="sk-card" aria-hidden="true">
+              <div class="sk-top"><span class="sk sk-id"></span><span class="sk sk-date"></span></div>
+              <div class="sk sk-line w1"></div>
+              <div class="sk sk-line w2"></div>
+              <div class="sk-meta"><span class="sk sk-pill"></span><span class="sk sk-tag"></span><span class="sk sk-tag"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame" data-scheme="dark">
+        <div class="frame-label">Dark</div>
+        <div class="stage">
+          <p class="sk-status" role="status" aria-live="polite">Loading bills for California&hellip;</p>
+          <div class="feed" aria-busy="true" aria-label="Bills, loading">
+            <div class="sk-card" aria-hidden="true">
+              <div class="sk-top"><span class="sk sk-id"></span><span class="sk sk-date"></span></div>
+              <div class="sk sk-line w1"></div>
+              <div class="sk sk-line w2"></div>
+              <div class="sk-meta"><span class="sk sk-pill"></span><span class="sk sk-tag"></span><span class="sk sk-tag"></span></div>
+            </div>
+            <div class="sk-card" aria-hidden="true">
+              <div class="sk-top"><span class="sk sk-id"></span><span class="sk sk-date"></span></div>
+              <div class="sk sk-line w1"></div>
+              <div class="sk sk-line w2"></div>
+              <div class="sk-meta"><span class="sk sk-pill"></span><span class="sk sk-tag"></span></div>
+            </div>
+            <div class="sk-card" aria-hidden="true">
+              <div class="sk-top"><span class="sk sk-id"></span><span class="sk sk-date"></span></div>
+              <div class="sk sk-line w1"></div>
+              <div class="sk sk-line w2"></div>
+              <div class="sk-meta"><span class="sk sk-pill"></span><span class="sk sk-tag"></span><span class="sk sk-tag"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (5) Graceful error -->
+  <section class="demo-section" aria-labelledby="s5">
+    <h2 id="s5">5. Missing-data error</h2>
+    <p class="desc">When a state's file will not load. Terracotta spine marks it as a problem without alarm-red. Says what happened, what you can do, and offers a fallback that still works.</p>
+    <div class="pair">
+      <div class="frame" data-scheme="light">
+        <div class="frame-label">Light</div>
+        <div class="stage">
+          <div class="notice" role="alert">
+            <p class="n-kicker">Could not load</p>
+            <p class="n-title">We could not load bills for Colorado</p>
+            <p class="n-text">The data for this state is missing or did not arrive. This is on our end, not yours. It usually clears up within a day.</p>
+            <div class="n-actions">
+              <button class="btn-accent" type="button">Try again</button>
+              <button class="btn-quiet" type="button">Switch to a different state</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame" data-scheme="dark">
+        <div class="frame-label">Dark</div>
+        <div class="stage">
+          <div class="notice" role="alert">
+            <p class="n-kicker">Could not load</p>
+            <p class="n-title">We could not load bills for Colorado</p>
+            <p class="n-text">The data for this state is missing or did not arrive. This is on our end, not yours. It usually clears up within a day.</p>
+            <div class="n-actions">
+              <button class="btn-accent" type="button">Try again</button>
+              <button class="btn-quiet" type="button">Switch to a different state</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

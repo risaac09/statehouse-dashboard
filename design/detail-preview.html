@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Statehouse Dashboard — detail drawer preview</title>
+<!-- Standalone preview of the bill detail drawer + upgraded vote visualization.
+     Mirrors the live app.css. Shows a party-line vote and a bipartisan vote. -->
+<link rel="stylesheet" href="../app.css" />
+<style>
+  body { background: var(--bg); }
+  /* render the drawer inline (not fixed) so it's easy to view as a page */
+  .detail { position: static; height: auto; width: min(560px, 100%); margin: 24px auto; border: 1px solid var(--line); border-radius: 14px; }
+  .detail-close { display: none; }
+</style>
+</head>
+<body>
+  <aside class="detail">
+    <div>
+      <h2>AB 1042</h2>
+      <p class="plain">Establishes a state fund to replace lead drinking-water pipes in public schools by 2030.</p>
+      <p class="note">Auto-summarized from the official abstract.</p>
+      <p class="official-title">An act to require lead service line replacement in public schools.</p>
+      <div class="bill-meta">
+        <span class="status s-passed-chamber">Passed chamber</span>
+        <span>House</span>
+        <span>Asm. Jane Ortiz (D)</span>
+        <span class="topic-tag">Education</span><span class="topic-tag">Health</span>
+      </div>
+
+      <h3>How they voted</h3>
+
+      <!-- Near party-line -->
+      <div class="vote-card">
+        <div class="vote-head">
+          <span class="vote-motion">Do pass as amended</span>
+          <span class="vote-pill pass">Passed</span>
+        </div>
+        <div class="bill-date">House · Jun 11, 2026</div>
+        <div class="vote-bar" role="img" aria-label="54 yes, 21 no, 5 other">
+          <span class="yes" style="width:67%">54</span>
+          <span class="no" style="width:26%">21</span>
+          <span class="other" style="width:7%">5</span>
+        </div>
+        <div class="party-rows">
+          <div class="party-row">
+            <span class="party-key D">D</span>
+            <div>
+              <div class="party-split"><span class="yes" style="width:94%"></span><span class="other" style="width:6%"></span></div>
+              <span class="party-counts"> 48 yes · 1 no · 2 other</span>
+            </div>
+          </div>
+          <div class="party-row">
+            <span class="party-key R">R</span>
+            <div>
+              <div class="party-split"><span class="yes" style="width:21%"></span><span class="no" style="width:69%"></span><span class="other" style="width:10%"></span></div>
+              <span class="party-counts"> 6 yes · 20 no · 3 other</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bipartisan -->
+      <div class="vote-card">
+        <div class="vote-head">
+          <span class="vote-motion">Senate concurrence</span>
+          <span class="vote-pill pass">Passed</span>
+        </div>
+        <div class="bill-date">Senate · May 12, 2026</div>
+        <div class="vote-bar" role="img" aria-label="31 yes, 7 no, 2 other">
+          <span class="yes" style="width:78%">31</span>
+          <span class="no" style="width:17%">7</span>
+          <span class="other" style="width:5%">2</span>
+        </div>
+        <div class="party-rows">
+          <div class="party-row">
+            <span class="party-key D">D</span>
+            <div>
+              <div class="party-split"><span class="yes" style="width:97%"></span><span class="other" style="width:3%"></span></div>
+              <span class="party-counts"> 28 yes · 0 no · 1 other</span>
+            </div>
+          </div>
+          <div class="party-row">
+            <span class="party-key R">R</span>
+            <div>
+              <div class="party-split"><span class="yes" style="width:27%"></span><span class="no" style="width:64%"></span><span class="other" style="width:9%"></span></div>
+              <span class="party-counts"> 3 yes · 7 no · 1 other</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>What happened</h3>
+      <ul class="timeline">
+        <li><span class="t-date">Jun 11, 2026</span><span>Passed Assembly. Ordered to the Senate.</span></li>
+        <li><span class="t-date">May 20, 2026</span><span>Referred to Committee on Environmental Safety.</span></li>
+        <li><span class="t-date">Apr 2, 2026</span><span>Introduced and read first time.</span></li>
+      </ul>
+
+      <a class="source-link" href="#">View official record →</a>
+    </div>
+  </aside>
+</body>
+</html>

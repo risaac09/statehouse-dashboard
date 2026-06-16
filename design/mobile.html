@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Statehouse Dashboard — mobile layout mockup</title>
+<style>
+/* ============================================================
+   Statehouse Dashboard — mobile (sub-560px) mockup
+   Matches app.css tokens exactly. Ink/slate structure, warm
+   parchment field, one terracotta accent. Serif summaries,
+   mono for data. Party colors live only in vote data. Depth
+   from hairlines + a status spine, never drop shadows.
+   This file frames two phone-width viewports side by side:
+   the feed, and the open detail sheet (with vote breakdown).
+   ============================================================ */
+
+:root {
+  --bg: #f4f1e9;
+  --surface: #fffdf8;
+  --ink: #16323d;
+  --ink-soft: #5b6b71;
+  --line: #ddd6c6;
+  --line-strong: #c8bfa9;
+  --slate: #16323d;
+  --slate-2: #244a58;
+  --accent: #b4582a;
+  --gold: #c79324;
+  --d: #2b6cb0;     /* Democratic */
+  --r: #b23b3b;     /* Republican */
+  --i: #6b7280;     /* Independent / other */
+  --pass: #2f7a4f;
+  --fail: #b23b3b;
+  --radius: 12px;
+  --serif: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* tap-target floor used throughout */
+  --tap: 44px;
+  font-size: 16px;
+}
+
+/* The phone frames declare a fixed scheme via a data-attr so we can
+   show light and dark together. Real app uses prefers-color-scheme;
+   this mockup forces both so reviewers see them at once. */
+.frame[data-scheme="dark"] {
+  --bg: #0f1a1f;
+  --surface: #15252c;
+  --ink: #edf1ee;
+  --ink-soft: #9fb1b7;
+  --line: #283a42;
+  --line-strong: #35515c;
+  --slate: #0b1c23;
+  --slate-2: #25515f;
+}
+
+* { box-sizing: border-box; }
+
+/* ---- Mockup stage (not part of the app) ---- */
+html, body { margin: 0; }
+body {
+  background: #e6e1d4;
+  color: #16323d;
+  font-family: var(--sans);
+  line-height: 1.5;
+  padding: 40px 20px 64px;
+}
+@media (prefers-color-scheme: dark) {
+  body { background: #0a1216; color: #edf1ee; }
+}
+.stage-head { max-width: 920px; margin: 0 auto 28px; }
+.stage-head h1 { margin: 0 0 6px; font-size: 1.3rem; letter-spacing: -0.01em; }
+.stage-head p { margin: 0; font-size: 0.9rem; opacity: 0.8; max-width: 60ch; }
+.phones {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.phone-col { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.phone-cap { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; opacity: 0.7; }
+
+/* phone bezel — a quiet device frame, no gradients/shadows */
+.device {
+  width: 390px;
+  max-width: 92vw;
+  border: 10px solid #2c2c2e;
+  border-radius: 38px;
+  overflow: hidden;
+  background: #2c2c2e;
+}
+@media (prefers-color-scheme: dark) { .device { border-color: #1a1a1c; background: #1a1a1c; } }
+
+/* the screen: an isolated rendering context that owns the app tokens */
+.frame {
+  position: relative;
+  height: 760px;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  border-radius: 28px;
+  isolation: isolate;
+}
+
+/* scrollable app body inside the screen */
+.screen-scroll { height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+/* ============================================================
+   APP STYLES — mobile (these are what port back into app.css
+   inside the @media (max-width: 560px) block + small tweaks)
+   ============================================================ */
+
+a { color: var(--accent); }
+
+/* ---- Top bar: stacked on mobile ---- */
+.topbar {
+  background: var(--slate);
+  color: #fff;
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.brand { display: flex; gap: 12px; align-items: center; }
+.brand-mark { color: var(--gold); flex: none; }
+.topbar h1 { margin: 0; font-size: 1.1rem; letter-spacing: -0.01em; font-weight: 650; }
+.tagline { margin: 2px 0 0; font-size: 0.78rem; color: #b9cbd1; }
+
+/* full-width state picker */
+.controls { width: 100%; }
+.field { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+.field-label { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: #93aab1; }
+.field select {
+  width: 100%;
+  min-height: var(--tap);
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  /* native chevron kept; add a hint glyph via background */
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%), linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+.field select:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ---- Sample-data banner ---- */
+.banner {
+  background: #f7eccf;
+  color: #5a4416;
+  border-bottom: 1px solid var(--gold);
+  padding: 10px 16px;
+  font-size: 0.82rem;
+}
+.frame[data-scheme="dark"] .banner { background: #2a2415; color: #e9c46a; }
+
+/* ---- Main ---- */
+main { padding: 18px 0 40px; }
+
+/* summary strip: scrolls if it must, but wraps to two rows on phone */
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  padding: 0 16px 18px;
+  margin: 0 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.stat .n { font-size: 1.7rem; font-weight: 700; color: var(--slate-2); line-height: 1; font-variant-numeric: tabular-nums; }
+.frame[data-scheme="dark"] .stat .n { color: #7fc6dd; }
+.stat .l { font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-top: 6px; }
+
+/* ---- Toolbar ---- */
+.toolbar { padding: 0 16px; margin-bottom: 16px; }
+.search {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 11px 14px;
+  font-size: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  margin-bottom: 12px;
+  font-family: inherit;
+}
+.search::placeholder { color: var(--ink-soft); }
+.search:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* horizontally scrollable topic chips: edge-to-edge, no wrap */
+.chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* bleed the row to the screen edges, pad so first/last chip clear */
+  margin: 0 -16px;
+  padding: 2px 16px 8px;
+  scroll-snap-type: x proximity;
+}
+.chips::-webkit-scrollbar { display: none; }
+.chip {
+  flex: none;
+  scroll-snap-align: start;
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 0.86rem;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.chip[aria-pressed="true"] { background: var(--slate); color: #fff; border-color: var(--slate); }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---- Feed: full-bleed cards ---- */
+.feed { display: flex; flex-direction: column; gap: 12px; padding: 0 12px; }
+.bill {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  /* extra left pad clears the spine; min-height keeps a comfy tap area */
+  padding: 16px 16px 16px 18px;
+  min-height: var(--tap);
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+}
+.bill::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--spine, var(--line)); }
+.bill:active { border-color: var(--line-strong); }
+.bill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.bill.s-enacted { --spine: var(--pass); }
+.bill.s-passed-chamber { --spine: var(--gold); }
+.bill.s-failed, .bill.s-vetoed { --spine: var(--fail); }
+.bill.s-in-committee, .bill.s-introduced, .bill.s-active { --spine: var(--slate-2); }
+
+.bill-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.bill-id { font-family: var(--mono); font-weight: 700; font-size: 0.92rem; color: var(--slate-2); }
+.frame[data-scheme="dark"] .bill-id { color: #7fc6dd; }
+.bill-date { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-soft); }
+.bill-summary { font-family: var(--serif); font-size: 1.08rem; line-height: 1.4; margin: 8px 0 12px; }
+.bill-meta { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; font-size: 0.78rem; color: var(--ink-soft); }
+
+.status { font-family: var(--mono); font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 6px; }
+.status.s-enacted { background: #e0efe5; color: var(--pass); }
+.status.s-passed-chamber { background: #f7eccd; color: #8a6512; }
+.status.s-failed, .status.s-vetoed { background: #f4e0e0; color: var(--fail); }
+.status.s-in-committee, .status.s-introduced, .status.s-active { background: #e6edef; color: var(--slate-2); }
+.frame[data-scheme="dark"] .status.s-enacted { background: #173528; }
+.frame[data-scheme="dark"] .status.s-passed-chamber { background: #34290f; }
+.frame[data-scheme="dark"] .status.s-failed, .frame[data-scheme="dark"] .status.s-vetoed { background: #361a1a; }
+.frame[data-scheme="dark"] .status.s-in-committee, .frame[data-scheme="dark"] .status.s-introduced, .frame[data-scheme="dark"] .status.s-active { background: #1d333b; color: #aaccd6; }
+
+.topic-tag { background: #ece6d6; color: var(--ink-soft); padding: 2px 9px; border-radius: 6px; font-size: 0.72rem; }
+.frame[data-scheme="dark"] .topic-tag { background: #21303a; }
+
+.vote-pill { font-size: 0.72rem; padding: 2px 9px; border-radius: 6px; font-weight: 600; }
+.vote-pill.pass { background: #e0efe5; color: var(--pass); }
+.vote-pill.fail { background: #f4e0e0; color: var(--fail); }
+.frame[data-scheme="dark"] .vote-pill.pass { background: #173528; }
+.frame[data-scheme="dark"] .vote-pill.fail { background: #361a1a; }
+
+.sponsor { width: 100%; margin-top: 2px; }
+
+/* ============================================================
+   DETAIL: full-screen sheet on mobile (not a side drawer)
+   ============================================================ */
+.detail {
+  position: absolute;     /* absolute within the phone screen for the mockup; fixed in app */
+  inset: 0;
+  background: var(--bg);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+}
+
+/* sticky sheet header with a clear, large close affordance */
+.sheet-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--slate);
+  color: #fff;
+  /* a thin grabber line above, hinting "sheet" */
+}
+.sheet-head::before {
+  content: "";
+  position: absolute;
+  top: 6px; left: 50%;
+  transform: translateX(-50%);
+  width: 40px; height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.35);
+}
+.sheet-head { position: relative; padding-top: 16px; }
+.detail-close {
+  min-width: var(--tap);
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0 10px;
+}
+.detail-close .x { font-size: 1.5rem; line-height: 1; }
+.detail-close:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.sheet-id { font-family: var(--mono); font-weight: 700; font-size: 0.92rem; color: var(--gold); margin-left: auto; padding-right: 6px; }
+
+.detail-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 18px 16px 48px; }
+
+.detail .plain { font-family: var(--serif); font-size: 1.22rem; line-height: 1.4; margin: 0 0 10px; }
+.detail .note { font-size: 0.74rem; color: var(--ink-soft); margin: 0 0 12px; font-style: italic; }
+.detail .meta-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 14px; }
+.detail .official-title { color: var(--ink-soft); font-size: 0.88rem; margin: 4px 0 16px; }
+.detail h3 {
+  font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-soft); margin: 26px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 5px;
+}
+
+/* vote card — partisan story legible in under two seconds */
+.vote-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; }
+.vote-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+.vote-motion { font-weight: 600; font-size: 0.92rem; }
+.vote-result { font-family: var(--mono); font-size: 0.74rem; font-weight: 700; }
+.vote-result.pass { color: var(--pass); }
+.vote-result.fail { color: var(--fail); }
+.vote-bar { display: flex; height: 26px; border-radius: 7px; overflow: hidden; border: 1px solid var(--line); margin-top: 10px; }
+.vote-bar span { display: flex; align-items: center; justify-content: center; font-size: 0.72rem; color: #fff; font-weight: 700; font-variant-numeric: tabular-nums; }
+.vote-bar .yes { background: var(--pass); }
+.vote-bar .no { background: var(--fail); }
+.vote-bar .other { background: var(--i); }
+.party-rows { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.party-row { display: grid; grid-template-columns: 26px 1fr auto; gap: 10px; align-items: center; font-size: 0.8rem; }
+.party-key { font-family: var(--mono); font-weight: 700; }
+.party-key.D { color: var(--d); } .party-key.R { color: var(--r); } .party-key.I { color: var(--i); }
+.party-split { display: flex; height: 15px; border-radius: 4px; overflow: hidden; background: var(--line); }
+.party-split .yes { background: var(--pass); } .party-split .no { background: var(--fail); } .party-split .other { background: var(--i); }
+.party-counts { font-size: 0.74rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vote-read { font-size: 0.78rem; color: var(--ink-soft); margin: 10px 0 0; }
+
+/* action timeline */
+.timeline { list-style: none; padding: 0; margin: 0; }
+.timeline li { display: grid; grid-template-columns: 84px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 0.86rem; }
+.timeline .t-date { color: var(--ink-soft); font-size: 0.74rem; font-family: var(--mono); }
+.source-link { display: inline-block; margin-top: 18px; min-height: var(--tap); line-height: var(--tap); }
+
+/* visually-hidden helper for accessible labels */
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<div class="stage-head">
+  <h1>Statehouse Dashboard — mobile (sub-560px)</h1>
+  <p>Two phone-width viewports. Left frame: the feed (light). Right frame: the open detail sheet with a vote breakdown (dark). Each frame below it shows the opposite scheme so light and dark both appear. Stacked header, full-width state picker, horizontally scrollable topic chips, full-bleed cards, full-screen detail sheet. Touch targets at least 44px.</p>
+</div>
+
+<div class="phones">
+
+  <!-- ============ FEED — light ============ -->
+  <div class="phone-col">
+    <span class="phone-cap">FEED · LIGHT</span>
+    <div class="device">
+      <div class="frame" data-scheme="light">
+        <div class="screen-scroll">
+
+          <header class="topbar">
+            <div class="brand">
+              <svg class="brand-mark" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" fill="none">
+                <path d="M16 4 L27 12 H5 Z" stroke="#c79324" stroke-width="2" stroke-linejoin="round"/>
+                <line x1="8" y1="13" x2="8" y2="23" stroke="#c79324" stroke-width="2"/>
+                <line x1="16" y1="13" x2="16" y2="23" stroke="#c79324" stroke-width="2"/>
+                <line x1="24" y1="13" x2="24" y2="23" stroke="#c79324" stroke-width="2"/>
+                <line x1="4" y1="24" x2="28" y2="24" stroke="#c79324" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <h1>Statehouse Dashboard</h1>
+                <p class="tagline">What your legislature is doing, in plain language.</p>
+              </div>
+            </div>
+            <div class="controls">
+              <label class="field">
+                <span class="field-label">State</span>
+                <select aria-label="Choose a state">
+                  <option>California — 2025–26 session</option>
+                  <option>Texas — 2025 session</option>
+                  <option>New York — 2025–26 session</option>
+                </select>
+              </label>
+            </div>
+          </header>
+
+          <div class="banner">
+            Showing <strong>sample data</strong>. Add an OpenStates key to see live bills. <a href="#">How.</a>
+          </div>
+
+          <main>
+            <section class="summary" aria-label="Overview">
+              <div class="stat"><div class="n">312</div><div class="l">Bills tracked</div></div>
+              <div class="stat"><div class="n">47</div><div class="l">Votes this week</div></div>
+              <div class="stat"><div class="n">18</div><div class="l">Enacted</div></div>
+            </section>
+
+            <div class="toolbar">
+              <input class="search" type="search" placeholder="Search bills, sponsors, or numbers…" aria-label="Search bills" />
+              <div class="chips" role="group" aria-label="Filter by topic">
+                <button class="chip" aria-pressed="true">All</button>
+                <button class="chip" aria-pressed="false">Housing</button>
+                <button class="chip" aria-pressed="false">Health</button>
+                <button class="chip" aria-pressed="false">Education</button>
+                <button class="chip" aria-pressed="false">Climate</button>
+                <button class="chip" aria-pressed="false">Labor</button>
+                <button class="chip" aria-pressed="false">Taxes</button>
+              </div>
+            </div>
+
+            <section class="feed" aria-label="Recent legislative activity">
+
+              <button class="bill s-enacted">
+                <span class="bill-top">
+                  <span class="bill-id">AB 1042</span>
+                  <span class="bill-date">May 28, 2025</span>
+                </span>
+                <span class="bill-summary">Caps annual rent increases at 7% for buildings older than 15 years.</span>
+                <span class="bill-meta">
+                  <span class="status s-enacted">Enacted</span>
+                  <span class="vote-pill pass">Passed 54–21</span>
+                  <span class="topic-tag">Housing</span>
+                  <span class="sponsor">Assembly · Sponsor: Reyes (D)</span>
+                </span>
+              </button>
+
+              <button class="bill s-passed-chamber">
+                <span class="bill-top">
+                  <span class="bill-id">SB 318</span>
+                  <span class="bill-date">May 24, 2025</span>
+                </span>
+                <span class="bill-summary">Requires insurers to cover insulin at no more than $35 per month.</span>
+                <span class="bill-meta">
+                  <span class="status s-passed-chamber">Passed Senate</span>
+                  <span class="vote-pill pass">Passed 28–12</span>
+                  <span class="topic-tag">Health</span>
+                  <span class="sponsor">Senate · Sponsor: Okafor (D)</span>
+                </span>
+              </button>
+
+              <button class="bill s-failed">
+                <span class="bill-top">
+                  <span class="bill-id">AB 770</span>
+                  <span class="bill-date">May 19, 2025</span>
+                </span>
+                <span class="bill-summary">Would have ended the state gas tax and replaced it with a mileage fee.</span>
+                <span class="bill-meta">
+                  <span class="status s-failed">Failed</span>
+                  <span class="vote-pill fail">Failed 31–44</span>
+                  <span class="topic-tag">Taxes</span>
+                  <span class="sponsor">Assembly · Sponsor: Vance (R)</span>
+                </span>
+              </button>
+
+              <button class="bill s-in-committee">
+                <span class="bill-top">
+                  <span class="bill-id">SB 96</span>
+                  <span class="bill-date">May 12, 2025</span>
+                </span>
+                <span class="bill-summary">Adds civics to high-school graduation requirements starting in 2027.</span>
+                <span class="bill-meta">
+                  <span class="status s-in-committee">In committee</span>
+                  <span class="topic-tag">Education</span>
+                  <span class="sponsor">Senate · Sponsor: Delacroix (D)</span>
+                </span>
+              </button>
+
+              <button class="bill s-introduced">
+                <span class="bill-top">
+                  <span class="bill-id">AB 1199</span>
+                  <span class="bill-date">May 8, 2025</span>
+                </span>
+                <span class="bill-summary">Sets a 2035 deadline for the state grid to run on clean power.</span>
+                <span class="bill-meta">
+                  <span class="status s-introduced">Introduced</span>
+                  <span class="topic-tag">Climate</span>
+                  <span class="sponsor">Assembly · Sponsor: Mehta (D)</span>
+                </span>
+              </button>
+
+            </section>
+          </main>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- feed, opposite scheme -->
+    <span class="phone-cap">FEED · DARK</span>
+    <div class="device">
+      <div class="frame" data-scheme="dark">
+        <div class="screen-scroll">
+          <header class="topbar">
+            <div class="brand">
+              <svg class="brand-mark" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" fill="none">
+                <path d="M16 4 L27 12 H5 Z" stroke="#c79324" stroke-width="2" stroke-linejoin="round"/>
+                <line x1="8" y1="13" x2="8" y2="23" stroke="#c79324" stroke-width="2"/>
+                <line x1="16" y1="13" x2="16" y2="23" stroke="#c79324" stroke-width="2"/>
+                <line x1="24" y1="13" x2="24" y2="23" stroke="#c79324" stroke-width="2"/>
+                <line x1="4" y1="24" x2="28" y2="24" stroke="#c79324" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <h1>Statehouse Dashboard</h1>
+                <p class="tagline">What your legislature is doing, in plain language.</p>
+              </div>
+            </div>
+            <div class="controls">
+              <label class="field">
+                <span class="field-label">State</span>
+                <select aria-label="Choose a state">
+                  <option>California — 2025–26 session</option>
+                  <option>Texas — 2025 session</option>
+                </select>
+              </label>
+            </div>
+          </header>
+
+          <div class="banner">
+            Showing <strong>sample data</strong>. Add an OpenStates key to see live bills. <a href="#">How.</a>
+          </div>
+
+          <main>
+            <section class="summary" aria-label="Overview">
+              <div class="stat"><div class="n">312</div><div class="l">Bills tracked</div></div>
+              <div class="stat"><div class="n">47</div><div class="l">Votes this week</div></div>
+              <div class="stat"><div class="n">18</div><div class="l">Enacted</div></div>
+            </section>
+
+            <div class="toolbar">
+              <input class="search" type="search" placeholder="Search bills, sponsors, or numbers…" aria-label="Search bills" />
+              <div class="chips" role="group" aria-label="Filter by topic">
+                <button class="chip" aria-pressed="false">All</button>
+                <button class="chip" aria-pressed="true">Housing</button>
+                <button class="chip" aria-pressed="false">Health</button>
+                <button class="chip" aria-pressed="false">Education</button>
+                <button class="chip" aria-pressed="false">Climate</button>
+                <button class="chip" aria-pressed="false">Labor</button>
+                <button class="chip" aria-pressed="false">Taxes</button>
+              </div>
+            </div>
+
+            <section class="feed" aria-label="Recent legislative activity">
+              <button class="bill s-enacted">
+                <span class="bill-top"><span class="bill-id">AB 1042</span><span class="bill-date">May 28, 2025</span></span>
+                <span class="bill-summary">Caps annual rent increases at 7% for buildings older than 15 years.</span>
+                <span class="bill-meta">
+                  <span class="status s-enacted">Enacted</span>
+                  <span class="vote-pill pass">Passed 54–21</span>
+                  <span class="topic-tag">Housing</span>
+                  <span class="sponsor">Assembly · Sponsor: Reyes (D)</span>
+                </span>
+              </button>
+              <button class="bill s-vetoed">
+                <span class="bill-top"><span class="bill-id">SB 204</span><span class="bill-date">May 21, 2025</span></span>
+                <span class="bill-summary">Would have let cities convert empty offices to housing without new review.</span>
+                <span class="bill-meta">
+                  <span class="status s-vetoed">Vetoed</span>
+                  <span class="vote-pill pass">Passed 40–18</span>
+                  <span class="topic-tag">Housing</span>
+                  <span class="sponsor">Senate · Sponsor: Han (D)</span>
+                </span>
+              </button>
+              <button class="bill s-passed-chamber">
+                <span class="bill-top"><span class="bill-id">AB 655</span><span class="bill-date">May 16, 2025</span></span>
+                <span class="bill-summary">Speeds up permits for backyard rental units under 800 square feet.</span>
+                <span class="bill-meta">
+                  <span class="status s-passed-chamber">Passed Assembly</span>
+                  <span class="vote-pill pass">Passed 49–26</span>
+                  <span class="topic-tag">Housing</span>
+                  <span class="sponsor">Assembly · Sponsor: Boateng (D)</span>
+                </span>
+              </button>
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DETAIL SHEET — dark ============ -->
+  <div class="phone-col">
+    <span class="phone-cap">DETAIL SHEET · DARK</span>
+    <div class="device">
+      <div class="frame" data-scheme="dark">
+        <!-- a hint of feed behind the sheet to show full-screen coverage -->
+        <div class="screen-scroll" aria-hidden="true">
+          <header class="topbar"><div class="brand"><div><h1>Statehouse Dashboard</h1></div></div></header>
+        </div>
+
+        <section class="detail" role="dialog" aria-modal="true" aria-labelledby="d-id-dark">
+          <div class="sheet-head">
+            <button class="detail-close" aria-label="Close bill detail">
+              <span class="x" aria-hidden="true">×</span> Close
+            </button>
+            <span class="sheet-id" id="d-id-dark">AB 1042</span>
+          </div>
+
+          <div class="detail-body">
+            <p class="plain">Caps annual rent increases at 7% for buildings older than 15 years.</p>
+            <p class="note">Auto-generated summary. Always check the source before acting.</p>
+            <div class="meta-row">
+              <span class="status s-enacted">Enacted</span>
+              <span class="topic-tag">Housing</span>
+              <span class="topic-tag">Tenant law</span>
+            </div>
+            <p class="official-title">An act to amend Section 1947.12 of the Civil Code, relating to residential tenancies and maximum allowable rent increases.</p>
+
+            <h3>How they voted</h3>
+
+            <div class="vote-card">
+              <div class="vote-head">
+                <span class="vote-motion">Assembly · Third reading</span>
+                <span class="vote-result pass">Passed 54–21</span>
+              </div>
+              <div class="vote-bar" role="img" aria-label="Overall: 54 yes, 21 no, 5 not voting">
+                <span class="yes" style="width:67%">54 Yes</span>
+                <span class="no" style="width:26%">21 No</span>
+                <span class="other" style="width:7%">5</span>
+              </div>
+              <div class="party-rows">
+                <div class="party-row">
+                  <span class="party-key D">D</span>
+                  <span class="party-split" role="img" aria-label="Democrats: 46 yes, 0 no">
+                    <span class="yes" style="width:100%"></span>
+                  </span>
+                  <span class="party-counts">46–0</span>
+                </div>
+                <div class="party-row">
+                  <span class="party-key R">R</span>
+                  <span class="party-split" role="img" aria-label="Republicans: 8 yes, 21 no">
+                    <span class="yes" style="width:28%"></span>
+                    <span class="no" style="width:72%"></span>
+                  </span>
+                  <span class="party-counts">8–21</span>
+                </div>
+                <div class="party-row">
+                  <span class="party-key I">I</span>
+                  <span class="party-split" role="img" aria-label="Independents: 0 yes, 0 no, 5 not voting">
+                    <span class="other" style="width:100%"></span>
+                  </span>
+                  <span class="party-counts">0–0 · 5 NV</span>
+                </div>
+              </div>
+              <p class="vote-read">Near party-line. Every Democrat voted yes; most Republicans voted no.</p>
+            </div>
+
+            <h3>What happened</h3>
+            <ul class="timeline">
+              <li><span class="t-date">May 28</span><span>Signed by the Governor. Becomes law January 1, 2026.</span></li>
+              <li><span class="t-date">May 22</span><span>Passed Senate concurrence, 27–13.</span></li>
+              <li><span class="t-date">May 14</span><span>Passed Assembly third reading, 54–21.</span></li>
+              <li><span class="t-date">Apr 30</span><span>Reported out of Housing Committee.</span></li>
+              <li><span class="t-date">Mar 12</span><span>Introduced and read first time.</span></li>
+            </ul>
+
+            <a class="source-link" href="#">View official record at OpenStates →</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- detail sheet, opposite scheme -->
+    <span class="phone-cap">DETAIL SHEET · LIGHT</span>
+    <div class="device">
+      <div class="frame" data-scheme="light">
+        <div class="screen-scroll" aria-hidden="true">
+          <header class="topbar"><div class="brand"><div><h1>Statehouse Dashboard</h1></div></div></header>
+        </div>
+
+        <section class="detail" role="dialog" aria-modal="true" aria-labelledby="d-id-light">
+          <div class="sheet-head">
+            <button class="detail-close" aria-label="Close bill detail">
+              <span class="x" aria-hidden="true">×</span> Close
+            </button>
+            <span class="sheet-id" id="d-id-light">SB 318</span>
+          </div>
+
+          <div class="detail-body">
+            <p class="plain">Requires insurers to cover insulin at no more than $35 per month.</p>
+            <p class="note">Auto-generated summary. Always check the source before acting.</p>
+            <div class="meta-row">
+              <span class="status s-passed-chamber">Passed Senate</span>
+              <span class="topic-tag">Health</span>
+              <span class="topic-tag">Insurance</span>
+            </div>
+            <p class="official-title">An act relating to health coverage and the maximum cost-sharing amount for prescription insulin drugs.</p>
+
+            <h3>How they voted</h3>
+
+            <div class="vote-card">
+              <div class="vote-head">
+                <span class="vote-motion">Senate · Final passage</span>
+                <span class="vote-result pass">Passed 28–12</span>
+              </div>
+              <div class="vote-bar" role="img" aria-label="Overall: 28 yes, 12 no">
+                <span class="yes" style="width:70%">28 Yes</span>
+                <span class="no" style="width:30%">12 No</span>
+              </div>
+              <div class="party-rows">
+                <div class="party-row">
+                  <span class="party-key D">D</span>
+                  <span class="party-split" role="img" aria-label="Democrats: 18 yes, 0 no">
+                    <span class="yes" style="width:100%"></span>
+                  </span>
+                  <span class="party-counts">18–0</span>
+                </div>
+                <div class="party-row">
+                  <span class="party-key R">R</span>
+                  <span class="party-split" role="img" aria-label="Republicans: 9 yes, 12 no">
+                    <span class="yes" style="width:43%"></span>
+                    <span class="no" style="width:57%"></span>
+                  </span>
+                  <span class="party-counts">9–12</span>
+                </div>
+                <div class="party-row">
+                  <span class="party-key I">I</span>
+                  <span class="party-split" role="img" aria-label="Independents: 1 yes, 0 no">
+                    <span class="yes" style="width:100%"></span>
+                  </span>
+                  <span class="party-counts">1–0</span>
+                </div>
+              </div>
+              <p class="vote-read">Bipartisan. Nine Republicans crossed over to join every Democrat.</p>
+            </div>
+
+            <h3>What happened</h3>
+            <ul class="timeline">
+              <li><span class="t-date">May 24</span><span>Passed Senate, 28–12. Sent to the Assembly.</span></li>
+              <li><span class="t-date">May 9</span><span>Reported out of Health Committee, 9–2.</span></li>
+              <li><span class="t-date">Feb 27</span><span>Introduced and read first time.</span></li>
+            </ul>
+
+            <a class="source-link" href="#">View official record at OpenStates →</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

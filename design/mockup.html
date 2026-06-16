@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Statehouse Dashboard — design mockup</title>
+<!--
+  DESIGN DIRECTION MOCKUP (Prompt 1). Self-contained, no framework, no JS deps.
+  This is a static visual study of the main dashboard view. Port the <style>
+  rules into app.css once a direction is approved.
+
+  Rationale
+  - Palette: ink/slate structure (#16323d), warm parchment field (#f4f1e9),
+    one warm accent (terracotta #b4582a) for emphasis only. Party blue/red/gray
+    appear nowhere except vote data, so partisanship never reads as brand.
+  - Type: a serif (Charter/Georgia) for summaries gives a "read me" newspaper
+    register; a mono (ui-monospace) for bill numbers and dates makes them read
+    as data, not prose. System sans for chrome.
+  - Three anti-generic decisions: (1) status is a left-edge "spine" keyed by
+    color AND a labeled chip, so it survives colorblindness and grayscale;
+    (2) depth comes only from a 1px hairline + a hover spine, never shadows;
+    (3) the summary strip uses oversized figures with quiet labels, like a
+    public report, instead of SaaS metric tiles.
+-->
+<style>
+  :root {
+    --bg: #f4f1e9;
+    --surface: #fffdf8;
+    --ink: #16323d;
+    --ink-soft: #5b6b71;
+    --line: #ddd6c6;
+    --slate: #16323d;
+    --slate-2: #244a58;
+    --accent: #b4582a;
+    --gold: #c79324;
+    --d: #2b6cb0;
+    --r: #b23b3b;
+    --i: #6b7280;
+    --pass: #2f7a4f;
+    --fail: #b23b3b;
+    --serif: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1a1f;
+      --surface: #15252c;
+      --ink: #edf1ee;
+      --ink-soft: #9fb1b7;
+      --line: #283a42;
+      --slate: #0b1c23;
+      --slate-2: #25515f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; }
+  a { color: var(--accent); }
+
+  /* Header */
+  .topbar { background: var(--slate); color: #fff; padding: 18px 24px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; }
+  .brand { display: flex; gap: 14px; align-items: center; }
+  .brand h1 { margin: 0; font-size: 1.22rem; letter-spacing: -0.01em; font-weight: 650; }
+  .brand p { margin: 2px 0 0; font-size: 0.84rem; color: #b9cbd1; }
+  .mark { flex: none; }
+  .field { display: flex; flex-direction: column; gap: 3px; }
+  .field span { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: #93aab1; }
+  .field select { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; font-size: 0.95rem; min-width: 190px; }
+
+  /* Sample banner */
+  .banner { background: #f7eccf; color: #5a4416; border-bottom: 1px solid var(--gold); padding: 10px 24px; font-size: 0.88rem; }
+  @media (prefers-color-scheme: dark) { .banner { background: #2a2415; color: #e9c46a; } }
+
+  main { max-width: 1000px; margin: 0 auto; padding: 28px 24px 64px; }
+
+  /* Summary strip — public-report figures, not metric tiles */
+  .summary { display: flex; flex-wrap: wrap; gap: 36px; padding-bottom: 22px; margin-bottom: 26px; border-bottom: 1px solid var(--line); }
+  .stat .n { font-size: 2.1rem; font-weight: 700; color: var(--slate-2); line-height: 1; font-variant-numeric: tabular-nums; }
+  @media (prefers-color-scheme: dark) { .stat .n { color: #7fc6dd; } }
+  .stat .l { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-top: 6px; }
+
+  /* Toolbar */
+  .search { width: 100%; padding: 12px 15px; font-size: 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); margin-bottom: 14px; }
+  .search::placeholder { color: var(--ink-soft); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--slate); color: #fff; border-color: var(--slate); }
+  .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Feed */
+  .feed { display: flex; flex-direction: column; gap: 14px; }
+  .bill { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px 18px 22px; cursor: pointer; overflow: hidden; }
+  .bill::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--spine, var(--line)); }
+  .bill:hover { border-color: #c8bfa9; }
+  .bill:hover::before { width: 6px; }
+  .bill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .b-enacted { --spine: var(--pass); }
+  .b-passed  { --spine: var(--gold); }
+  .b-failed, .b-vetoed { --spine: var(--fail); }
+  .b-committee, .b-introduced { --spine: var(--slate-2); }
+
+  .bill-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .bill-id { font-family: var(--mono); font-weight: 700; font-size: 0.96rem; color: var(--slate-2); }
+  @media (prefers-color-scheme: dark) { .bill-id { color: #7fc6dd; } }
+  .bill-when { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); }
+  .bill-summary { font-family: var(--serif); font-size: 1.16rem; line-height: 1.4; margin: 9px 0 12px; }
+  .bill-meta { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 0.8rem; color: var(--ink-soft); }
+
+  .status { font-family: var(--mono); font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 6px; }
+  .st-enacted { background: #e0efe5; color: var(--pass); }
+  .st-passed  { background: #f7eccd; color: #8a6512; }
+  .st-failed, .st-vetoed { background: #f4e0e0; color: var(--fail); }
+  .st-committee, .st-introduced { background: #e6edef; color: var(--slate-2); }
+  @media (prefers-color-scheme: dark) {
+    .st-enacted { background: #173528; } .st-passed { background: #34290f; }
+    .st-failed { background: #361a1a; } .st-committee, .st-introduced { background: #1d333b; color: #aaccd6; }
+  }
+
+  .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--line); }
+  .topic { background: #ece6d6; color: var(--ink-soft); padding: 2px 9px; border-radius: 6px; font-size: 0.74rem; }
+  @media (prefers-color-scheme: dark) { .topic { background: #21303a; } }
+
+  /* Vote pill with mini party split */
+  .vote { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  .vote-label { font-size: 0.74rem; font-weight: 600; }
+  .vote-label.pass { color: var(--pass); } .vote-label.fail { color: var(--fail); }
+  .splitbar { display: flex; width: 84px; height: 9px; border-radius: 3px; overflow: hidden; border: 1px solid var(--line); }
+  .splitbar i { display: block; height: 100%; }
+  .splitbar .yes { background: var(--pass); } .splitbar .no { background: var(--fail); } .splitbar .oth { background: var(--i); }
+
+  footer { max-width: 1000px; margin: 0 auto; padding: 22px 24px 50px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.8rem; }
+  footer p { margin: 4px 0; }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="mark" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 4 L27 12 H5 Z" fill="none" stroke="#c79324" stroke-width="2" stroke-linejoin="round"/>
+        <line x1="8" y1="13" x2="8" y2="23" stroke="#c79324" stroke-width="2"/>
+        <line x1="16" y1="13" x2="16" y2="23" stroke="#c79324" stroke-width="2"/>
+        <line x1="24" y1="13" x2="24" y2="23" stroke="#c79324" stroke-width="2"/>
+        <line x1="4" y1="24" x2="28" y2="24" stroke="#c79324" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>Statehouse Dashboard</h1>
+        <p>What your legislature is actually doing, in plain language.</p>
+      </div>
+    </div>
+    <label class="field">
+      <span>State</span>
+      <select aria-label="Choose a state">
+        <option>California</option>
+        <option>New York</option>
+        <option>Texas</option>
+      </select>
+    </label>
+  </header>
+
+  <div class="banner">Showing <strong>sample data</strong>. Add an OpenStates API key to see live bills. <a href="#">How.</a></div>
+
+  <main>
+    <section class="summary" aria-label="Overview">
+      <div class="stat"><div class="n">42</div><div class="l">Bills tracked</div></div>
+      <div class="stat"><div class="n">11</div><div class="l">Moved this week</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">With recorded votes</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">Enacted</div></div>
+    </section>
+
+    <input class="search" type="search" placeholder="Search bills, sponsors, or numbers…" aria-label="Search bills" />
+    <div class="chips" role="group" aria-label="Filter by topic">
+      <button class="chip" aria-pressed="true">All</button>
+      <button class="chip">Health</button>
+      <button class="chip">Housing</button>
+      <button class="chip">Environment</button>
+      <button class="chip">Labor</button>
+      <button class="chip">Taxation</button>
+      <button class="chip">Technology</button>
+    </div>
+
+    <section class="feed" aria-label="Recent legislative activity">
+
+      <article class="bill b-passed" tabindex="0">
+        <div class="bill-top"><span class="bill-id">AB 1042</span><span class="bill-when">yesterday</span></div>
+        <p class="bill-summary">Establishes a state fund to replace lead drinking-water pipes in public schools by 2030.</p>
+        <div class="bill-meta">
+          <span class="status st-passed">Passed chamber</span><span class="dot"></span>
+          <span>House</span><span class="dot"></span><span>Asm. Jane Ortiz (D)</span>
+          <span class="topic">Education</span><span class="topic">Health</span>
+          <span class="vote"><span class="vote-label pass">Passed 54–21</span>
+            <span class="splitbar" title="54 yes, 21 no, 5 other"><i class="yes" style="width:67%"></i><i class="no" style="width:26%"></i><i class="oth" style="width:7%"></i></span>
+          </span>
+        </div>
+      </article>
+
+      <article class="bill b-committee" tabindex="0">
+        <div class="bill-top"><span class="bill-id">SB 330</span><span class="bill-when">5 days ago</span></div>
+        <p class="bill-summary">Lets cities fast-track permits for apartment projects that reserve a quarter of units as affordable.</p>
+        <div class="bill-meta">
+          <span class="status st-committee">In committee</span><span class="dot"></span>
+          <span>Senate</span><span class="dot"></span><span>Sen. David Cho (D)</span>
+          <span class="topic">Housing</span><span class="topic">Taxation</span>
+        </div>
+      </article>
+
+      <article class="bill b-enacted" tabindex="0">
+        <div class="bill-top"><span class="bill-id">AB 77</span><span class="bill-when">Jun 6, 2026</span></div>
+        <p class="bill-summary">Requires campaign ads that use AI-generated media to carry a visible label.</p>
+        <div class="bill-meta">
+          <span class="status st-enacted">Enacted</span><span class="dot"></span>
+          <span>House</span><span class="dot"></span><span>Asm. Renee Park (D)</span>
+          <span class="topic">Technology</span>
+          <span class="vote"><span class="vote-label pass">Passed 31–7</span>
+            <span class="splitbar" title="31 yes, 7 no, 2 other"><i class="yes" style="width:78%"></i><i class="no" style="width:17%"></i><i class="oth" style="width:5%"></i></span>
+          </span>
+        </div>
+      </article>
+
+      <article class="bill b-failed" tabindex="0">
+        <div class="bill-top"><span class="bill-id">SB 512</span><span class="bill-when">Jun 4, 2026</span></div>
+        <p class="bill-summary">Would have raised the fast-food minimum wage and tied future increases to inflation.</p>
+        <div class="bill-meta">
+          <span class="status st-failed">Failed</span><span class="dot"></span>
+          <span>Senate</span><span class="dot"></span><span>Sen. Aisha Reed (D)</span>
+          <span class="topic">Labor</span><span class="topic">Taxation</span>
+          <span class="vote"><span class="vote-label fail">Failed 3–4</span>
+            <span class="splitbar" title="3 yes, 4 no"><i class="yes" style="width:43%"></i><i class="no" style="width:57%"></i></span>
+          </span>
+        </div>
+      </article>
+
+      <article class="bill b-introduced" tabindex="0">
+        <div class="bill-top"><span class="bill-id">SB 188</span><span class="bill-when">Jun 2, 2026</span></div>
+        <p class="bill-summary">Updates the building code to require fire-resistant materials in high-risk wildfire zones.</p>
+        <div class="bill-meta">
+          <span class="status st-introduced">Introduced</span><span class="dot"></span>
+          <span>Senate</span><span class="dot"></span><span>Sen. Linda Voss (R)</span>
+          <span class="topic">Environment</span><span class="topic">Housing</span>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Data from OpenStates. Summaries are auto-generated from official text and may simplify. Check the source before acting.</p>
+    <p>Last updated: Jun 12, 2026</p>
+  </footer>
+</body>
+</html>

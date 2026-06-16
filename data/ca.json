@@ -1,0 +1,171 @@
+{
+  "jurisdiction": "California",
+  "state": "ca",
+  "updated": "2026-06-12T13:00:00.000Z",
+  "source": "Sample data (replace by running the OpenStates fetch)",
+  "sample": true,
+  "count": 6,
+  "subjects": ["Education", "Environment", "Health", "Housing", "Labor", "Taxation", "Technology"],
+  "bills": [
+    {
+      "id": "sample/ab-1042",
+      "identifier": "AB 1042",
+      "title": "An act to require lead service line replacement in public schools",
+      "summary": "Establishes a state fund to replace lead drinking-water pipes in public schools by 2030.",
+      "summarySource": "abstract",
+      "subjects": ["Education", "Environment", "Health"],
+      "chamber": "House",
+      "status": "Passed chamber",
+      "latestActionDate": "2026-06-11",
+      "latestAction": "Passed Assembly. Ordered to the Senate.",
+      "sponsor": "Asm. Jane Ortiz (D)",
+      "url": "https://openstates.org/ca/",
+      "actions": [
+        { "date": "2026-06-11", "description": "Passed Assembly. Ordered to the Senate.", "classification": ["passage"] },
+        { "date": "2026-05-20", "description": "Referred to Committee on Environmental Safety", "classification": ["committee-referral"] },
+        { "date": "2026-04-02", "description": "Introduced and read first time", "classification": ["introduction"] }
+      ],
+      "votes": [
+        {
+          "id": "sample/vote-1042-a",
+          "motion": "Do pass as amended",
+          "date": "2026-06-11",
+          "result": "pass",
+          "chamber": "House",
+          "counts": { "yes": 54, "no": 21, "other": 5 },
+          "byParty": { "D": { "yes": 48, "no": 1, "other": 2 }, "R": { "yes": 6, "no": 20, "other": 3 } },
+          "members": [
+            { "name": "Jane Ortiz", "party": "D", "option": "yes" },
+            { "name": "Marcus Lee", "party": "D", "option": "yes" },
+            { "name": "Priya Shah", "party": "R", "option": "no" },
+            { "name": "Tom Becker", "party": "R", "option": "yes" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sample/sb-330",
+      "identifier": "SB 330",
+      "title": "An act relating to streamlined approval of affordable housing",
+      "summary": "Lets cities fast-track permits for apartment projects that reserve a quarter of units as affordable.",
+      "summarySource": "abstract",
+      "subjects": ["Housing", "Taxation"],
+      "chamber": "Senate",
+      "status": "In committee",
+      "latestActionDate": "2026-06-09",
+      "latestAction": "Referred to Committee on Housing",
+      "sponsor": "Sen. David Cho (D)",
+      "url": "https://openstates.org/ca/",
+      "actions": [
+        { "date": "2026-06-09", "description": "Referred to Committee on Housing", "classification": ["committee-referral"] },
+        { "date": "2026-05-28", "description": "Introduced and read first time", "classification": ["introduction"] }
+      ],
+      "votes": []
+    },
+    {
+      "id": "sample/ab-77",
+      "identifier": "AB 77",
+      "title": "An act to require disclosure of AI-generated political advertising",
+      "summary": "Requires campaign ads that use synthetic media to carry a visible label.",
+      "summarySource": "abstract",
+      "subjects": ["Technology"],
+      "chamber": "House",
+      "status": "Enacted",
+      "latestActionDate": "2026-06-06",
+      "latestAction": "Chaptered by Secretary of State.",
+      "sponsor": "Asm. Renee Park (D)",
+      "url": "https://openstates.org/ca/",
+      "actions": [
+        { "date": "2026-06-06", "description": "Chaptered by Secretary of State.", "classification": ["became-law"] },
+        { "date": "2026-05-30", "description": "Approved by the Governor.", "classification": ["executive-signature"] },
+        { "date": "2026-05-12", "description": "Passed Senate.", "classification": ["passage"] }
+      ],
+      "votes": [
+        {
+          "id": "sample/vote-77-s",
+          "motion": "Senate concurrence",
+          "date": "2026-05-12",
+          "result": "pass",
+          "chamber": "Senate",
+          "counts": { "yes": 31, "no": 7, "other": 2 },
+          "byParty": { "D": { "yes": 28, "no": 0, "other": 1 }, "R": { "yes": 3, "no": 7, "other": 1 } },
+          "members": [
+            { "name": "David Cho", "party": "D", "option": "yes" },
+            { "name": "Linda Voss", "party": "R", "option": "no" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sample/sb-512",
+      "identifier": "SB 512",
+      "title": "An act relating to minimum wage for fast food workers",
+      "summary": "Raises the fast-food sector minimum wage and ties future increases to inflation.",
+      "summarySource": "abstract",
+      "subjects": ["Labor", "Taxation"],
+      "chamber": "Senate",
+      "status": "Failed",
+      "latestActionDate": "2026-06-04",
+      "latestAction": "Failed passage in committee.",
+      "sponsor": "Sen. Aisha Reed (D)",
+      "url": "https://openstates.org/ca/",
+      "actions": [
+        { "date": "2026-06-04", "description": "Failed passage in committee.", "classification": ["committee-failure"] },
+        { "date": "2026-05-15", "description": "Referred to Committee on Labor", "classification": ["committee-referral"] }
+      ],
+      "votes": [
+        {
+          "id": "sample/vote-512-c",
+          "motion": "Do pass",
+          "date": "2026-06-04",
+          "result": "fail",
+          "chamber": "Senate",
+          "counts": { "yes": 3, "no": 4, "other": 0 },
+          "byParty": { "D": { "yes": 3, "no": 1, "other": 0 }, "R": { "yes": 0, "no": 3, "other": 0 } },
+          "members": [
+            { "name": "Aisha Reed", "party": "D", "option": "yes" },
+            { "name": "Greg Mann", "party": "D", "option": "no" },
+            { "name": "Linda Voss", "party": "R", "option": "no" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sample/ab-915",
+      "identifier": "AB 915",
+      "title": "An act to expand telehealth coverage under Medi-Cal",
+      "summary": "Requires Medi-Cal to reimburse audio-only telehealth visits at parity with in-person care.",
+      "summarySource": "abstract",
+      "subjects": ["Health"],
+      "chamber": "House",
+      "status": "In committee",
+      "latestActionDate": "2026-06-03",
+      "latestAction": "Referred to Committee on Health",
+      "sponsor": "Asm. Marcus Lee (D)",
+      "url": "https://openstates.org/ca/",
+      "actions": [
+        { "date": "2026-06-03", "description": "Referred to Committee on Health", "classification": ["committee-referral"] },
+        { "date": "2026-05-25", "description": "Introduced and read first time", "classification": ["introduction"] }
+      ],
+      "votes": []
+    },
+    {
+      "id": "sample/sb-188",
+      "identifier": "SB 188",
+      "title": "An act relating to wildfire-resistant building standards",
+      "summary": "Updates the building code to require fire-resistant materials in high-risk zones.",
+      "summarySource": "abstract",
+      "subjects": ["Environment", "Housing"],
+      "chamber": "Senate",
+      "status": "Introduced",
+      "latestActionDate": "2026-06-02",
+      "latestAction": "Introduced and read first time.",
+      "sponsor": "Sen. Linda Voss (R)",
+      "url": "https://openstates.org/ca/",
+      "actions": [
+        { "date": "2026-06-02", "description": "Introduced and read first time.", "classification": ["introduction"] }
+      ],
+      "votes": []
+    }
+  ]
+}

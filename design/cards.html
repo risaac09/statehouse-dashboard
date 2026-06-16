@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statehouse Dashboard — Bill card</title>
+<style>
+/* ============================================================
+   Bill card mockup — Statehouse Dashboard
+   Tokens copied verbatim from app.css. The card system already
+   lives there (.bill / .status / spine); this file mirrors it so
+   the design can be previewed against the real values, and shows
+   both color schemes side by side in one file via .pane.light /
+   .pane.dark that pin the token set regardless of OS preference.
+   ============================================================ */
+
+/* ---- Light token set (default / app.css :root) ---- */
+:root, .pane.light {
+  --bg: #f4f1e9;
+  --surface: #fffdf8;
+  --ink: #16323d;
+  --ink-soft: #5b6b71;
+  --line: #ddd6c6;
+  --line-strong: #c8bfa9;
+  --slate: #16323d;
+  --slate-2: #244a58;
+  --accent: #b4582a;
+  --gold: #c79324;
+  --d: #2b6cb0;
+  --r: #b23b3b;
+  --i: #6b7280;
+  --pass: #2f7a4f;
+  --fail: #b23b3b;
+  /* status chip backgrounds (light) */
+  --chip-enacted-bg: #e0efe5;   --chip-enacted-fg: var(--pass);
+  --chip-passed-bg: #f7eccd;    --chip-passed-fg: #8a6512;
+  --chip-fail-bg: #f4e0e0;      --chip-fail-fg: var(--fail);
+  --chip-neutral-bg: #e6edef;   --chip-neutral-fg: var(--slate-2);
+  --topic-bg: #ece6d6;
+  --votepass-bg: #e0efe5;       --votefail-bg: #f4e0e0;
+  --id-color: var(--slate-2);
+}
+
+/* ---- Dark token set (app.css @media dark, pinned to a pane) ---- */
+.pane.dark {
+  --bg: #0f1a1f;
+  --surface: #15252c;
+  --ink: #edf1ee;
+  --ink-soft: #9fb1b7;
+  --line: #283a42;
+  --line-strong: #35515c;
+  --slate: #0b1c23;
+  --slate-2: #25515f;
+  --accent: #b4582a;
+  --gold: #c79324;
+  --chip-enacted-bg: #173528;   --chip-enacted-fg: var(--pass);
+  --chip-passed-bg: #34290f;    --chip-passed-fg: #c79324;
+  --chip-fail-bg: #361a1a;      --chip-fail-fg: var(--fail);
+  --chip-neutral-bg: #1d333b;   --chip-neutral-fg: #aaccd6;
+  --topic-bg: #21303a;
+  --votepass-bg: #173528;       --votefail-bg: #361a1a;
+  --id-color: #7fc6dd;
+}
+
+:root {
+  --radius: 12px;
+  --serif: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  line-height: 1.5;
+  /* page chrome follows the OS so the file itself reads correctly,
+     but each pane below pins its own scheme for the comparison */
+  background: #f4f1e9;
+  color: #16323d;
+}
+@media (prefers-color-scheme: dark) {
+  body { background: #0f1a1f; color: #edf1ee; }
+}
+
+.page-head { max-width: 1100px; margin: 0 auto; padding: 30px 24px 6px; }
+.page-head h1 { margin: 0 0 6px; font-size: 1.3rem; letter-spacing: -0.01em; font-weight: 650; }
+.page-head p { margin: 0; font-size: 0.9rem; max-width: 60ch; opacity: 0.8; }
+
+/* ---- Side-by-side comparison frame ---- */
+.compare {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 22px 24px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+@media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+
+.pane {
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 18px 18px 22px;
+}
+.pane-label {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  margin: 0 2px 16px;
+}
+
+/* ============================================================
+   Card system — mirrors app.css .feed / .bill exactly
+   ============================================================ */
+.feed { display: flex; flex-direction: column; gap: 14px; }
+
+.bill {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px 18px 22px;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  display: block;
+}
+.bill::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--spine, var(--line));
+}
+.bill:hover { border-color: var(--line-strong); }
+.bill:hover::before { width: 6px; }
+.bill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* spine keyed to status */
+.bill.s-enacted        { --spine: var(--pass); }
+.bill.s-passed-chamber { --spine: var(--gold); }
+.bill.s-failed,
+.bill.s-vetoed         { --spine: var(--fail); }
+.bill.s-in-committee,
+.bill.s-introduced     { --spine: var(--slate-2); }
+
+.bill-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.bill-id {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.96rem;
+  color: var(--id-color);
+}
+.bill-date { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); white-space: nowrap; }
+
+.bill-summary {
+  font-family: var(--serif);
+  font-size: 1.16rem;
+  line-height: 1.4;
+  margin: 9px 0 12px;
+  color: var(--ink);
+}
+
+.bill-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.bill-meta .meta-text { display: inline-flex; gap: 5px; align-items: baseline; }
+.bill-meta .meta-text b { font-weight: 600; color: var(--ink); font-weight: 500; }
+.meta-sep { color: var(--line-strong); }
+
+/* status chip: color + label, never color alone */
+.status {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.status.s-enacted        { background: var(--chip-enacted-bg); color: var(--chip-enacted-fg); }
+.status.s-passed-chamber { background: var(--chip-passed-bg);  color: var(--chip-passed-fg); }
+.status.s-failed,
+.status.s-vetoed         { background: var(--chip-fail-bg);    color: var(--chip-fail-fg); }
+.status.s-in-committee,
+.status.s-introduced     { background: var(--chip-neutral-bg); color: var(--chip-neutral-fg); }
+
+/* topic tags (max 3) */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.topic-tag {
+  background: var(--topic-bg);
+  color: var(--ink-soft);
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+}
+
+/* vote result pill */
+.vote-pill {
+  font-size: 0.74rem;
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.vote-pill.pass { background: var(--votepass-bg); color: var(--pass); }
+.vote-pill.fail { background: var(--votefail-bg); color: var(--fail); }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <h1>Bill card — Prompt 2</h1>
+  <p>The feed workhorse. Cards stack 14px apart. At a glance, in priority order: bill number, plain-language summary, status, chamber, sponsor, up to three topics, and a vote pill when a vote exists. Status reads two ways: a labeled chip and a left-edge color spine. Light and dark, side by side.</p>
+</header>
+
+<div class="compare">
+
+  <!-- ============ LIGHT ============ -->
+  <section class="pane light" aria-label="Light mode cards">
+    <p class="pane-label">Light mode</p>
+
+    <ul class="feed" role="list" style="list-style:none;margin:0;padding:0;">
+
+      <!-- 1. Introduced -->
+      <li>
+        <article class="bill s-introduced" tabindex="0" aria-label="HB 1042, Introduced">
+          <div class="bill-top">
+            <span class="bill-id">HB 1042</span>
+            <span class="bill-date">Apr 02, 2026</span>
+          </div>
+          <p class="bill-summary">Caps the price of insulin at $35 per month for people on state-regulated health plans.</p>
+          <div class="tags">
+            <span class="topic-tag">Health</span>
+            <span class="topic-tag">Prescription drugs</span>
+            <span class="topic-tag">Insurance</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-introduced">Introduced</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">House</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Rep. <b>L. Ortiz</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 2. In committee -->
+      <li>
+        <article class="bill s-in-committee" tabindex="0" aria-label="SB 318, In committee">
+          <div class="bill-top">
+            <span class="bill-id">SB 318</span>
+            <span class="bill-date">Mar 19, 2026</span>
+          </div>
+          <p class="bill-summary">Requires landlords to give 90 days' notice before raising rent by more than 10 percent.</p>
+          <div class="tags">
+            <span class="topic-tag">Housing</span>
+            <span class="topic-tag">Tenants</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-in-committee">In committee</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Senate</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Sen. <b>D. Whitfield</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 3. Passed chamber (with vote pill) -->
+      <li>
+        <article class="bill s-passed-chamber" tabindex="0" aria-label="HB 877, Passed chamber, vote passed 54 to 21">
+          <div class="bill-top">
+            <span class="bill-id">HB 877</span>
+            <span class="bill-date">Apr 11, 2026</span>
+          </div>
+          <p class="bill-summary">Lets 17-year-olds pre-register to vote so they're enrolled automatically on their 18th birthday.</p>
+          <div class="tags">
+            <span class="topic-tag">Elections</span>
+            <span class="topic-tag">Voting</span>
+            <span class="topic-tag">Youth</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-passed-chamber">Passed chamber</span>
+            <span class="vote-pill pass">Passed 54–21</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">House</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Rep. <b>A. Bonner</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 4. Failed (with vote pill) -->
+      <li>
+        <article class="bill s-failed" tabindex="0" aria-label="SB 1209, Failed, vote failed 18 to 22">
+          <div class="bill-top">
+            <span class="bill-id">SB 1209</span>
+            <span class="bill-date">Feb 28, 2026</span>
+          </div>
+          <p class="bill-summary">Would have ended the state sales tax on groceries starting next January.</p>
+          <div class="tags">
+            <span class="topic-tag">Taxes</span>
+            <span class="topic-tag">Budget</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-failed">Failed</span>
+            <span class="vote-pill fail">Failed 18–22</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Senate</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Sen. <b>R. Calloway</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 5. Vetoed -->
+      <li>
+        <article class="bill s-vetoed" tabindex="0" aria-label="HB 540, Vetoed, vote passed 41 to 33">
+          <div class="bill-top">
+            <span class="bill-id">HB 540</span>
+            <span class="bill-date">May 06, 2026</span>
+          </div>
+          <p class="bill-summary">Set a $15 statewide minimum wage by 2028, then tied future raises to inflation. The governor vetoed it.</p>
+          <div class="tags">
+            <span class="topic-tag">Labor</span>
+            <span class="topic-tag">Wages</span>
+            <span class="topic-tag">Economy</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-vetoed">Vetoed</span>
+            <span class="vote-pill pass">Passed 41–33</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">House</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Rep. <b>M. Okafor</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 6. Enacted -->
+      <li>
+        <article class="bill s-enacted" tabindex="0" aria-label="SB 64, Enacted, vote passed 47 to 12">
+          <div class="bill-top">
+            <span class="bill-id">SB 64</span>
+            <span class="bill-date">Jan 22, 2026</span>
+          </div>
+          <p class="bill-summary">Makes it law that public schools provide free breakfast and lunch to every student, no income forms required.</p>
+          <div class="tags">
+            <span class="topic-tag">Education</span>
+            <span class="topic-tag">Food</span>
+            <span class="topic-tag">Children</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-enacted">Enacted</span>
+            <span class="vote-pill pass">Passed 47–12</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Senate</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Sen. <b>T. Reyes</b></span>
+          </div>
+        </article>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- ============ DARK ============ -->
+  <section class="pane dark" aria-label="Dark mode cards">
+    <p class="pane-label">Dark mode</p>
+
+    <ul class="feed" role="list" style="list-style:none;margin:0;padding:0;">
+
+      <!-- 1. Introduced -->
+      <li>
+        <article class="bill s-introduced" tabindex="0" aria-label="HB 1042, Introduced">
+          <div class="bill-top">
+            <span class="bill-id">HB 1042</span>
+            <span class="bill-date">Apr 02, 2026</span>
+          </div>
+          <p class="bill-summary">Caps the price of insulin at $35 per month for people on state-regulated health plans.</p>
+          <div class="tags">
+            <span class="topic-tag">Health</span>
+            <span class="topic-tag">Prescription drugs</span>
+            <span class="topic-tag">Insurance</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-introduced">Introduced</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">House</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Rep. <b>L. Ortiz</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 2. In committee -->
+      <li>
+        <article class="bill s-in-committee" tabindex="0" aria-label="SB 318, In committee">
+          <div class="bill-top">
+            <span class="bill-id">SB 318</span>
+            <span class="bill-date">Mar 19, 2026</span>
+          </div>
+          <p class="bill-summary">Requires landlords to give 90 days' notice before raising rent by more than 10 percent.</p>
+          <div class="tags">
+            <span class="topic-tag">Housing</span>
+            <span class="topic-tag">Tenants</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-in-committee">In committee</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Senate</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Sen. <b>D. Whitfield</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 3. Passed chamber (with vote pill) -->
+      <li>
+        <article class="bill s-passed-chamber" tabindex="0" aria-label="HB 877, Passed chamber, vote passed 54 to 21">
+          <div class="bill-top">
+            <span class="bill-id">HB 877</span>
+            <span class="bill-date">Apr 11, 2026</span>
+          </div>
+          <p class="bill-summary">Lets 17-year-olds pre-register to vote so they're enrolled automatically on their 18th birthday.</p>
+          <div class="tags">
+            <span class="topic-tag">Elections</span>
+            <span class="topic-tag">Voting</span>
+            <span class="topic-tag">Youth</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-passed-chamber">Passed chamber</span>
+            <span class="vote-pill pass">Passed 54–21</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">House</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Rep. <b>A. Bonner</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 4. Failed (with vote pill) -->
+      <li>
+        <article class="bill s-failed" tabindex="0" aria-label="SB 1209, Failed, vote failed 18 to 22">
+          <div class="bill-top">
+            <span class="bill-id">SB 1209</span>
+            <span class="bill-date">Feb 28, 2026</span>
+          </div>
+          <p class="bill-summary">Would have ended the state sales tax on groceries starting next January.</p>
+          <div class="tags">
+            <span class="topic-tag">Taxes</span>
+            <span class="topic-tag">Budget</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-failed">Failed</span>
+            <span class="vote-pill fail">Failed 18–22</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Senate</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Sen. <b>R. Calloway</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 5. Vetoed -->
+      <li>
+        <article class="bill s-vetoed" tabindex="0" aria-label="HB 540, Vetoed, vote passed 41 to 33">
+          <div class="bill-top">
+            <span class="bill-id">HB 540</span>
+            <span class="bill-date">May 06, 2026</span>
+          </div>
+          <p class="bill-summary">Set a $15 statewide minimum wage by 2028, then tied future raises to inflation. The governor vetoed it.</p>
+          <div class="tags">
+            <span class="topic-tag">Labor</span>
+            <span class="topic-tag">Wages</span>
+            <span class="topic-tag">Economy</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-vetoed">Vetoed</span>
+            <span class="vote-pill pass">Passed 41–33</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">House</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Rep. <b>M. Okafor</b></span>
+          </div>
+        </article>
+      </li>
+
+      <!-- 6. Enacted -->
+      <li>
+        <article class="bill s-enacted" tabindex="0" aria-label="SB 64, Enacted, vote passed 47 to 12">
+          <div class="bill-top">
+            <span class="bill-id">SB 64</span>
+            <span class="bill-date">Jan 22, 2026</span>
+          </div>
+          <p class="bill-summary">Makes it law that public schools provide free breakfast and lunch to every student, no income forms required.</p>
+          <div class="tags">
+            <span class="topic-tag">Education</span>
+            <span class="topic-tag">Food</span>
+            <span class="topic-tag">Children</span>
+          </div>
+          <div class="bill-meta">
+            <span class="status s-enacted">Enacted</span>
+            <span class="vote-pill pass">Passed 47–12</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Senate</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-text">Sen. <b>T. Reyes</b></span>
+          </div>
+        </article>
+      </li>
+
+    </ul>
+  </section>
+
+</div>
+
+</body>
+</html>
