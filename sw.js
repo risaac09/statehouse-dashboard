@@ -1,5 +1,5 @@
 /* Service worker: cache-first for the app shell, network-first for data. */
-var CACHE = 'statehouse-v3';
+var CACHE = 'statehouse-v4';
 var SHELL = ['./', 'index.html', 'app.css', 'app.js', 'manifest.json'];
 
 self.addEventListener('install', function (e) {
