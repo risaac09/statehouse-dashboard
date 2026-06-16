@@ -83,7 +83,12 @@
       meta.states.forEach(function (s) {
         els.stateSelect.appendChild(el('option', { value: s.state, text: s.jurisdiction }));
       });
-      var initial = (location.hash.replace('#', '') || (meta.states[0] && meta.states[0].state));
+      var DEFAULT_STATE = 'ri';
+      var codes = meta.states.map(function (s) { return s.state; });
+      var hash = location.hash.replace('#', '');
+      var initial = (hash && codes.indexOf(hash) !== -1) ? hash
+        : (codes.indexOf(DEFAULT_STATE) !== -1 ? DEFAULT_STATE
+          : (meta.states[0] && meta.states[0].state));
       els.stateSelect.value = initial;
       selectState(initial);
     }).catch(function (err) {

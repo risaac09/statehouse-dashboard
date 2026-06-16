@@ -30,11 +30,11 @@ Doing the fetch in CI (not the browser) keeps the API key secret, avoids CORS, a
 
 ## Getting live data
 
-The repo ships with **sample California data** so the dashboard works immediately. To pull real data:
+The repo ships with **sample Rhode Island data** so the dashboard works immediately. To pull real data:
 
 1. Get a free OpenStates API key: https://open.pluralpolicy.com/accounts/profile/
 2. In the repo: **Settings → Secrets and variables → Actions** → add a secret named `OPENSTATES_API_KEY`.
-3. (Optional) Add a repository **variable** `STATES` with the codes you want, e.g. `ca ny tx`.
+3. (Optional) Add a repository **variable** `STATES` with the codes you want, e.g. `ri ma ct`.
 4. Run the **Refresh legislative data** workflow (Actions tab → Run workflow), or wait for the daily run.
 
 To add your own state, just include its two-letter code. The UI picks up whatever JSON files exist.
@@ -46,7 +46,7 @@ To add your own state, just include its two-letter code. The UI picks up whateve
 node scripts/test.mjs
 
 # pull live data for one or more states
-OPENSTATES_API_KEY=your_key node scripts/fetch.mjs ca
+OPENSTATES_API_KEY=your_key node scripts/fetch.mjs ri
 
 # serve the static site
 python3 -m http.server 8000   # then open http://localhost:8000

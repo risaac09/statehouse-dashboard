@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       states:
-        description: 'Space- or comma-separated state codes (e.g. "ca ny tx")'
+        description: 'Space- or comma-separated state codes (e.g. "ri ma ct")'
         required: false
-        default: 'ca'
+        default: 'ri'
 
 permissions:
   contents: write
@@ -26,7 +26,7 @@ jobs:
       - name: Fetch and clean data
         env:
           OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
-          STATES: ${{ github.event.inputs.states || vars.STATES || 'ca' }}
+          STATES: ${{ github.event.inputs.states || vars.STATES || 'ri' }}
         run: node scripts/fetch.mjs
 
       - name: Run tests

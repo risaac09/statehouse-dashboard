@@ -1,33 +1,33 @@
 {
-  "jurisdiction": "California",
-  "state": "ca",
-  "updated": "2026-06-12T13:00:00.000Z",
+  "jurisdiction": "Rhode Island",
+  "state": "ri",
+  "updated": "2026-06-15T13:00:00.000Z",
   "source": "Sample data (replace by running the OpenStates fetch)",
   "sample": true,
   "count": 6,
   "subjects": ["Education", "Environment", "Health", "Housing", "Labor", "Taxation", "Technology"],
   "bills": [
     {
-      "id": "sample/ab-1042",
-      "identifier": "AB 1042",
-      "title": "An act to require lead service line replacement in public schools",
+      "id": "sample/h-7042",
+      "identifier": "H 7042",
+      "title": "An act relating to lead service line replacement in public schools",
       "summary": "Establishes a state fund to replace lead drinking-water pipes in public schools by 2030.",
       "summarySource": "abstract",
       "subjects": ["Education", "Environment", "Health"],
       "chamber": "House",
       "status": "Passed chamber",
       "latestActionDate": "2026-06-11",
-      "latestAction": "Passed Assembly. Ordered to the Senate.",
-      "sponsor": "Asm. Jane Ortiz (D)",
-      "url": "https://openstates.org/ca/",
+      "latestAction": "Passed House. Ordered to the Senate.",
+      "sponsor": "Rep. Jane Ortiz (D)",
+      "url": "https://openstates.org/ri/",
       "actions": [
-        { "date": "2026-06-11", "description": "Passed Assembly. Ordered to the Senate.", "classification": ["passage"] },
-        { "date": "2026-05-20", "description": "Referred to Committee on Environmental Safety", "classification": ["committee-referral"] },
+        { "date": "2026-06-11", "description": "Passed House. Ordered to the Senate.", "classification": ["passage"] },
+        { "date": "2026-05-20", "description": "Referred to Committee on Environment and Natural Resources", "classification": ["committee-referral"] },
         { "date": "2026-04-02", "description": "Introduced and read first time", "classification": ["introduction"] }
       ],
       "votes": [
         {
-          "id": "sample/vote-1042-a",
+          "id": "sample/vote-7042-a",
           "motion": "Do pass as amended",
           "date": "2026-06-11",
           "result": "pass",
@@ -44,45 +44,45 @@
       ]
     },
     {
-      "id": "sample/sb-330",
-      "identifier": "SB 330",
+      "id": "sample/s-2330",
+      "identifier": "S 2330",
       "title": "An act relating to streamlined approval of affordable housing",
-      "summary": "Lets cities fast-track permits for apartment projects that reserve a quarter of units as affordable.",
+      "summary": "Lets cities and towns fast-track permits for apartment projects that reserve a quarter of units as affordable.",
       "summarySource": "abstract",
       "subjects": ["Housing", "Taxation"],
       "chamber": "Senate",
       "status": "In committee",
       "latestActionDate": "2026-06-09",
-      "latestAction": "Referred to Committee on Housing",
+      "latestAction": "Referred to Committee on Housing and Municipal Government",
       "sponsor": "Sen. David Cho (D)",
-      "url": "https://openstates.org/ca/",
+      "url": "https://openstates.org/ri/",
       "actions": [
-        { "date": "2026-06-09", "description": "Referred to Committee on Housing", "classification": ["committee-referral"] },
+        { "date": "2026-06-09", "description": "Referred to Committee on Housing and Municipal Government", "classification": ["committee-referral"] },
         { "date": "2026-05-28", "description": "Introduced and read first time", "classification": ["introduction"] }
       ],
       "votes": []
     },
     {
-      "id": "sample/ab-77",
-      "identifier": "AB 77",
-      "title": "An act to require disclosure of AI-generated political advertising",
+      "id": "sample/h-7077",
+      "identifier": "H 7077",
+      "title": "An act relating to disclosure of AI-generated political advertising",
       "summary": "Requires campaign ads that use synthetic media to carry a visible label.",
       "summarySource": "abstract",
       "subjects": ["Technology"],
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-06",
-      "latestAction": "Chaptered by Secretary of State.",
-      "sponsor": "Asm. Renee Park (D)",
-      "url": "https://openstates.org/ca/",
+      "latestAction": "Transmitted to the Secretary of State.",
+      "sponsor": "Rep. Renee Park (D)",
+      "url": "https://openstates.org/ri/",
       "actions": [
-        { "date": "2026-06-06", "description": "Chaptered by Secretary of State.", "classification": ["became-law"] },
+        { "date": "2026-06-06", "description": "Transmitted to the Secretary of State.", "classification": ["became-law"] },
         { "date": "2026-05-30", "description": "Approved by the Governor.", "classification": ["executive-signature"] },
         { "date": "2026-05-12", "description": "Passed Senate.", "classification": ["passage"] }
       ],
       "votes": [
         {
-          "id": "sample/vote-77-s",
+          "id": "sample/vote-7077-s",
           "motion": "Senate concurrence",
           "date": "2026-05-12",
           "result": "pass",
@@ -97,8 +97,8 @@
       ]
     },
     {
-      "id": "sample/sb-512",
-      "identifier": "SB 512",
+      "id": "sample/s-2512",
+      "identifier": "S 2512",
       "title": "An act relating to minimum wage for fast food workers",
       "summary": "Raises the fast-food sector minimum wage and ties future increases to inflation.",
       "summarySource": "abstract",
@@ -108,14 +108,14 @@
       "latestActionDate": "2026-06-04",
       "latestAction": "Failed passage in committee.",
       "sponsor": "Sen. Aisha Reed (D)",
-      "url": "https://openstates.org/ca/",
+      "url": "https://openstates.org/ri/",
       "actions": [
         { "date": "2026-06-04", "description": "Failed passage in committee.", "classification": ["committee-failure"] },
         { "date": "2026-05-15", "description": "Referred to Committee on Labor", "classification": ["committee-referral"] }
       ],
       "votes": [
         {
-          "id": "sample/vote-512-c",
+          "id": "sample/vote-2512-c",
           "motion": "Do pass",
           "date": "2026-06-04",
           "result": "fail",
@@ -131,29 +131,29 @@
       ]
     },
     {
-      "id": "sample/ab-915",
-      "identifier": "AB 915",
-      "title": "An act to expand telehealth coverage under Medi-Cal",
-      "summary": "Requires Medi-Cal to reimburse audio-only telehealth visits at parity with in-person care.",
+      "id": "sample/h-7915",
+      "identifier": "H 7915",
+      "title": "An act relating to telehealth coverage under Medicaid",
+      "summary": "Requires Medicaid to reimburse audio-only telehealth visits at parity with in-person care.",
       "summarySource": "abstract",
       "subjects": ["Health"],
       "chamber": "House",
       "status": "In committee",
       "latestActionDate": "2026-06-03",
-      "latestAction": "Referred to Committee on Health",
-      "sponsor": "Asm. Marcus Lee (D)",
-      "url": "https://openstates.org/ca/",
+      "latestAction": "Referred to Committee on Health and Human Services",
+      "sponsor": "Rep. Marcus Lee (D)",
+      "url": "https://openstates.org/ri/",
       "actions": [
-        { "date": "2026-06-03", "description": "Referred to Committee on Health", "classification": ["committee-referral"] },
+        { "date": "2026-06-03", "description": "Referred to Committee on Health and Human Services", "classification": ["committee-referral"] },
         { "date": "2026-05-25", "description": "Introduced and read first time", "classification": ["introduction"] }
       ],
       "votes": []
     },
     {
-      "id": "sample/sb-188",
-      "identifier": "SB 188",
-      "title": "An act relating to wildfire-resistant building standards",
-      "summary": "Updates the building code to require fire-resistant materials in high-risk zones.",
+      "id": "sample/s-2188",
+      "identifier": "S 2188",
+      "title": "An act relating to coastal flood-resilience building standards",
+      "summary": "Updates the state building code to require flood-resilient construction in coastal high-risk zones.",
       "summarySource": "abstract",
       "subjects": ["Environment", "Housing"],
       "chamber": "Senate",
@@ -161,7 +161,7 @@
       "latestActionDate": "2026-06-02",
       "latestAction": "Introduced and read first time.",
       "sponsor": "Sen. Linda Voss (R)",
-      "url": "https://openstates.org/ca/",
+      "url": "https://openstates.org/ri/",
       "actions": [
         { "date": "2026-06-02", "description": "Introduced and read first time.", "classification": ["introduction"] }
       ],

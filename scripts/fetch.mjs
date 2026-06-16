@@ -89,7 +89,7 @@ async function main() {
     console.error('OPENSTATES_API_KEY is not set. Get a free key at https://open.pluralpolicy.com/accounts/profile/');
     process.exit(1);
   }
-  const codes = (process.argv.slice(2).length ? process.argv.slice(2) : (process.env.STATES || 'ca').split(/[ ,]+/))
+  const codes = (process.argv.slice(2).length ? process.argv.slice(2) : (process.env.STATES || 'ri').split(/[ ,]+/))
     .map((c) => c.trim().toLowerCase())
     .filter(Boolean);
   const results = [];
