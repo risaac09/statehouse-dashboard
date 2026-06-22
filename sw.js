@@ -1,6 +1,8 @@
 /* Service worker: cache-first for the app shell, network-first for data. */
-var CACHE = 'statehouse-v7';
-var SHELL = ['./', 'index.html', 'app.css', 'app.js', 'manifest.json'];
+var CACHE = 'statehouse-v8';
+var SHELL = ['./', 'index.html', 'app.css', 'app.js', 'manifest.json',
+  'fonts/fraunces-latin.woff2', 'fonts/fraunces-latin-ext.woff2',
+  'fonts/inter-latin.woff2', 'fonts/inter-latin-ext.woff2'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));
