@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Statehouse Dashboard: state bills and votes in plain language</title>
   <meta name="description" content="A plain-language dashboard of what your state legislature is actually doing: recent bills, how they voted, and the topics that affect you." />
-  <meta name="theme-color" content="#16323d" />
+  <meta name="theme-color" content="#0F1729" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316323d'/%3E%3Cline x1='16' y1='6' x2='16' y2='9' stroke='%23c79324' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M8 22 C8 13 24 13 24 22 Z' fill='%23c79324'/%3E%3Cline x1='7' y1='24' x2='25' y2='24' stroke='%23c79324' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F1729'/%3E%3Cline x1='16' y1='6' x2='16' y2='9' stroke='%239A6B2F' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M8 22 C8 13 24 13 24 22 Z' fill='%239A6B2F'/%3E%3Cline x1='7' y1='24' x2='25' y2='24' stroke='%239A6B2F' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="app.css" />
 </head>
 <body>
@@ -16,11 +19,12 @@
   <header class="topbar">
     <div class="brand">
       <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" fill="none">
-        <line x1="16" y1="4" x2="16" y2="7" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M7 22 C7 12 25 12 25 22 Z" fill="#c79324"/>
-        <line x1="5" y1="24" x2="27" y2="24" stroke="#c79324" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="16" y1="4" x2="16" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M7 22 C7 12 25 12 25 22 Z" fill="currentColor"/>
+        <line x1="5" y1="24" x2="27" y2="24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
       </svg>
       <div>
+        <p class="eyebrow">Plain-language legislative record</p>
         <h1>Statehouse Dashboard</h1>
         <p class="tagline">What your legislature is actually doing, in plain language.</p>
       </div>
@@ -38,8 +42,10 @@
   </div>
 
   <main id="main">
+    <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Overview</h2></div>
     <section class="summary" id="summary" aria-label="Overview"></section>
 
+    <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Recent activity</h2></div>
     <div class="toolbar">
       <input id="search" type="search" placeholder="Search bills, sponsors, or numbers…" aria-label="Search bills" />
       <div class="chips" id="topic-chips" role="group" aria-label="Filter by topic"></div>
@@ -57,7 +63,7 @@
   </aside>
 
   <footer class="footer">
-    <p>Data from <a href="https://openstates.org">OpenStates</a>. Summaries are auto-generated from official text and may simplify. Always check the source before acting.</p>
+    <p>Data from <a href="https://openstates.org">OpenStates</a>. Summaries are plain-language edits of the official text, checked against the source. Always read the official text before acting.</p>
     <p>Last updated: <time id="updated">…</time></p>
   </footer>
 
