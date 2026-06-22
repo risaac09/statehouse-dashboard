@@ -53,6 +53,28 @@ export function deriveStatus(latestAction, classifications) {
   return 'Active';
 }
 
+// OpenStates leaves bill `subject` empty for many states (Rhode Island included),
+// which would leave the topic filter dark. When no official subjects exist, infer
+// coarse topics from the title + summary. This is keyword matching, not real
+// classification, so the dataset flags it (`subjectsDerived`) and the UI labels it.
+const TOPIC_PATTERNS = [
+  ['Education', /\b(school|educat|student|teacher|tuition|curriculum|pupil|universit|college|classroom|literacy)/i],
+  ['Elections & Government', /\b(election|voting|ballot|campaign finance|redistrict|public records|ethics commission|appropriation)/i],
+  ['Environment', /\b(environment|pollution|climate|emission|renewable|conservation|wetland|recycl|solar|carbon|wildlife|forest|coastal)/i],
+  ['Health', /\b(health|hospital|medicaid|medicare|patient|mental[- ]health|nurs(e|ing)|physician|disease|opioid|substance|pharmac|dental|hospice|disabilit)/i],
+  ['Housing', /\b(housing|tenant|landlord|rent\b|eviction|mortgage|homeless|zoning)/i],
+  ['Labor', /\b(labor|employment|wages?\b|worker|workplace|overtime|employee|union\b|occupational)/i],
+  ['Public Safety', /\b(police|fire marshal|firefighter|crime|criminal|firearm|weapon|prison|sentenc|law enforcement|domestic violence)/i],
+  ['Taxation', /\b(tax(es|ation)?|revenue|levy|exemption|assessment)\b/i],
+  ['Technology', /\b(technolog|broadband|internet|cyber|software|digital|telecommunication)/i],
+  ['Transportation', /\b(transportation|motor vehicle|highway|transit|traffic|driver|road(s|way)?\b)/i],
+];
+
+export function deriveSubjects(title, summary) {
+  const text = `${title || ''} ${summary || ''}`;
+  return TOPIC_PATTERNS.filter(([, re]) => re.test(text)).map(([topic]) => topic).sort();
+}
+
 const CHAMBER_LABEL = { lower: 'House', upper: 'Senate', legislature: 'Joint' };
 export function chamberLabel(classification) {
   return CHAMBER_LABEL[classification] || 'Chamber';
@@ -95,7 +117,9 @@ export function normalizeBill(b) {
   const summary = plainSummary(abstracts[0] && abstracts[0].abstract, b.title);
   const sponsor = (b.sponsorships || []).find((s) => s.primary || s.classification === 'primary')
     || (b.sponsorships || [])[0];
-  const subjects = Array.from(new Set(b.subject || [])).sort();
+  const official = Array.from(new Set(b.subject || [])).sort();
+  const subjects = official.length ? official : deriveSubjects(b.title, summary);
+  const subjectsDerived = official.length === 0 && subjects.length > 0;
   const actions = (b.actions || [])
     .map((a) => ({
       date: (a.date || '').slice(0, 10),
@@ -110,6 +134,7 @@ export function normalizeBill(b) {
     summary,
     summarySource: abstracts[0] ? 'abstract' : 'title',
     subjects,
+    subjectsDerived,
     chamber: chamberLabel(b.from_organization && b.from_organization.classification),
     status: deriveStatus(b.latest_action_description, b.classification),
     latestActionDate: (b.latest_action_date || '').slice(0, 10),
@@ -127,6 +152,7 @@ export function normalizeBill(b) {
 export function buildDataset({ jurisdiction, state, rawBills }) {
   const bills = (rawBills || []).map(normalizeBill);
   const subjects = Array.from(new Set(bills.flatMap((b) => b.subjects))).sort();
+  const subjectsDerived = bills.some((b) => b.subjectsDerived);
   return {
     jurisdiction,
     state,
@@ -134,6 +160,7 @@ export function buildDataset({ jurisdiction, state, rawBills }) {
     source: 'OpenStates v3',
     count: bills.length,
     subjects,
+    subjectsDerived,
     bills: bills.sort((a, b) => (a.latestActionDate < b.latestActionDate ? 1 : -1)),
   };
 }

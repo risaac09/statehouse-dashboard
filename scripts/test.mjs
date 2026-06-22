@@ -1,7 +1,7 @@
 // test.mjs: unit tests for the data-cleaning layer. Run: node scripts/test.mjs
 import assert from 'node:assert';
 import {
-  partyCode, plainSummary, deriveStatus, normalizeVote, normalizeBill, buildDataset,
+  partyCode, plainSummary, deriveStatus, deriveSubjects, normalizeVote, normalizeBill, buildDataset,
 } from './normalize.mjs';
 
 let passed = 0;
@@ -124,6 +124,33 @@ test('buildDataset tolerates undefined rawBills', () => {
   const ds = buildDataset({ jurisdiction: 'Ohio', state: 'oh' });
   assert.equal(ds.count, 0);
   assert.deepEqual(ds.bills, []);
+});
+
+test('deriveSubjects infers topics from text and avoids false positives', () => {
+  assert.deepEqual(deriveSubjects('AN ACT RELATING TO EDUCATION -- SCHOOL FUNDING', ''), ['Education']);
+  assert.deepEqual(deriveSubjects('An act relating to hospitals', 'Expands Medicaid coverage for patients.'), ['Health']);
+  assert.deepEqual(deriveSubjects('An act relating to the office of state fire marshal', ''), ['Public Safety']);
+  assert.deepEqual(deriveSubjects('A purely procedural resolution', ''), []); // nothing matches -> no guess
+});
+
+test('normalizeBill derives + flags subjects when OpenStates provides none', () => {
+  const b = normalizeBill({
+    id: 'ocd-bill/ri1', identifier: 'SB 2181',
+    title: 'AN ACT RELATING TO HEALTH AND SAFETY -- OFFICE OF STATE FIRE MARSHAL',
+    classification: ['bill'], subject: [], // RI sends nothing
+    latest_action_date: '2026-06-20', latest_action_description: 'Introduced',
+  });
+  assert.deepEqual(b.subjects, ['Health', 'Public Safety']);
+  assert.equal(b.subjectsDerived, true);
+});
+
+test('normalizeBill keeps official subjects and does not flag them derived', () => {
+  const b = normalizeBill({
+    id: 'ocd-bill/ca9', identifier: 'AB 9', title: 'An act relating to clean water',
+    classification: ['bill'], subject: ['Environment'], latest_action_date: '2026-06-05',
+  });
+  assert.deepEqual(b.subjects, ['Environment']);
+  assert.equal(b.subjectsDerived, false);
 });
 
 console.log(`\n${passed} tests passed.`);

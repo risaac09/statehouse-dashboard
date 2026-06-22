@@ -1,10 +1,19 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-06-22T15:53:29.938Z",
+  "updated": "2026-06-22T15:58:40.716Z",
   "source": "OpenStates v3",
   "count": 40,
-  "subjects": [],
+  "subjects": [
+    "Education",
+    "Health",
+    "Housing",
+    "Labor",
+    "Public Safety",
+    "Taxation",
+    "Transportation"
+  ],
+  "subjectsDerived": true,
   "bills": [
     {
       "id": "ocd-bill/52093884-a8c1-42c2-ae58-2ce32ca6d571",
@@ -12,7 +21,12 @@
       "title": "AN ACT RELATING TO HEALTH AND SAFETY -- OFFICE OF STATE FIRE MARSHAL",
       "summary": "Creates a program through which fire departments and fire districts are notified of locations of registrants of electric and hybrid motor vehicles can register their vehicles with their local fire department or fire district.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Health",
+        "Public Safety",
+        "Transportation"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -748,6 +762,7 @@
       "summary": "Provides immunity for mediators and staff employed by the family court in the family court mediation program from financial liability for certain claims arising out of their participation in the program.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -1456,7 +1471,10 @@
       "title": "AN ACT RELATING TO TOWNS AND CITIES -- ZONING ORDINANCES",
       "summary": "Provides guidelines regarding placing restrictions on residential recovery houses.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Housing"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -2211,7 +2229,10 @@
       "title": "AN ACT RELATING TO HEALTH AND SAFETY -- CONSUMER PFAS BAN ACT OF 2024",
       "summary": "Amends the Consumer PFAS Ban Act of 2024 by clarifying enforcement provisions.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Health"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -2722,6 +2743,7 @@
       "summary": "Disabled veteran license plate may be transferred to veterans' spouse or issued to veteran or veterans spouse.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -3461,7 +3483,10 @@
       "title": "AN ACT RELATING TO LABOR AND LABOR RELATIONS -- EMPLOYMENT SECURITY",
       "summary": "Eliminates the \"until June 30, 2026\" sunset on the increase in the total amount of earnings a partial-unemployment insurance claimant can receive before being entirely disqualified for unemployment insurance benefits.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Labor"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -3957,6 +3982,7 @@
       "summary": "Creates a 16-member commission to study current condominium law and provide recommendations for improvements, and who would report back to the General Assembly by December 31, 2027, and would expire on March 15, 2028.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -4469,6 +4495,7 @@
       "summary": "Establishes the Rhode Island Special Deposits Act to be governed by an account agreement between the bank and the depositor or its beneficiary.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -4981,6 +5008,7 @@
       "summary": "Provides immunity for mediators and staff employed by the family court in the family court mediation program from financial liability for certain claims arising out of their participation in the program.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -5492,7 +5520,10 @@
       "title": "AN ACT RELATING TO MILITARY AFFAIRS AND DEFENSE -- MILITARY CHILD ACT",
       "summary": "Defines \"military-connected student\" and permits military-connected students to enroll by remote registration upon presentation of military orders confirming the parent or guardian be stationed in this state during the current or following…",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Education"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -6220,7 +6251,10 @@
       "title": "AN ACT RELATING TO TAXATION -- PROPERTY SUBJECT TO TAXATION",
       "summary": "Exempts certain urban and small farmers from sales taxes, real, tangible and personal property taxes and income taxes. This act would also define urban and small farmers and urban farmland.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Taxation"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -6708,7 +6742,10 @@
       "title": "AN ACT RELATING TO TAXATION -- STATE TAX OFFICIALS",
       "summary": "Extends the timeframe for the division of taxation to review nonresident contractor cases and provide a specific penalty for noncompliance with the statute's withholding requirements.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Taxation"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -7196,7 +7233,10 @@
       "title": "AN ACT RELATING TO BEHAVIORAL HEALTHCARE, DEVELOPMENTAL DISABILITIES AND HOSPITALS -- MENTAL HEALTH LAW",
       "summary": "Provides that advanced practice registered nurses have the same immunity from liability as physicians and surgeons.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Health"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -7905,7 +7945,10 @@
       "title": "AN ACT RELATING TO MOTOR AND OTHER VEHICLES -- PARKING FACILITIES AND PRIVILEGES",
       "summary": "Creates a new registration plate for qualified individuals to possess an \"adaptive vehicle license plate\" to accommodate the transportation needs of an individual with a significant mobility impairment.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Transportation"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -8641,6 +8684,7 @@
       "summary": "Requires a direct-to-consumer genetic testing company, as defined, to provide a consumer with certain information regarding the company’s policies and procedures regarding use of genetic data.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -9152,7 +9196,10 @@
       "title": "AN ACT RELATING TO HEALTH AND SAFETY -- LICENSING OF YOUTH CAMPS",
       "summary": "Aligns the implementation date of youth camp licensing within the operational, and statutory framework of the Rhode Island department of human services and department of children, youth and families.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Health"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -9660,6 +9707,7 @@
       "summary": "For purposes of the judicial security act permits an authorized agent to file a written notice with a state, county, or municipal agency on behalf of a protected individual.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -10379,6 +10427,7 @@
       "summary": "Adds property damage to statutory underinsured motor coverage, rather than just uninsured motorist coverage, as it is presently.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -10896,6 +10945,7 @@
       "summary": "Amends the regulations on the cancellation and renewal of liability and property damage insurance for automobiles, homeowners insurance, residential fire insurance and components thereof.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -11654,7 +11704,10 @@
       "title": "AN ACT RELATING TO LABOR AND LABOR RELATIONS -- EMPLOYMENT SECURITY",
       "summary": "Eliminates the \"until June 30, 2026\" sunset on the increase in the total amount of earnings a partial-unemployment insurance claimant can receive before being entirely disqualified for unemployment insurance benefits.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Labor"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -12624,7 +12677,10 @@
       "title": "AN ACT RELATING TO MOTOR AND OTHER VEHICLES -- PARKING FACILITIES AND PRIVILEGES",
       "summary": "Creates a new registration plate for qualified individuals to possess an \"adaptive vehicle license plate\" to accommodate the transportation needs of an individual with a significant mobility impairment.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Transportation"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -13120,6 +13176,7 @@
       "summary": "Provides immunity for mediators and staff employed by the family court in the family court mediation program from financial liability for certain claims arising out of their participation in the program.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -13631,7 +13688,10 @@
       "title": "AN ACT RELATING TO MOTOR AND OTHER VEHICLES -- PARKING FACILITIES AND PRIVILEGES",
       "summary": "Creates a new registration plate for qualified individuals to possess an \"adaptive vehicle license plate\" to accommodate the transportation needs of an individual with a significant mobility impairment.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Transportation"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -14367,6 +14427,7 @@
       "summary": "Establishes the Rhode Island Special Deposits Act to be governed by an account agreement between the bank and the depositor or its beneficiary.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -14878,7 +14939,10 @@
       "title": "AN ACT RELATING TO LABOR AND LABOR RELATIONS -- EMPLOYMENT SECURITY",
       "summary": "Eliminates the \"until June 30, 2026\" sunset on the increase in the total amount of earnings a partial-unemployment insurance claimant can receive before being entirely disqualified for unemployment insurance benefits.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Labor"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -15849,6 +15913,7 @@
       "summary": "Amends the regulations on the cancellation and renewal of liability and property damage insurance for automobiles, homeowners insurance, residential fire insurance and components thereof.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -16607,7 +16672,10 @@
       "title": "AN ACT RELATING TO TOWNS AND CITIES -- ZONING ORDINANCES",
       "summary": "Provides guidelines regarding placing restrictions on residential recovery houses.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Housing"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -17362,7 +17430,10 @@
       "title": "AN ACT RELATING TO HEALTH AND SAFETY -- CONSUMER PFAS BAN ACT OF 2024",
       "summary": "Amends the Consumer PFAS Ban Act of 2024 by clarifying enforcement provisions.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Health"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -17873,6 +17944,7 @@
       "summary": "Disabled veteran license plate may be transferred to veterans' spouse or issued to veteran or veterans spouse.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -18612,7 +18684,10 @@
       "title": "AN ACT RELATING TO LABOR AND LABOR RELATIONS -- EMPLOYMENT SECURITY",
       "summary": "Eliminates the \"until June 30, 2026\" sunset on the increase in the total amount of earnings a partial-unemployment insurance claimant can receive before being entirely disqualified for unemployment insurance benefits.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Labor"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -19108,6 +19183,7 @@
       "summary": "Creates a 16-member commission to study current condominium law and provide recommendations for improvements, and who would report back to the General Assembly by December 31, 2027, and would expire on March 15, 2028.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -19619,7 +19695,10 @@
       "title": "AN ACT RELATING TO GENERAL ASSEMBLY -- PERMANENT JOINT COMMITTEE ON NAMING ALL NEW BUILDINGS, BRIDGES, EDIFICES AND OTHER STATE CONSTRUCTIONS",
       "summary": "Renames the University of Rhode Island football practice field, located at 5E West Alumni Avenue, Kingston, RI 02881, to the \"Mark S. Cruise '81 '84 Football Practice Field.\"",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Education"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -20108,6 +20187,7 @@
       "summary": "Adds property damage to statutory underinsured motor coverage, rather than just uninsured motorist coverage, as it is presently.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -20625,6 +20705,7 @@
       "summary": "Provides immunity for mediators and staff employed by the family court in the family court mediation program from financial liability for certain claims arising out of their participation in the program.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -21333,7 +21414,10 @@
       "title": "AN ACT RELATING TO CRIMINAL OFFENSES -- SEXUAL ASSAULT",
       "summary": "Requires the electronic filing of domestic violence/sexual assault forms by law enforcement agencies, and enhances the information to be included on the reporting forms.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Public Safety"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -21857,7 +21941,10 @@
       "title": "AN ACT RELATING TO MOTOR AND OTHER VEHICLES -- REGISTRATION FEES",
       "summary": "Includes veterans 75 years or older with a combined service connected disability rating of 70% as eligible for disabled veterans license plates.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Health"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -22346,6 +22433,7 @@
       "summary": "Provides an update to certain insurance sections of law to update or eliminate outdated sections of the insurance law.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -22859,7 +22947,10 @@
       "title": "AN ACT RELATING TO MILITARY AFFAIRS AND DEFENSE -- MILITARY CHILD ACT",
       "summary": "Defines \"military-connected student\" and permits military-connected students to enroll by remote registration upon presentation of military orders confirming the parent or guardian be stationed in this state during the current or following…",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Education"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -23588,6 +23679,7 @@
       "summary": "Disabled veteran license plate may be transferred to veterans' spouse or issued to veteran or veterans spouse.",
       "summarySource": "abstract",
       "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",
@@ -24063,7 +24155,10 @@
       "title": "AN ACT RELATING TO TAXATION -- STATE TAX OFFICIALS",
       "summary": "Extends the timeframe for the division of taxation to review nonresident contractor cases and provide a specific penalty for noncompliance with the statute's withholding requirements.",
       "summarySource": "abstract",
-      "subjects": [],
+      "subjects": [
+        "Taxation"
+      ],
+      "subjectsDerived": true,
       "chamber": "Senate",
       "status": "Enacted",
       "latestActionDate": "2026-06-19",

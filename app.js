@@ -155,6 +155,10 @@
       });
       els.chips.appendChild(chip);
     });
+    if ((state.current.subjects || []).length && state.current.subjectsDerived) {
+      els.chips.appendChild(el('span', { class: 'chip-note',
+        text: "Topics inferred from each bill's text, not official classification." }));
+    }
   }
 
   // --- feed ---
@@ -217,6 +221,9 @@
     ]);
     (b.subjects || []).forEach(function (s) { tags.appendChild(el('span', { class: 'topic-tag', text: s })); });
     body.appendChild(tags);
+    if (b.subjectsDerived && (b.subjects || []).length) {
+      body.appendChild(el('p', { class: 'note', text: 'Topics inferred from the bill text, not official classification.' }));
+    }
 
     // Votes
     if ((b.votes || []).length) {
