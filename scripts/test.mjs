@@ -186,12 +186,24 @@ test('buildDataset threads per-bill plain-language summaries', () => {
   assert.equal(ds.bills[0].summarySource, 'plain-language');
 });
 
-test('plainLanguageSummary falls back without a key and parses a valid response', async () => {
+test('plainLanguageSummary falls back without a key or on an API error', async () => {
   assert.equal(await plainLanguageSummary('some abstract', 'title', null), null);
-  const okFetch = async () => ({ ok: true, json: async () => ({ content: [{ text: '  Creates a clean program.  ' }] }) });
-  assert.equal(await plainLanguageSummary('some abstract', 'title', 'k', okFetch), 'Creates a clean program.');
   const errFetch = async () => ({ ok: false, json: async () => ({}) });
   assert.equal(await plainLanguageSummary('some abstract', 'title', 'k', errFetch), null);
+});
+
+test('plainLanguageSummary binary gate: passes only on FAITHFUL, else falls back to null', async () => {
+  let a = 0; // call 1 = draft, call 2 = verdict
+  const faithful = async () => { a++; const text = a === 1 ? 'Creates a clean program.' : 'FAITHFUL'; return { ok: true, json: async () => ({ content: [{ text }] }) }; };
+  assert.equal(await plainLanguageSummary('abstract', 't', 'k', faithful), 'Creates a clean program.');
+
+  let b = 0; // gate says NOT_FAITHFUL -> never ship the draft, fall back
+  const rejects = async () => { b++; const text = b === 1 ? 'A distorted draft that adds new facts.' : 'NOT_FAITHFUL'; return { ok: true, json: async () => ({ content: [{ text }] }) }; };
+  assert.equal(await plainLanguageSummary('abstract', 't', 'k', rejects), null);
+
+  let c = 0; // verify call errors -> fall back rather than ship unaudited
+  const verifyFails = async () => { c++; return c === 1 ? { ok: true, json: async () => ({ content: [{ text: 'A draft sentence here.' }] }) } : { ok: false, json: async () => ({}) }; };
+  assert.equal(await plainLanguageSummary('abstract', 't', 'k', verifyFails), null);
 });
 
 (async () => {
