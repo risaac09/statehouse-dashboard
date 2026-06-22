@@ -25,10 +25,11 @@
   --teal: #2B6A6E;        /* analytical accent: ALL figures and numbers */
   --teal-lt: #4A9EA3;     /* teal hover / dark-mode figures */
   --teal-wash: #E6F3F4;   /* vote-bar track, quiet panel tint */
-  --success: #3A7D44; --success-wash: #E7F0E9; /* semantic: on-track / enacted */
-  --caution: #B5760A; --caution-wash: #F6ECD8; /* semantic: in progress / passed chamber */
+  --success: #2F6E39; --success-wash: #E7F0E9; /* semantic: on-track / enacted (darkened for AA on the wash) */
+  --caution: #8A5A07; --caution-wash: #F6ECD8; /* semantic: in progress / passed chamber (darkened for AA on cream + wash) */
   --alert:   #A03030; --alert-wash:   #F2E2E2; /* semantic: failed / vetoed */
   --neutral-wash: #ECEAE0;                      /* semantic-neutral: active / in committee */
+  --ink-rgb: 15,23,41;    /* Ink channels, for the drawer scrim (keeps the scrim tied to the Ink token) */
 
   --radius: 0;            /* Square Corners Rule */
   --radius-focus: 2px;    /* the only curve in the system */
@@ -59,7 +60,7 @@
     --teal-wash: rgba(74,158,163,0.10);
     --success: #5FA56B; --success-wash: rgba(95,165,107,0.14);
     --caution: #D29A3A; --caution-wash: rgba(210,154,58,0.14);
-    --alert:   #C96B6B; --alert-wash:   rgba(201,107,107,0.16);
+    --alert:   #DB8585; --alert-wash:   rgba(201,107,107,0.16); /* lightened for AA on the dark wash */
     --neutral-wash: rgba(216,210,195,0.10);
   }
 }
@@ -80,7 +81,7 @@ a:hover { color: var(--ochre); text-decoration-color: var(--ochre-lt); }
 
 /* tabular lining numerals, applied wherever figures are scanned (Tabular Numbers Rule) */
 .num { font-family: var(--serif); font-weight: 500; font-variant-numeric: tabular-nums lining-nums;
-       font-feature-settings: 'tnum', 'lnum'; color: var(--teal); }
+       font-feature-settings: 'tnum', 'lnum'; font-variation-settings: 'opsz' 14; color: var(--teal); }
 
 .skip-link { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--bg); padding: 8px 14px; z-index: 50; }
 .skip-link:focus { left: 0; }
@@ -105,8 +106,8 @@ a:hover { color: var(--ochre); text-decoration-color: var(--ochre-lt); }
 .field select { background: var(--surface); color: var(--ink); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 9px 12px; font-size: 0.95rem; font-family: inherit; min-width: 190px; }
 
-/* ---- Sample banner: caution-keyed editorial callout ---- */
-.banner { background: var(--caution-wash); color: var(--caution); border-left: 2px solid var(--caution);
+/* ---- Sample banner: editorial aside (app-state notice, not a finding) ---- */
+.banner { background: var(--ochre-wash); color: var(--graphite); border-left: 2px solid var(--ochre);
   padding: 11px 24px; font-size: 0.9rem; }
 
 /* ---- Layout ---- */
@@ -117,7 +118,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 32px 24px 64px; }
   border-bottom: 1px solid var(--line); padding-bottom: 10px; }
 .section-head + .section-head, main > .section-head:not(:first-child) { margin-top: 40px; }
 .section-num { font-family: var(--serif); font-weight: 500; font-size: 1rem; color: var(--ochre);
-  font-variant-numeric: tabular-nums lining-nums; display: inline-flex; align-items: center; }
+  font-variant-numeric: tabular-nums lining-nums; font-variation-settings: 'opsz' 14; display: inline-flex; align-items: center; }
 .section-num::after { content: ''; display: inline-block; width: 28px; height: 1px;
   background: var(--ochre); margin-left: 12px; }
 .section-title { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; color: var(--ink);
@@ -139,7 +140,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 32px 24px 64px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { border: 1px solid var(--line); background: var(--surface); color: var(--slate);
   border-radius: var(--radius); padding: 7px 14px; font-family: var(--sans); font-size: 0.72rem;
-  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+  font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; }
 .chip:hover { background: var(--surface-hover); border-color: var(--line-strong); }
 .chip[aria-pressed="true"] { background: var(--ochre-wash); color: var(--ochre); border-color: var(--ochre); }
 .chip-note { flex-basis: 100%; font-family: var(--serif); font-size: 0.85rem; color: var(--slate);
@@ -159,7 +160,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 32px 24px 64px; }
 
 .bill-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .bill-id { font-family: var(--serif); font-weight: 600; font-size: 1rem; color: var(--teal);
-  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum', 'lnum'; }
+  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum', 'lnum'; font-variation-settings: 'opsz' 14; }
 .bill-date { font-family: var(--sans); font-size: 0.76rem; color: var(--slate); }
 .bill-summary { font-family: var(--serif); font-weight: 400; font-size: 1.22rem; line-height: 1.4;
   color: var(--ink); margin: 10px 0 12px; font-variation-settings: 'opsz' 36, 'SOFT' 30; }
@@ -167,14 +168,14 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 32px 24px 64px; }
 
 /* status: color + label, never color alone (Semantic Color Rule + a11y) */
 .status { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.1em; padding: 3px 9px; }
+  letter-spacing: 0.14em; padding: 3px 9px; }
 .status.s-enacted { background: var(--success-wash); color: var(--success); }
 .status.s-passed-chamber { background: var(--caution-wash); color: var(--caution); }
 .status.s-failed, .status.s-vetoed { background: var(--alert-wash); color: var(--alert); }
 .status.s-in-committee, .status.s-introduced, .status.s-active { background: var(--neutral-wash); color: var(--slate); }
 
 .topic-tag { background: var(--neutral-wash); color: var(--slate); padding: 3px 9px;
-  font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; }
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
 
 /* vote pill in the feed: outcome is the finding (semantic), tally is tabular */
 .vote-pill { font-size: 0.78rem; padding: 3px 9px; font-weight: 600; font-variant-numeric: tabular-nums lining-nums; }
@@ -185,13 +186,13 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 32px 24px 64px; }
 .empty { text-align: center; color: var(--slate); padding: 40px; font-family: var(--serif); font-style: italic; }
 
 /* ---- Detail drawer ---- */
-.overlay { position: fixed; inset: 0; background: rgba(15,23,41,0.45); z-index: 40; }
+.overlay { position: fixed; inset: 0; background: rgba(var(--ink-rgb), 0.45); z-index: 40; }
 .detail { position: fixed; top: 0; right: 0; height: 100%; width: min(560px, 100%); background: var(--bg);
   z-index: 41; overflow-y: auto; padding: 26px 28px 60px; border-left: 1px solid var(--line); border-radius: var(--radius); }
 .detail-close { position: absolute; top: 14px; right: 16px; background: none; border: none;
   font-size: 1.9rem; line-height: 1; cursor: pointer; color: var(--slate); }
 .detail h2 { margin: 4px 0 10px; font-family: var(--serif); font-weight: 600; font-size: 1.5rem; color: var(--teal);
-  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum', 'lnum'; }
+  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum', 'lnum'; font-variation-settings: 'opsz' 36, 'SOFT' 30; }
 .detail .plain { font-family: var(--serif); font-weight: 400; font-size: 1.3rem; line-height: 1.45;
   color: var(--ink); margin: 0 0 10px; max-width: var(--maxw-text); font-variation-settings: 'opsz' 36, 'SOFT' 30; }
 .detail .note { font-family: var(--sans); font-size: 0.82rem; color: var(--slate); margin: 0 0 16px; }
@@ -210,25 +211,25 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 32px 24px 64px; }
 .vote-bar { display: flex; height: 26px; border-radius: var(--radius); overflow: hidden;
   border: 1px solid var(--line); margin-top: 10px; background: var(--teal-wash); }
 .vote-bar span { display: flex; align-items: center; justify-content: center; font-family: var(--serif);
-  font-weight: 500; font-size: 0.78rem; color: var(--bg); font-variant-numeric: tabular-nums lining-nums; }
+  font-weight: 500; font-size: 0.78rem; color: var(--bg); font-variant-numeric: tabular-nums lining-nums; font-variation-settings: 'opsz' 14; }
 .vote-bar .yes { background: var(--success); }
 .vote-bar .no { background: var(--alert); }
 .vote-bar .other { background: var(--slate); }
 .party-rows { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
 .party-row { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: center; font-size: 0.84rem; }
 /* party = neutral label only; never a partisan hue (Semantic Color Rule, no-partisan-palette) */
-.party-key { font-family: var(--serif); font-weight: 600; color: var(--ink); font-variant-numeric: lining-nums; }
+.party-key { font-family: var(--serif); font-weight: 600; color: var(--ink); font-variant-numeric: lining-nums; font-variation-settings: 'opsz' 14; }
 .party-split { display: flex; height: 15px; border-radius: var(--radius); overflow: hidden; background: var(--teal-wash); }
 .party-split .yes { background: var(--success); } .party-split .no { background: var(--alert); } .party-split .other { background: var(--slate); }
 .party-counts { font-family: var(--serif); font-size: 0.82rem; color: var(--teal);
-  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum', 'lnum'; }
+  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum', 'lnum'; font-variation-settings: 'opsz' 14; }
 
 /* action timeline */
 .timeline { list-style: none; padding: 0; margin: 0; }
 .timeline li { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 9px 0;
   border-bottom: 1px solid var(--line); font-size: 0.92rem; color: var(--graphite); }
 .timeline .t-date { font-family: var(--serif); font-size: 0.82rem; color: var(--teal);
-  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum', 'lnum'; }
+  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum', 'lnum'; font-variation-settings: 'opsz' 14; }
 .detail .source-link { display: inline-block; margin-top: 18px; }
 
 /* ---- Footer ---- */

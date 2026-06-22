@@ -210,13 +210,17 @@
     body.textContent = '';
     body.appendChild(el('h2', { id: 'detail-title', text: b.identifier }));
     body.appendChild(el('p', { class: 'plain', text: b.summary }));
+    var verbatim = b.officialAbstract && b.summary.trim() === b.officialAbstract.trim();
     var noteText = b.summarySource === 'plain-language'
       ? 'Plain-language summary, edited for clarity. The official abstract is below, unchanged.'
-      : (b.summarySource === 'abstract'
-        ? 'Cleaned from the official abstract below.'
-        : 'No abstract available; showing the official title.');
+      : (verbatim
+        ? 'Shown verbatim from the official abstract; the wording is unedited.'
+        : (b.summarySource === 'abstract'
+          ? 'Lightly cleaned from the official abstract below.'
+          : 'No abstract available; showing the official title.'));
     body.appendChild(el('p', { class: 'note', text: noteText }));
-    if (b.officialAbstract) {
+    // Only show the official abstract separately when the summary differs from it.
+    if (b.officialAbstract && !verbatim) {
       body.appendChild(el('p', { class: 'official-label', text: 'Official abstract' }));
       body.appendChild(el('p', { class: 'official-title', text: b.officialAbstract }));
     }
