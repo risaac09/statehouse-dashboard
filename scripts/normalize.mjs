@@ -112,9 +112,15 @@ export function normalizeVote(v) {
 }
 
 // Normalize one OpenStates bill (list item with includes) into our shape.
-export function normalizeBill(b) {
+// `aiSummary` is an optional plain-language rewrite of the official abstract
+// (see summarize.mjs). When present it becomes the displayed summary; the
+// official abstract is always kept verbatim so the source is never hidden.
+export function normalizeBill(b, aiSummary) {
   const abstracts = b.abstracts || [];
-  const summary = plainSummary(abstracts[0] && abstracts[0].abstract, b.title);
+  const officialAbstract = (abstracts[0] && abstracts[0].abstract) || '';
+  const clean = (aiSummary && aiSummary.trim()) || '';
+  const summary = clean || plainSummary(officialAbstract, b.title);
+  const summarySource = clean ? 'plain-language' : (abstracts[0] ? 'abstract' : 'title');
   const sponsor = (b.sponsorships || []).find((s) => s.primary || s.classification === 'primary')
     || (b.sponsorships || [])[0];
   const official = Array.from(new Set(b.subject || [])).sort();
@@ -132,7 +138,8 @@ export function normalizeBill(b) {
     identifier: b.identifier || '',
     title: b.title || '',
     summary,
-    summarySource: abstracts[0] ? 'abstract' : 'title',
+    summarySource,
+    officialAbstract,
     subjects,
     subjectsDerived,
     chamber: chamberLabel(b.from_organization && b.from_organization.classification),
@@ -149,8 +156,10 @@ export function normalizeBill(b) {
 }
 
 // Build the full dataset document for one state.
-export function buildDataset({ jurisdiction, state, rawBills }) {
-  const bills = (rawBills || []).map(normalizeBill);
+// `summaries` (optional) is a parallel array of plain-language rewrites, one per
+// rawBill, produced by summarize.mjs. Missing entries fall back to deterministic cleanup.
+export function buildDataset({ jurisdiction, state, rawBills, summaries }) {
+  const bills = (rawBills || []).map((b, i) => normalizeBill(b, summaries && summaries[i]));
   const subjects = Array.from(new Set(bills.flatMap((b) => b.subjects))).sort();
   const subjectsDerived = bills.some((b) => b.subjectsDerived);
   return {

@@ -3,9 +3,11 @@ import assert from 'node:assert';
 import {
   partyCode, plainSummary, deriveStatus, deriveSubjects, normalizeVote, normalizeBill, buildDataset,
 } from './normalize.mjs';
+import { plainLanguageSummary } from './summarize.mjs';
 
 let passed = 0;
-const test = (name, fn) => { fn(); passed++; console.log(`  ok  ${name}`); };
+const tests = [];
+const test = (name, fn) => { tests.push([name, fn]); };
 
 test('partyCode maps known parties and falls back', () => {
   assert.equal(partyCode('Democratic'), 'D');
@@ -153,4 +155,46 @@ test('normalizeBill keeps official subjects and does not flag them derived', () 
   assert.equal(b.subjectsDerived, false);
 });
 
-console.log(`\n${passed} tests passed.`);
+test('normalizeBill uses the plain-language rewrite and preserves the official abstract verbatim', () => {
+  const b = normalizeBill({
+    id: 'ocd-bill/ri2', identifier: 'SB 2181', title: 'AN ACT RELATING TO HEALTH AND SAFETY',
+    classification: ['bill'], subject: [], latest_action_date: '2026-06-20',
+    abstracts: [{ abstract: 'Creates a program through which fire departments are notified of registrants of electric vehicles can register their vehicles.' }],
+  }, 'Lets owners of electric and hybrid vehicles register them with their local fire department.');
+  assert.equal(b.summarySource, 'plain-language');
+  assert.match(b.summary, /register them with their local fire department/);
+  assert.match(b.officialAbstract, /^Creates a program through which/); // verbatim source kept
+});
+
+test('normalizeBill falls back to deterministic cleanup when no rewrite is given', () => {
+  const b = normalizeBill({
+    id: 'x', identifier: 'SB 9', title: 'An act to fund parks',
+    classification: ['bill'], latest_action_date: '2026-06-05', latest_action_description: 'Introduced',
+  });
+  assert.equal(b.summarySource, 'title');
+  assert.equal(b.summary, 'Fund parks');
+  assert.equal(b.officialAbstract, '');
+});
+
+test('buildDataset threads per-bill plain-language summaries', () => {
+  const ds = buildDataset({
+    jurisdiction: 'Rhode Island', state: 'ri',
+    rawBills: [{ id: 'a', identifier: 'SB 1', title: 'x', subject: ['Health'], latest_action_date: '2026-06-10', abstracts: [{ abstract: 'Raw run-on abstract text for the bill.' }] }],
+    summaries: ['Clean readable sentence.'],
+  });
+  assert.equal(ds.bills[0].summary, 'Clean readable sentence.');
+  assert.equal(ds.bills[0].summarySource, 'plain-language');
+});
+
+test('plainLanguageSummary falls back without a key and parses a valid response', async () => {
+  assert.equal(await plainLanguageSummary('some abstract', 'title', null), null);
+  const okFetch = async () => ({ ok: true, json: async () => ({ content: [{ text: '  Creates a clean program.  ' }] }) });
+  assert.equal(await plainLanguageSummary('some abstract', 'title', 'k', okFetch), 'Creates a clean program.');
+  const errFetch = async () => ({ ok: false, json: async () => ({}) });
+  assert.equal(await plainLanguageSummary('some abstract', 'title', 'k', errFetch), null);
+});
+
+(async () => {
+  for (const [name, fn] of tests) { await fn(); passed++; console.log(`  ok  ${name}`); }
+  console.log(`\n${passed} tests passed.`);
+})().catch((e) => { console.error('FAILED:', e && e.stack || e); process.exit(1); });

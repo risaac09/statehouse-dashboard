@@ -10,11 +10,13 @@ import { writeFile, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { buildDataset } from './normalize.mjs';
+import { plainLanguageSummary } from './summarize.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
 const API = 'https://v3.openstates.org';
 const KEY = process.env.OPENSTATES_API_KEY;
+const AI_KEY = process.env.ANTHROPIC_API_KEY; // optional: enables plain-language summaries
 const PAGES = Number(process.env.PAGES || 2); // 20 bills/page on the free tier
 
 // state code -> OpenStates jurisdiction name
@@ -69,7 +71,21 @@ async function fetchState(code) {
     if (results.length < 20) break; // last page
     await sleep(6500); // stay under the free-tier per-minute limit
   }
-  const dataset = buildDataset({ jurisdiction, state: code, rawBills });
+  // Plain-language pass: rewrite each official abstract into one clean sentence.
+  // Best-effort; a null falls back to deterministic cleanup in normalize.mjs.
+  const summaries = [];
+  for (const b of rawBills) {
+    const abs = (b.abstracts && b.abstracts[0] && b.abstracts[0].abstract) || '';
+    let s = null;
+    if (AI_KEY && abs) {
+      s = await plainLanguageSummary(abs, b.title, AI_KEY);
+      await sleep(250);
+    }
+    summaries.push(s);
+  }
+  const cleaned = summaries.filter(Boolean).length;
+  if (AI_KEY) console.log(`  plain-language summaries: ${cleaned}/${rawBills.length}`);
+  const dataset = buildDataset({ jurisdiction, state: code, rawBills, summaries });
   await writeFile(join(DATA_DIR, `${code}.json`), JSON.stringify(dataset, null, 2) + '\n');
   return { code, jurisdiction, count: dataset.count };
 }

@@ -26,6 +26,7 @@ jobs:
       - name: Fetch and clean data
         env:
           OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           STATES: ${{ github.event.inputs.states || vars.STATES || 'ri' }}
         run: node scripts/fetch.mjs
 

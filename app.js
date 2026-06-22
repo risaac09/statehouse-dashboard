@@ -210,8 +210,17 @@
     body.textContent = '';
     body.appendChild(el('h2', { id: 'detail-title', text: b.identifier }));
     body.appendChild(el('p', { class: 'plain', text: b.summary }));
-    body.appendChild(el('p', { class: 'note', text: b.summarySource === 'abstract'
-      ? 'Auto-summarized from the official abstract.' : 'No abstract available; showing the official title.' }));
+    var noteText = b.summarySource === 'plain-language'
+      ? 'Plain-language summary, edited for clarity. The official abstract is below, unchanged.'
+      : (b.summarySource === 'abstract'
+        ? 'Cleaned from the official abstract below.'
+        : 'No abstract available; showing the official title.');
+    body.appendChild(el('p', { class: 'note', text: noteText }));
+    if (b.officialAbstract) {
+      body.appendChild(el('p', { class: 'official-label', text: 'Official abstract' }));
+      body.appendChild(el('p', { class: 'official-title', text: b.officialAbstract }));
+    }
+    body.appendChild(el('p', { class: 'official-label', text: 'Official title' }));
     body.appendChild(el('p', { class: 'official-title', text: b.title }));
 
     var tags = el('div', { class: 'bill-meta' }, [
