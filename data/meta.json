@@ -1,6 +1,9 @@
 {
-  "updated": "2026-06-15T13:00:00.000Z",
+  "updated": "2026-06-22T15:52:29.584Z",
   "states": [
-    { "state": "ri", "jurisdiction": "Rhode Island" }
+    {
+      "state": "ri",
+      "jurisdiction": "Rhode Island"
+    }
   ]
 }
