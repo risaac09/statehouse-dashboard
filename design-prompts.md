@@ -10,7 +10,7 @@ Claude designs against the real markup, not an invented one.
 
 ---
 
-## Prompt 1 — Master design direction
+## Prompt 1: Master design direction
 
 > You are designing the visual identity for **Statehouse Dashboard**, a free,
 > non-partisan web app that shows what a US state legislature is actually doing:
@@ -44,7 +44,7 @@ Claude designs against the real markup, not an invented one.
 
 ---
 
-## Prompt 2 — The bill card (the workhorse)
+## Prompt 2: The bill card (the workhorse)
 
 > Here is the current bill-card markup from the Statehouse Dashboard (paste the
 > `.bill` button block from `app.js` / the rendered HTML).
@@ -62,7 +62,7 @@ Claude designs against the real markup, not an invented one.
 
 ---
 
-## Prompt 3 — Bill detail drawer + vote visualization
+## Prompt 3: Bill detail drawer + vote visualization
 
 > Design the slide-in detail panel for a single bill in the Statehouse Dashboard
 > (paste the `openDetail` / `voteCard` functions for the data shape).
@@ -82,7 +82,7 @@ Claude designs against the real markup, not an invented one.
 
 ---
 
-## Prompt 4 — States, empties, and loading
+## Prompt 4: States, empties, and loading
 
 > For the Statehouse Dashboard, design the supporting states that civic tools
 > usually neglect:
@@ -99,7 +99,7 @@ Claude designs against the real markup, not an invented one.
 
 ---
 
-## Prompt 5 — The mark and the favicon
+## Prompt 5: The mark and the favicon
 
 > Design a simple, flat logo mark for "Statehouse Dashboard" as inline SVG: a
 > stylized statehouse dome or roofline reduced to a few strokes. It must read at
@@ -110,7 +110,7 @@ Claude designs against the real markup, not an invented one.
 
 ---
 
-## Prompt 6 — Mobile
+## Prompt 6: Mobile
 
 > Take the Statehouse Dashboard dashboard view and design the sub-560px mobile
 > layout: stacked header with full-width state picker, horizontally scrollable

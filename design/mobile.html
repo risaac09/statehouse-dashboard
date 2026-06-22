@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Statehouse Dashboard — mobile layout mockup</title>
+<title>Statehouse Dashboard: mobile layout mockup</title>
 <style>
 /* ============================================================
-   Statehouse Dashboard — mobile (sub-560px) mockup
+   Statehouse Dashboard: mobile (sub-560px) mockup
    Matches app.css tokens exactly. Ink/slate structure, warm
    parchment field, one terracotta accent. Serif summaries,
    mono for data. Party colors live only in vote data. Depth
@@ -83,7 +83,7 @@ body {
 .phone-col { display: flex; flex-direction: column; gap: 12px; align-items: center; }
 .phone-cap { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; opacity: 0.7; }
 
-/* phone bezel — a quiet device frame, no gradients/shadows */
+/* phone bezel: a quiet device frame, no gradients/shadows */
 .device {
   width: 390px;
   max-width: 92vw;
@@ -109,7 +109,7 @@ body {
 .screen-scroll { height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 
 /* ============================================================
-   APP STYLES — mobile (these are what port back into app.css
+   APP STYLES: mobile (these are what port back into app.css
    inside the @media (max-width: 560px) block + small tweaks)
    ============================================================ */
 
@@ -349,7 +349,7 @@ main { padding: 18px 0 40px; }
   color: var(--ink-soft); margin: 26px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 5px;
 }
 
-/* vote card — partisan story legible in under two seconds */
+/* vote card: partisan story legible in under two seconds */
 .vote-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; }
 .vote-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 4px; }
 .vote-motion { font-weight: 600; font-size: 0.92rem; }
@@ -383,13 +383,13 @@ main { padding: 18px 0 40px; }
 <body>
 
 <div class="stage-head">
-  <h1>Statehouse Dashboard — mobile (sub-560px)</h1>
+  <h1>Statehouse Dashboard: mobile (sub-560px)</h1>
   <p>Two phone-width viewports. Left frame: the feed (light). Right frame: the open detail sheet with a vote breakdown (dark). Each frame below it shows the opposite scheme so light and dark both appear. Stacked header, full-width state picker, horizontally scrollable topic chips, full-bleed cards, full-screen detail sheet. Touch targets at least 44px.</p>
 </div>
 
 <div class="phones">
 
-  <!-- ============ FEED — light ============ -->
+  <!-- ============ FEED: light ============ -->
   <div class="phone-col">
     <span class="phone-cap">FEED · LIGHT</span>
     <div class="device">
@@ -414,9 +414,9 @@ main { padding: 18px 0 40px; }
               <label class="field">
                 <span class="field-label">State</span>
                 <select aria-label="Choose a state">
-                  <option>California — 2025–26 session</option>
-                  <option>Texas — 2025 session</option>
-                  <option>New York — 2025–26 session</option>
+                  <option>California: 2025–26 session</option>
+                  <option>Texas: 2025 session</option>
+                  <option>New York: 2025–26 session</option>
                 </select>
               </label>
             </div>
@@ -546,8 +546,8 @@ main { padding: 18px 0 40px; }
               <label class="field">
                 <span class="field-label">State</span>
                 <select aria-label="Choose a state">
-                  <option>California — 2025–26 session</option>
-                  <option>Texas — 2025 session</option>
+                  <option>California: 2025–26 session</option>
+                  <option>Texas: 2025 session</option>
                 </select>
               </label>
             </div>
@@ -615,7 +615,7 @@ main { padding: 18px 0 40px; }
     </div>
   </div>
 
-  <!-- ============ DETAIL SHEET — dark ============ -->
+  <!-- ============ DETAIL SHEET: dark ============ -->
   <div class="phone-col">
     <span class="phone-cap">DETAIL SHEET · DARK</span>
     <div class="device">
