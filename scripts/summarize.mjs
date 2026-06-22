@@ -9,8 +9,8 @@
 // the dataset and shown in the UI, so the cleaned sentence never hides the source.
 
 const ENDPOINT = 'https://api.anthropic.com/v1/messages';
-const MODEL_DRAFT = 'claude-haiku-4-5-20251001';   // the rewrite: cheap, constrained
-const MODEL_VERIFY = 'claude-sonnet-4-6';           // the gate: stronger judgment for faithfulness
+const MODEL_DRAFT = 'claude-sonnet-4-6';   // the rewrite: makes minimal, faithful repairs (Haiku tends to restructure)
+const MODEL_VERIFY = 'claude-sonnet-4-6';  // the gate: strict faithfulness check
 
 const SYSTEM = [
   'You copy-edit official Rhode Island legislative bill abstracts into plain language for a public civic dashboard. Accuracy outranks fluency: a reader must never be misled. This is copy-editing, not paraphrasing.',
@@ -37,8 +37,8 @@ const SYSTEM = [
 // always faithful to the source.
 const VERIFY_SYSTEM = [
   'You audit a plain-language rewrite of an official Rhode Island bill abstract. A public dashboard will show the rewrite, so a reader must never be misled.',
-  'The rewrite PASSES only if it changed nothing but grammar and clarity: fixing agreement, attaching a dangling clause with a relative pronoun, splitting a run-on, or removing legalese filler.',
-  'It FAILS if it adds, drops, reverses, or shifts the meaning of ANY fact, scope, actor, mechanism, qualifier, or relationship, OR if it resolves a genuine ambiguity in the abstract by choosing one reading.',
+  'The rewrite PASSES if it changed nothing but grammar and clarity. Allowed repairs: fixing agreement; splitting a run-on; removing legalese filler; and attaching a dangling clause to its NEAREST NATURAL antecedent by inserting a relative pronoun (who, that, which) or a conjunction. Example of an allowed repair: turning "registrants of X can register their vehicles" into "registrants of X who can register their vehicles".',
+  'It FAILS if it adds, drops, reverses, or shifts the meaning of ANY fact, scope, actor, mechanism, qualifier, or relationship; swaps a near-synonym that changes meaning; OR REASSIGNS what a clause refers to. Example of a failure: changing "locations of registrants ... can register" into "locations WHERE ... register" (this moves the antecedent from the registrants to the locations).',
   'Reply with EXACTLY one token and nothing else: FAITHFUL if it passes, or NOT_FAITHFUL if it fails. When in doubt, answer NOT_FAITHFUL.',
 ].join('\n');
 
