@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-06-30T15:36:04.850Z",
+  "updated": "2026-07-01T15:48:50.026Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -12019,13 +12019,11 @@
       "id": "ocd-bill/e0e5606c-7ac1-4c75-aeb5-c3d1e692a858",
       "identifier": "HB 7989",
       "title": "AN ACT RELATING TO MOTOR AND OTHER VEHICLES -- REGISTRATION OF VEHICLES",
-      "summary": "Exempts certain vehicles that are not manufactured with the proper front plate registration bracket from the requirement that motor vehicles display a front facing registration plate.",
+      "summary": "Exempts certain vehicles that are not manufactured with the proper front plate registration bracket from the requirement to display a front facing registration plate.",
       "summarySource": "plain-language",
       "officialAbstract": "Exempts certain vehicles that are not manufactured with the proper front plate registration bracket from the requirement that motor vehicles display a front facing registration plate.",
-      "subjects": [
-        "Transportation"
-      ],
-      "subjectsDerived": true,
+      "subjects": [],
+      "subjectsDerived": false,
       "chamber": "House",
       "status": "Active",
       "latestActionDate": "2026-06-26",
@@ -16213,7 +16211,7 @@
       "id": "ocd-bill/cd4deaa3-9aaf-40c0-aa31-54dbe4bdf9d8",
       "identifier": "SB 3115",
       "title": "AN ACT RELATING TO INSURANCE -- UNFAIR CLAIMS SETTLEMENT PRACTICES ACT",
-      "summary": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
+      "summary": "Raises the percentage threshold for declaring a vehicle a total loss from eighty percent (80%) to eighty-five percent (85%).",
       "summarySource": "plain-language",
       "officialAbstract": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
       "subjects": [],
@@ -21815,8 +21813,8 @@
       "id": "ocd-bill/c1486675-5048-45f1-9c47-ee928346b89e",
       "identifier": "HB 8625",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO ISSUE NOT TO EXCEED $25,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE PURCHASE AND/OR ACQUISITION OF LAND AND BUILDINGS, CONSTRUCTION, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, LANDSCAPING, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE CITY",
-      "summary": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnis…",
-      "summarySource": "abstract",
+      "summary": "Authorizes Cranston to issue no more than $25,000,000 in obligation bonds, notes, and evidences of indebtedness to finance the purchase and/or acquisition of land and buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, and equipping.",
+      "summarySource": "plain-language",
       "officialAbstract": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, equipping",
       "subjects": [
         "Education"
