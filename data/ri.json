@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-07-06T16:27:25.889Z",
+  "updated": "2026-07-07T15:47:36.288Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -4991,8 +4991,8 @@
       "id": "ocd-bill/c1486675-5048-45f1-9c47-ee928346b89e",
       "identifier": "HB 8625",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO ISSUE NOT TO EXCEED $25,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE PURCHASE AND/OR ACQUISITION OF LAND AND BUILDINGS, CONSTRUCTION, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, LANDSCAPING, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE CITY",
-      "summary": "Authorizes Cranston to issue no more than $25,000,000 in obligation bonds, notes, and evidences of indebtedness to finance the purchase and/or acquisition of land and buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, and equipping.",
-      "summarySource": "plain-language",
+      "summary": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnis…",
+      "summarySource": "abstract",
       "officialAbstract": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, equipping",
       "subjects": [
         "Education"
@@ -11719,11 +11719,13 @@
       "id": "ocd-bill/e0e5606c-7ac1-4c75-aeb5-c3d1e692a858",
       "identifier": "HB 7989",
       "title": "AN ACT RELATING TO MOTOR AND OTHER VEHICLES -- REGISTRATION OF VEHICLES",
-      "summary": "Exempts certain vehicles that are not manufactured with the proper front plate registration bracket from the requirement to display a front facing registration plate.",
+      "summary": "Exempts certain vehicles that are not manufactured with the proper front plate registration bracket from the requirement that motor vehicles display a front facing registration plate.",
       "summarySource": "plain-language",
       "officialAbstract": "Exempts certain vehicles that are not manufactured with the proper front plate registration bracket from the requirement that motor vehicles display a front facing registration plate.",
-      "subjects": [],
-      "subjectsDerived": false,
+      "subjects": [
+        "Transportation"
+      ],
+      "subjectsDerived": true,
       "chamber": "House",
       "status": "Active",
       "latestActionDate": "2026-06-26",
@@ -11846,9 +11848,14 @@
           },
           "byParty": {
             "U": {
-              "yes": 63,
+              "yes": 62,
               "no": 9,
               "other": 3
+            },
+            "D": {
+              "yes": 1,
+              "no": 0,
+              "other": 0
             }
           },
           "members": [
@@ -11899,7 +11906,7 @@
             },
             {
               "name": "Blazejewski",
-              "party": "U",
+              "party": "D",
               "option": "yes"
             },
             {
@@ -19873,8 +19880,8 @@
       "id": "ocd-bill/a2111ee4-4365-48c4-ae1a-6ffcab1b1e4f",
       "identifier": "SB 3355",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO ISSUE NOT TO EXCEED $25,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE PURCHASE AND/OR ACQUISITION OF LAND AND BUILDINGS, CONSTRUCTION, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, LANDSCAPING, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE CITY",
-      "summary": "Authorizes Cranston to issue no more than $25,000,000 in obligation bonds, notes, and evidences of indebtedness to finance the purchase and/or acquisition of land and buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, and equipping.",
-      "summarySource": "plain-language",
+      "summary": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnis…",
+      "summarySource": "abstract",
       "officialAbstract": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, equipping",
       "subjects": [
         "Education"
@@ -20191,11 +20198,6 @@
             }
           },
           "members": [
-            {
-              "name": "Voas",
-              "party": "U",
-              "option": "yes"
-            },
             {
               "name": "Abney",
               "party": "U",
@@ -20563,6 +20565,11 @@
             },
             {
               "name": "Tanzi",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Voas",
               "party": "U",
               "option": "yes"
             }
@@ -21273,8 +21280,8 @@
       "id": "ocd-bill/c1486675-5048-45f1-9c47-ee928346b89e",
       "identifier": "HB 8625",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO ISSUE NOT TO EXCEED $25,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE PURCHASE AND/OR ACQUISITION OF LAND AND BUILDINGS, CONSTRUCTION, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, LANDSCAPING, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE CITY",
-      "summary": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnis…",
-      "summarySource": "abstract",
+      "summary": "Authorizes Cranston to issue no more than $25,000,000 in obligation bonds, notes, and evidences of indebtedness to finance the purchase and/or acquisition of land and buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, and equipping.",
+      "summarySource": "plain-language",
       "officialAbstract": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, equipping",
       "subjects": [
         "Education"
