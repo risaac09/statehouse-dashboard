@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-07-16T15:09:31.687Z",
+  "updated": "2026-07-17T14:49:06.014Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -8594,7 +8594,7 @@
       "id": "ocd-bill/29b3b5a1-42bd-4bb2-bd3a-d066fd2b43c7",
       "identifier": "SB 3243",
       "title": "AN ACT AUTHORIZING THE TOWN OF PORTSMOUTH TO ISSUE NOT TO EXCEED $41,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE CONSTRUCTION, ADDITIONS, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE TOWN",
-      "summary": "Authorizes the Town of Portsmouth to issue bonds and notes in an amount not exceeding $41,000,000 to finance construction, additions, renovation, improvement, alteration, repair, furnishing, and equipping of schools and school facilities throughout the town.",
+      "summary": "Authorizes the Town of Portsmouth to issue bonds and notes in an amount not exceeding $41,000,000 to finance the construction, additions, renovation, improvement, alteration, repair, furnishing, and equipping of schools and school facilities throughout the town.",
       "summarySource": "plain-language",
       "officialAbstract": "Authorizes the Town of Portsmouth to issue bonds and notes in amount not exceeding $41,000,000 to finance construction, additions, renovation, improvement, alteration, repair, furnishing and equipping of schools and school facilities throughout the town.",
       "subjects": [
@@ -9329,7 +9329,7 @@
       "id": "ocd-bill/cd4deaa3-9aaf-40c0-aa31-54dbe4bdf9d8",
       "identifier": "SB 3115",
       "title": "AN ACT RELATING TO INSURANCE -- UNFAIR CLAIMS SETTLEMENT PRACTICES ACT",
-      "summary": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
+      "summary": "Raises the percentage for declaring a vehicle a total loss from eighty percent (80%) to eighty-five percent (85%).",
       "summarySource": "plain-language",
       "officialAbstract": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
       "subjects": [],
@@ -13016,7 +13016,7 @@
       "id": "ocd-bill/29b3b5a1-42bd-4bb2-bd3a-d066fd2b43c7",
       "identifier": "SB 3243",
       "title": "AN ACT AUTHORIZING THE TOWN OF PORTSMOUTH TO ISSUE NOT TO EXCEED $41,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE CONSTRUCTION, ADDITIONS, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE TOWN",
-      "summary": "Authorizes the Town of Portsmouth to issue bonds and notes in an amount not exceeding $41,000,000 to finance the construction, additions, renovation, improvement, alteration, repair, furnishing, and equipping of schools and school facilities throughout the town.",
+      "summary": "Authorizes the Town of Portsmouth to issue bonds and notes in an amount not exceeding $41,000,000 to finance construction, additions, renovation, improvement, alteration, repair, furnishing, and equipping of schools and school facilities throughout the town.",
       "summarySource": "plain-language",
       "officialAbstract": "Authorizes the Town of Portsmouth to issue bonds and notes in amount not exceeding $41,000,000 to finance construction, additions, renovation, improvement, alteration, repair, furnishing and equipping of schools and school facilities throughout the town.",
       "subjects": [
@@ -15696,7 +15696,7 @@
       "id": "ocd-bill/0f81953d-16d3-4c86-8bb9-6e4f557ea9e1",
       "identifier": "HB 7866",
       "title": "AN ACT RELATING TO INSURANCE -- UNFAIR CLAIMS SETTLEMENT PRACTICES ACT",
-      "summary": "Raises the percentage threshold for declaring a vehicle a total loss from eighty percent (80%) to eighty-five percent (85%).",
+      "summary": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
       "summarySource": "plain-language",
       "officialAbstract": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
       "subjects": [],
@@ -20383,8 +20383,8 @@
       "id": "ocd-bill/a2111ee4-4365-48c4-ae1a-6ffcab1b1e4f",
       "identifier": "SB 3355",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO ISSUE NOT TO EXCEED $25,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE PURCHASE AND/OR ACQUISITION OF LAND AND BUILDINGS, CONSTRUCTION, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, LANDSCAPING, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE CITY",
-      "summary": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnis…",
-      "summarySource": "abstract",
+      "summary": "Authorizes Cranston to issue no more than $25,000,000 in obligation bonds, notes, and evidences of indebtedness to finance the purchase and/or acquisition of land and buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, and equipping.",
+      "summarySource": "plain-language",
       "officialAbstract": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, equipping",
       "subjects": [
         "Education"
