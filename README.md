@@ -62,3 +62,7 @@ python3 -m http.server 8000   # then open http://localhost:8000
 ## Notes
 
 Summaries are generated from official text and may simplify or miss nuance. Always check the linked official record before acting on anything.
+
+## License
+
+MIT, see `LICENSE`.
