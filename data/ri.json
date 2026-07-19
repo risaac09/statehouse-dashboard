@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-07-17T14:49:06.014Z",
+  "updated": "2026-07-19T14:27:14.513Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -124,7 +124,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -139,7 +139,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -480,7 +480,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -619,7 +619,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -634,7 +634,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -975,7 +975,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -1085,7 +1085,7 @@
             "D": {
               "yes": 49,
               "no": 0,
-              "other": 14
+              "other": 13
             },
             "I": {
               "yes": 0,
@@ -1100,7 +1100,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -1441,7 +1441,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -1580,7 +1580,7 @@
             "D": {
               "yes": 57,
               "no": 0,
-              "other": 6
+              "other": 5
             },
             "I": {
               "yes": 1,
@@ -1595,7 +1595,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -1936,7 +1936,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -2294,7 +2294,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -2309,7 +2309,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -2650,7 +2650,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -2787,7 +2787,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -2802,7 +2802,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -3143,7 +3143,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -3294,7 +3294,7 @@
             "D": {
               "yes": 59,
               "no": 0,
-              "other": 4
+              "other": 3
             },
             "I": {
               "yes": 1,
@@ -3309,7 +3309,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -3650,7 +3650,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -3787,7 +3787,7 @@
             "D": {
               "yes": 57,
               "no": 0,
-              "other": 6
+              "other": 5
             },
             "I": {
               "yes": 1,
@@ -3802,7 +3802,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -4143,7 +4143,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -4503,7 +4503,7 @@
             "D": {
               "yes": 55,
               "no": 0,
-              "other": 8
+              "other": 7
             },
             "I": {
               "yes": 1,
@@ -4518,7 +4518,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -4859,7 +4859,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -5219,7 +5219,7 @@
             "D": {
               "yes": 58,
               "no": 0,
-              "other": 5
+              "other": 4
             },
             "I": {
               "yes": 1,
@@ -5234,7 +5234,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -5575,7 +5575,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -5733,7 +5733,7 @@
             "D": {
               "yes": 58,
               "no": 0,
-              "other": 5
+              "other": 4
             },
             "I": {
               "yes": 1,
@@ -5748,7 +5748,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -6089,7 +6089,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -6226,7 +6226,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -6241,7 +6241,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -6582,7 +6582,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -6733,7 +6733,7 @@
             "D": {
               "yes": 55,
               "no": 0,
-              "other": 8
+              "other": 7
             },
             "I": {
               "yes": 1,
@@ -6748,7 +6748,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -7089,7 +7089,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -7469,7 +7469,7 @@
             "D": {
               "yes": 59,
               "no": 0,
-              "other": 4
+              "other": 3
             },
             "I": {
               "yes": 1,
@@ -7484,7 +7484,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -7825,7 +7825,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -7971,7 +7971,7 @@
             "D": {
               "yes": 46,
               "no": 0,
-              "other": 17
+              "other": 16
             },
             "I": {
               "yes": 0,
@@ -7986,7 +7986,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -8327,7 +8327,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -8594,7 +8594,7 @@
       "id": "ocd-bill/29b3b5a1-42bd-4bb2-bd3a-d066fd2b43c7",
       "identifier": "SB 3243",
       "title": "AN ACT AUTHORIZING THE TOWN OF PORTSMOUTH TO ISSUE NOT TO EXCEED $41,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE CONSTRUCTION, ADDITIONS, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE TOWN",
-      "summary": "Authorizes the Town of Portsmouth to issue bonds and notes in an amount not exceeding $41,000,000 to finance the construction, additions, renovation, improvement, alteration, repair, furnishing, and equipping of schools and school facilities throughout the town.",
+      "summary": "Authorizes the Town of Portsmouth to issue bonds and notes in an amount not exceeding $41,000,000 to finance construction, additions, renovation, improvement, alteration, repair, furnishing, and equipping of schools and school facilities throughout the town.",
       "summarySource": "plain-language",
       "officialAbstract": "Authorizes the Town of Portsmouth to issue bonds and notes in amount not exceeding $41,000,000 to finance construction, additions, renovation, improvement, alteration, repair, furnishing and equipping of schools and school facilities throughout the town.",
       "subjects": [
@@ -8706,7 +8706,7 @@
             "D": {
               "yes": 58,
               "no": 0,
-              "other": 5
+              "other": 4
             },
             "I": {
               "yes": 1,
@@ -8721,7 +8721,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -9062,7 +9062,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -9329,7 +9329,7 @@
       "id": "ocd-bill/cd4deaa3-9aaf-40c0-aa31-54dbe4bdf9d8",
       "identifier": "SB 3115",
       "title": "AN ACT RELATING TO INSURANCE -- UNFAIR CLAIMS SETTLEMENT PRACTICES ACT",
-      "summary": "Raises the percentage for declaring a vehicle a total loss from eighty percent (80%) to eighty-five percent (85%).",
+      "summary": "Raises the percentage threshold for declaring a vehicle a total loss from eighty percent (80%) to eighty-five percent (85%).",
       "summarySource": "plain-language",
       "officialAbstract": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
       "subjects": [],
@@ -9451,7 +9451,7 @@
             "D": {
               "yes": 59,
               "no": 0,
-              "other": 4
+              "other": 3
             },
             "I": {
               "yes": 1,
@@ -9466,7 +9466,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -9807,7 +9807,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -10165,7 +10165,7 @@
             "D": {
               "yes": 61,
               "no": 0,
-              "other": 2
+              "other": 1
             },
             "I": {
               "yes": 1,
@@ -10180,7 +10180,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -10521,7 +10521,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -10879,7 +10879,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -10894,7 +10894,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -11235,7 +11235,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -11617,7 +11617,7 @@
             "D": {
               "yes": 58,
               "no": 0,
-              "other": 5
+              "other": 4
             },
             "I": {
               "yes": 1,
@@ -11632,7 +11632,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -11973,7 +11973,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -12614,7 +12614,7 @@
             "D": {
               "yes": 49,
               "no": 0,
-              "other": 14
+              "other": 13
             },
             "I": {
               "yes": 0,
@@ -12629,7 +12629,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -12970,7 +12970,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -13128,7 +13128,7 @@
             "D": {
               "yes": 58,
               "no": 0,
-              "other": 5
+              "other": 4
             },
             "I": {
               "yes": 1,
@@ -13143,7 +13143,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -13484,7 +13484,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -13842,7 +13842,7 @@
             "D": {
               "yes": 57,
               "no": 0,
-              "other": 6
+              "other": 5
             },
             "I": {
               "yes": 1,
@@ -13857,7 +13857,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -14198,7 +14198,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -14801,7 +14801,7 @@
             "D": {
               "yes": 58,
               "no": 0,
-              "other": 5
+              "other": 4
             },
             "I": {
               "yes": 1,
@@ -14816,7 +14816,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -15157,7 +15157,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -15294,7 +15294,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -15309,7 +15309,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -15650,7 +15650,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -15696,7 +15696,7 @@
       "id": "ocd-bill/0f81953d-16d3-4c86-8bb9-6e4f557ea9e1",
       "identifier": "HB 7866",
       "title": "AN ACT RELATING TO INSURANCE -- UNFAIR CLAIMS SETTLEMENT PRACTICES ACT",
-      "summary": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
+      "summary": "Raises the percentage threshold for declaring a vehicle a total loss from eighty percent (80%) to eighty-five percent (85%).",
       "summarySource": "plain-language",
       "officialAbstract": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
       "subjects": [],
@@ -15809,7 +15809,7 @@
             "D": {
               "yes": 59,
               "no": 0,
-              "other": 4
+              "other": 3
             },
             "I": {
               "yes": 1,
@@ -15824,7 +15824,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -16165,7 +16165,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -16211,7 +16211,7 @@
       "id": "ocd-bill/cd4deaa3-9aaf-40c0-aa31-54dbe4bdf9d8",
       "identifier": "SB 3115",
       "title": "AN ACT RELATING TO INSURANCE -- UNFAIR CLAIMS SETTLEMENT PRACTICES ACT",
-      "summary": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
+      "summary": "Raises the percentage threshold for declaring a vehicle a total loss from eighty percent (80%) to eighty-five percent (85%).",
       "summarySource": "plain-language",
       "officialAbstract": "Raises the percentage from eighty percent (80%) to eighty-five percent (85%) regarding declaring a vehicle a total loss.",
       "subjects": [],
@@ -16333,7 +16333,7 @@
             "D": {
               "yes": 59,
               "no": 0,
-              "other": 4
+              "other": 3
             },
             "I": {
               "yes": 1,
@@ -16348,7 +16348,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -16689,7 +16689,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -17047,7 +17047,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -17062,7 +17062,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -17403,7 +17403,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -17549,7 +17549,7 @@
             "D": {
               "yes": 46,
               "no": 0,
-              "other": 17
+              "other": 16
             },
             "I": {
               "yes": 0,
@@ -17564,7 +17564,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -17905,7 +17905,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -18263,7 +18263,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -18278,7 +18278,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -18619,7 +18619,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -18758,7 +18758,7 @@
             "D": {
               "yes": 57,
               "no": 0,
-              "other": 6
+              "other": 5
             },
             "I": {
               "yes": 1,
@@ -18773,7 +18773,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -19114,7 +19114,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -19486,7 +19486,7 @@
             "D": {
               "yes": 54,
               "no": 0,
-              "other": 9
+              "other": 8
             },
             "I": {
               "yes": 1,
@@ -19501,7 +19501,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -19842,7 +19842,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -19981,7 +19981,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -19996,7 +19996,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -20337,7 +20337,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -20383,8 +20383,8 @@
       "id": "ocd-bill/a2111ee4-4365-48c4-ae1a-6ffcab1b1e4f",
       "identifier": "SB 3355",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO ISSUE NOT TO EXCEED $25,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE PURCHASE AND/OR ACQUISITION OF LAND AND BUILDINGS, CONSTRUCTION, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, LANDSCAPING, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE CITY",
-      "summary": "Authorizes Cranston to issue no more than $25,000,000 in obligation bonds, notes, and evidences of indebtedness to finance the purchase and/or acquisition of land and buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, and equipping.",
-      "summarySource": "plain-language",
+      "summary": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnis…",
+      "summarySource": "abstract",
       "officialAbstract": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, equipping",
       "subjects": [
         "Education"
@@ -20697,7 +20697,7 @@
             "D": {
               "yes": 57,
               "no": 0,
-              "other": 6
+              "other": 5
             },
             "I": {
               "yes": 1,
@@ -20712,7 +20712,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -21053,7 +21053,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -21190,7 +21190,7 @@
             "D": {
               "yes": 57,
               "no": 0,
-              "other": 6
+              "other": 5
             },
             "I": {
               "yes": 1,
@@ -21205,7 +21205,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -21546,7 +21546,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -21906,7 +21906,7 @@
             "D": {
               "yes": 58,
               "no": 0,
-              "other": 5
+              "other": 4
             },
             "I": {
               "yes": 1,
@@ -21921,7 +21921,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -22262,7 +22262,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -22399,7 +22399,7 @@
             "D": {
               "yes": 60,
               "no": 0,
-              "other": 3
+              "other": 2
             },
             "I": {
               "yes": 1,
@@ -22414,7 +22414,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -22755,7 +22755,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -23115,7 +23115,7 @@
             "D": {
               "yes": 55,
               "no": 0,
-              "other": 8
+              "other": 7
             },
             "I": {
               "yes": 1,
@@ -23130,7 +23130,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -23471,7 +23471,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -23610,7 +23610,7 @@
             "D": {
               "yes": 55,
               "no": 0,
-              "other": 8
+              "other": 7
             },
             "I": {
               "yes": 1,
@@ -23625,7 +23625,7 @@
             "U": {
               "yes": 1,
               "no": 0,
-              "other": 0
+              "other": 1
             }
           },
           "members": [
@@ -23966,7 +23966,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
