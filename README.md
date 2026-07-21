@@ -63,6 +63,10 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 Summaries are generated from official text and may simplify or miss nuance. Always check the linked official record before acting on anything.
 
+## Contributing
+
+Forks welcome. Pull requests are generally not reviewed: this is a solo-maintained dashboard, and pointing it at your own state is a fork away (set the state codes in `scripts/fetch.mjs` and the workflow).
+
 ## License
 
 MIT, see `LICENSE`.
