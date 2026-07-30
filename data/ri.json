@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-07-28T15:26:38.095Z",
+  "updated": "2026-07-30T15:16:50.248Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -20383,8 +20383,8 @@
       "id": "ocd-bill/a2111ee4-4365-48c4-ae1a-6ffcab1b1e4f",
       "identifier": "SB 3355",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO ISSUE NOT TO EXCEED $25,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE PURCHASE AND/OR ACQUISITION OF LAND AND BUILDINGS, CONSTRUCTION, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, LANDSCAPING, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE CITY",
-      "summary": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnis…",
-      "summarySource": "abstract",
+      "summary": "Authorizes Cranston to issue no more than $25,000,000 in obligation bonds, notes, and evidences of indebtedness to finance the purchase and/or acquisition of land and buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, and equipping.",
+      "summarySource": "plain-language",
       "officialAbstract": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, equipping",
       "subjects": [
         "Education"
@@ -22308,8 +22308,8 @@
       "id": "ocd-bill/33256c5a-53d2-4ffa-b401-d271da7220a4",
       "identifier": "HB 8621",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO FINANCE THE ACQUISITION, DEMOLITION, CONSTRUCTION, IMPROVEMENT, RENOVATION, REPAIR, ALTERATION, FURNISHING AND EQUIPPING OF PUBLIC BUILDINGS IN THE CITY BY THE ISSUANCE OF NOT MORE THAN $2,000,000 GENERAL OBLIGATION BONDS AND NOTES THEREFOR",
-      "summary": "Authorizes Cranston to issue not more than $2,000,000 general obligation bonds and temporary notes for the acquisition, demolition, construction, improvement, renovation, repair, alteration, furnishing and equipping of public buildings in t…",
-      "summarySource": "abstract",
+      "summary": "Authorizes Cranston to issue not more than $2,000,000 in general obligation bonds and temporary notes for the acquisition, demolition, construction, improvement, renovation, repair, alteration, furnishing, and equipping of public buildings in the city.",
+      "summarySource": "plain-language",
       "officialAbstract": "Authorizes Cranston to issue not more than $2,000,000 general obligation bonds and temporary notes for the acquisition, demolition, construction, improvement, renovation, repair, alteration, furnishing and equipping of public buildings in the city.",
       "subjects": [],
       "subjectsDerived": false,
