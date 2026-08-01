@@ -18,24 +18,26 @@ No framework, no build step. Static HTML/CSS/JS on GitHub Pages, fed by a daily 
 ## The data pipeline (the interesting part)
 
 ```
-OpenStates API  →  scripts/fetch.mjs  →  scripts/normalize.mjs  →  data/<state>.json  →  static page
-   (gather)            (request)              (clean)                  (store)            (present)
+OpenStates API  →  scripts/fetch.mjs  →  scripts/normalize.mjs  →  scripts/summarize.mjs  →  data/<state>.json  →  static page
+   (gather)            (request)              (clean)               (plain language)           (store)            (present)
 ```
 
 - **Gather + request** (`scripts/fetch.mjs`): pulls recent bills for the configured state(s), with abstracts, actions, sponsors, and votes. Handles rate limits and pagination.
-- **Clean** (`scripts/normalize.mjs`): pure, unit-tested functions that flatten the messy API shape into one consistent record per bill, derive a human status, tally party-level vote splits, and generate the plain-language summary.
+- **Clean** (`scripts/normalize.mjs`): pure, unit-tested functions that flatten the messy API shape into one consistent record per bill, derive a human status, tally party-level vote splits, and generate the fallback plain-language summary.
+- **Plain language** (`scripts/summarize.mjs`): optional, runs only when an `ANTHROPIC_API_KEY` is set. Rewrites each official abstract into one plain sentence behind a binary faithfulness gate: a second check compares the rewrite to the abstract, and anything short of a clean pass falls back to the deterministic cleanup in `normalize.mjs`. Copy-editing, never free paraphrase, and the official abstract ships verbatim in every record regardless.
 - **Store**: one flat JSON file per state in `data/`, committed to the repo. The page reads these directly, so it loads instantly and needs no live backend.
 
 Doing the fetch in CI (not the browser) keeps the API key secret, avoids CORS, and means the page is just static files.
 
 ## Getting live data
 
-The repo ships with **sample Rhode Island data** so the dashboard works immediately. To pull real data:
+The repo carries a **committed live snapshot** of Rhode Island data (`data/ri.json` and `data/meta.json`, refreshed daily by the Action), so the dashboard works immediately. To pull data yourself:
 
 1. Get a free OpenStates API key: https://open.pluralpolicy.com/accounts/profile/
 2. In the repo: **Settings → Secrets and variables → Actions** → add a secret named `OPENSTATES_API_KEY`.
-3. (Optional) Add a repository **variable** `STATES` with the codes you want, e.g. `ri ma ct`.
-4. Run the **Refresh legislative data** workflow (Actions tab → Run workflow), or wait for the daily run.
+3. (Optional) Add a secret named `ANTHROPIC_API_KEY` to enable the faithfulness-gated plain-language summaries; without it, summaries come from the deterministic cleanup in `normalize.mjs`.
+4. (Optional) Add a repository **variable** `STATES` with the codes you want, e.g. `ri ma ct`.
+5. Run the **Refresh legislative data** workflow (Actions tab → Run workflow), or wait for the daily run.
 
 To add your own state, just include its two-letter code. The UI picks up whatever JSON files exist.
 
@@ -54,7 +56,6 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 ## Possible next steps
 
-- LLM-written summaries (richer than the heuristic) via an enrichment step in CI.
 - Member profiles: voting record and attendance per legislator.
 - Email/RSS alerts when a followed topic moves.
 - Federal (US Congress) mode via the Congress.gov API.
