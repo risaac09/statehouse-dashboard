@@ -44,7 +44,7 @@ The repo also serves as a portfolio demonstration piece. Who it is shown to, and
 
 ## Where it goes (strategic)
 
-Tier: none. A public app outside the personal stack; it is absent from the stack-data tier registry and is not among the ten phase-zero kit consumers listed in rubinstein-productions-toolkit/CLAUDE.md. No `.claude/` kit is deployed here and the repo has no CLAUDE.md.
+Tier: none. A public app outside the personal stack; it is absent from the stack-data tier registry. It is a phase-zero kit consumer: the `.claude/` kit is deployed here (one of the thirteen consumers listed in rubinstein-productions-toolkit/CLAUDE.md) and the repo carries its own CLAUDE.md with the routing section.
 
 Status of the README's "Possible next steps" list against the code: LLM-written summaries shipped (`scripts/summarize.mjs`, wired through fetch.mjs and refresh.yml). Member profiles, email/RSS alerts, and a federal Congress.gov mode remain unbuilt.
 
