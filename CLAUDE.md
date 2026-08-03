@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 ## What this repo is
-A public, non-partisan plain-language RI (and any configured state) legislative dashboard. Static HTML/CSS/JS on GitHub Pages, no framework, no build step. Read `README.md` first. The data pipeline diagram there (OpenStates API → `scripts/fetch.mjs` → `scripts/normalize.mjs` → `data/<state>.json` → static page) is the whole architecture. The full map is `docs/PRODUCT.md`. Live at https://risaac09.github.io/statehouse-dashboard/.
+A public, non-partisan plain-language RI (and any configured state) legislative dashboard. Static HTML/CSS/JS on GitHub Pages, no framework, no build step. Read `README.md` first. The data pipeline diagram there (OpenStates API → `scripts/fetch.mjs` → `scripts/normalize.mjs` → `scripts/summarize.mjs` → `data/<state>.json` → static page) is the whole architecture. The full map is `docs/PRODUCT.md`. Live at https://risaac09.github.io/statehouse-dashboard/.
 
 ## Self-running
 Daily GitHub Action (`refresh.yml`, 13:00 UTC) refreshes `data/` from OpenStates and rewrites abstracts through the faithfulness-gated Claude pipeline. This repo is a ring-2 keep: low-touch by design, near-zero attention needed once the `OPENSTATES_API_KEY` secret is set. A second, optional secret, `ANTHROPIC_API_KEY`, lets `scripts/summarize.mjs` rewrite bill abstracts into plain language; if it's absent, the pipeline falls back to the deterministic cleanup in `normalize.mjs`. Don't add scheduled maintenance beyond what the Action already does.
@@ -15,7 +15,7 @@ Daily GitHub Action (`refresh.yml`, 13:00 UTC) refreshes `data/` from OpenStates
 ## Working here
 - `scripts/normalize.mjs` is pure and unit-tested (`node scripts/test.mjs`); the data-cleaning logic lives there.
 - Changes to `index.html`/`app.js`/`app.css` deploy on push to main via Pages.
-- Sample RI data ships in the repo so the dashboard works with zero setup; real data needs the OpenStates key configured as a repo secret.
+- A committed live RI snapshot (`data/ri.json`, `data/meta.json`), refreshed daily by the Action, ships in the repo so the dashboard works with zero setup; pulling data yourself needs the OpenStates key configured as a repo secret.
 
 ## Routing
 - Tier: none, a self-running public-facing app, not a stack-data consumer. The spine is stack-data, Tier 1, the operational source of truth, a sibling clone (`../stack-data`).

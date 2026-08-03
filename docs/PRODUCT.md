@@ -15,13 +15,13 @@ Dataset shape, from `scripts/normalize.mjs`: the document carries `jurisdiction`
 
 ## How it runs (operational)
 
-`.github/workflows/refresh.yml` ("Refresh legislative data") does the standing work: daily cron at 13:00 UTC plus manual `workflow_dispatch` with a `states` input. It runs `node scripts/fetch.mjs`, then `node scripts/test.mjs`, then commits `data/` as statehouse-bot if anything changed. Secrets by name: `OPENSTATES_API_KEY` (required) and `ANTHROPIC_API_KEY` (optional, enables the plain-language summaries). The `STATES` repository variable or the dispatch input sets the state list; the default is `ri`. GitHub Pages deploys the branch on every push, so each data commit redeploys the live site.
+`.github/workflows/refresh.yml` ("Refresh legislative data") does the standing work: daily cron at 13:00 UTC plus manual `workflow_dispatch` with a `states` input. It runs `node scripts/fetch.mjs`, then `node scripts/test.mjs`, then commits `data/` as statehouse-bot if anything changed. On failure it opens a GitHub issue titled "Scheduled data refresh failed" (or comments on the open one) with the run link and first checks, because commits happen only on change and a silent failure would leave the dashboard serving stale data with no visible signal. Secrets by name: `OPENSTATES_API_KEY` (required) and `ANTHROPIC_API_KEY` (optional, enables the plain-language summaries). The `STATES` repository variable or the dispatch input sets the state list; the default is `ri`. GitHub Pages deploys the branch on every push, so each data commit redeploys the live site.
 
 Local commands (README.md): `node scripts/test.mjs`, `OPENSTATES_API_KEY=xxx node scripts/fetch.mjs ri` (the `PAGES` env tunes fetch depth, default 2), `python3 -m http.server 8000` to serve.
 
 One rule the README omits: when a shell file changes (`index.html`, `app.css`, `app.js`, fonts, `manifest.json`), bump the `CACHE` version string in `sw.js` or returning visitors keep the stale shell.
 
-Gap: no runbook exists for a failed refresh run; fetch.mjs retries once after a 20-second sleep on an OpenStates 429 and otherwise throws, but what a human should do when the Action fails is written nowhere. The answer would come from Isaac's practice and belongs in README.md or this doc.
+Failure handling: fetch.mjs retries once after a 20-second sleep on an OpenStates 429 and otherwise throws, and `refresh.yml` opens or comments on the "Scheduled data refresh failed" issue with the run link and first checks (the OpenStates key, then the fetch/normalize logs). Gap, narrowed: those first checks live only in the issue body inside `refresh.yml`; no standalone runbook records the fuller recovery steps, and that would come from Isaac's practice.
 
 ## Why it exists (intellectual)
 
@@ -44,7 +44,7 @@ The repo also serves as a portfolio demonstration piece. Who it is shown to, and
 
 ## Where it goes (strategic)
 
-Tier: none. A public app outside the personal stack; it is absent from the stack-data tier registry and is not among the ten phase-zero kit consumers listed in rubinstein-productions-toolkit/CLAUDE.md. No `.claude/` kit is deployed here and the repo has no CLAUDE.md.
+Tier: none. A public app outside the personal stack; it is absent from the stack-data tier registry. It is a phase-zero kit consumer: the `.claude/` kit is deployed here (listed among the consumers in rubinstein-productions-toolkit/CLAUDE.md, the roster of record) and the repo carries its own CLAUDE.md with the routing section.
 
 Status of the README's "Possible next steps" list against the code: LLM-written summaries shipped (`scripts/summarize.mjs`, wired through fetch.mjs and refresh.yml). Member profiles, email/RSS alerts, and a federal Congress.gov mode remain unbuilt.
 
@@ -53,7 +53,7 @@ Gap: no in-repo record says which of the remaining next steps Isaac still intend
 ## Workflows
 
 Automated:
-- **Refresh legislative data** (`.github/workflows/refresh.yml`). Trigger: daily cron 13:00 UTC, or manual dispatch with a `states` input. Does: `node scripts/fetch.mjs` (fetch, normalize, optional summarize, write `data/<state>.json`), `node scripts/test.mjs`, commit `data/` as statehouse-bot if changed. Secrets: `OPENSTATES_API_KEY`, `ANTHROPIC_API_KEY` (optional). Variable: `STATES`.
+- **Refresh legislative data** (`.github/workflows/refresh.yml`). Trigger: daily cron 13:00 UTC, or manual dispatch with a `states` input. Does: `node scripts/fetch.mjs` (fetch, normalize, optional summarize, write `data/<state>.json`), `node scripts/test.mjs`, commit `data/` as statehouse-bot if changed; on failure, open or comment on the "Scheduled data refresh failed" issue. Secrets: `OPENSTATES_API_KEY`, `ANTHROPIC_API_KEY` (optional). Variable: `STATES`.
 - **GitHub Pages deploy.** Trigger: any push to the default branch (branch-based Pages, `.nojekyll` present, no workflow file). Every daily data commit redeploys the live site.
 
 Manual:
@@ -67,8 +67,5 @@ Manual:
 
 For Isaac to rule on; nothing here has been changed by this doc.
 
-- README.md line 57 lists LLM-written summaries under "Possible next steps," but they shipped: scripts/summarize.mjs exists, fetch.mjs calls it, refresh.yml passes `ANTHROPIC_API_KEY`.
-- README.md's pipeline diagram and "Getting live data" section omit summarize.mjs and the `ANTHROPIC_API_KEY` secret; the documented secrets list is incomplete against refresh.yml.
-- README.md line 33 says the repo "ships with sample Rhode Island data"; `data/ri.json` has been live OpenStates data refreshed daily since 2026-06-22, so the sample banner app.js gates on never shows.
 - design-prompts.md Prompt 5 specifies slate `#1b3a4b` and warm gold `#e9c46a`; the shipped brand uses `#0F1729`/`#9A6B2F` (index.html) and `#16323d`/`#c79324` (manifest.json). The prompts predate the brand decision.
 - design-prompts.md Prompt 2 lists a status vocabulary that omits "Passed chamber" and "Active," both of which deriveStatus in normalize.mjs emits.
