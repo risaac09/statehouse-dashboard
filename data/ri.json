@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-08-03T15:48:53.331Z",
+  "updated": "2026-08-05T15:20:15.711Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -5126,8 +5126,8 @@
       "id": "ocd-bill/c1486675-5048-45f1-9c47-ee928346b89e",
       "identifier": "HB 8625",
       "title": "AN ACT AUTHORIZING THE CITY OF CRANSTON TO ISSUE NOT TO EXCEED $25,000,000 GENERAL OBLIGATION BONDS, NOTES AND OTHER EVIDENCES OF INDEBTEDNESS TO FINANCE THE PURCHASE AND/OR ACQUISITION OF LAND AND BUILDINGS, CONSTRUCTION, RENOVATION, IMPROVEMENT, ALTERATION, REPAIR, LANDSCAPING, FURNISHING AND EQUIPPING OF SCHOOLS AND SCHOOL FACILITIES THROUGHOUT THE CITY",
-      "summary": "Authorizes Cranston to issue no more than $25,000,000 in obligation bonds, notes, and evidences of indebtedness to finance the purchase and/or acquisition of land and buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, and equipping.",
-      "summarySource": "plain-language",
+      "summary": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnis…",
+      "summarySource": "abstract",
       "officialAbstract": "Authorizes Cranston to issue no more $25,000,000 obligation bonds, notes, evidences of indebtedness to finance the purchase and/or acquisition of land/buildings, construction, renovation, improvement, alteration, repair, landscaping, furnishing, equipping",
       "subjects": [
         "Education"
