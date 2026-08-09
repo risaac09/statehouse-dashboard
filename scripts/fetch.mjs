@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { buildDataset } from './normalize.mjs';
 import { plainLanguageSummary } from './summarize.mjs';
+import { fetchWithRetry } from './retry.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
@@ -48,7 +49,11 @@ async function fetchPage(jurisdiction, page) {
     params.append('include', inc);
   }
   const url = `${API}/bills?${params.toString()}`;
-  const res = await fetch(url, { headers: { 'X-API-Key': KEY } });
+  // Bounded retry (3 attempts, 2s/8s backoff) on 5xx and network errors; the
+  // daily refresh died on single 504s on 2026-08-04 and 2026-08-06. If every
+  // attempt fails, the !res.ok throw below still fires and the workflow fails
+  // with the last good data preserved.
+  const res = await fetchWithRetry(url, { headers: { 'X-API-Key': KEY } });
   if (res.status === 429) {
     // Rate limited. Back off and retry once.
     await sleep(20000);
