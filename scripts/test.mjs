@@ -4,6 +4,7 @@ import {
   partyCode, plainSummary, deriveStatus, deriveSubjects, normalizeVote, normalizeBill, buildDataset,
 } from './normalize.mjs';
 import { plainLanguageSummary } from './summarize.mjs';
+import { fetchWithRetry, RETRY_DELAYS_MS } from './retry.mjs';
 
 let passed = 0;
 const tests = [];
@@ -204,6 +205,42 @@ test('plainLanguageSummary binary gate: passes only on FAITHFUL, else falls back
   let c = 0; // verify call errors -> fall back rather than ship unaudited
   const verifyFails = async () => { c++; return c === 1 ? { ok: true, json: async () => ({ content: [{ text: 'A draft sentence here.' }] }) } : { ok: false, json: async () => ({}) }; };
   assert.equal(await plainLanguageSummary('abstract', 't', 'k', verifyFails), null);
+});
+
+test('fetchWithRetry retries 5xx with backoff and succeeds within bounds', async () => {
+  let calls = 0; const waits = [];
+  const fetchImpl = async () => { calls++; return calls < 3 ? { ok: false, status: 504 } : { ok: true, status: 200 }; };
+  const res = await fetchWithRetry('u', {}, { fetchImpl, sleepImpl: async (ms) => { waits.push(ms); } });
+  assert.equal(res.ok, true);
+  assert.equal(calls, 3);                   // two 504s absorbed, third attempt lands
+  assert.deepEqual(waits, RETRY_DELAYS_MS); // 2s then 8s between attempts
+});
+
+test('fetchWithRetry surfaces the final 5xx so the caller still fails loudly', async () => {
+  let calls = 0;
+  const fetchImpl = async () => { calls++; return { ok: false, status: 504 }; };
+  const res = await fetchWithRetry('u', {}, { fetchImpl, sleepImpl: async () => {} });
+  assert.equal(res.status, 504); // fetchPage's !res.ok throw still fires: workflow fails, stale data preserved
+  assert.equal(calls, 3);        // bounded: never a fourth attempt
+});
+
+test('fetchWithRetry retries network errors and rethrows the last one', async () => {
+  let calls = 0;
+  const fetchImpl = async () => { calls++; throw new Error('socket hang up'); };
+  await assert.rejects(
+    () => fetchWithRetry('u', {}, { fetchImpl, sleepImpl: async () => {} }),
+    /socket hang up/,
+  );
+  assert.equal(calls, 3);
+});
+
+test('fetchWithRetry passes non-5xx responses through on the first attempt', async () => {
+  let calls = 0;
+  const fetchImpl = async () => { calls++; return { ok: false, status: 429 }; };
+  const sleepImpl = async () => { throw new Error('should not sleep on a non-5xx'); };
+  const res = await fetchWithRetry('u', {}, { fetchImpl, sleepImpl });
+  assert.equal(res.status, 429); // 429 stays with fetchPage's own rate-limit handling
+  assert.equal(calls, 1);
 });
 
 (async () => {
