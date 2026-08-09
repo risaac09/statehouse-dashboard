@@ -4,7 +4,7 @@ A plain-language dashboard for what your **state legislature** is actually doing
 
 **Live:** https://risaac09.github.io/statehouse-dashboard/
 
-No framework, no build step. Static HTML/CSS/JS on GitHub Pages, fed by a daily GitHub Action that pulls and cleans data from [OpenStates](https://openstates.org).
+No framework, no build step. Static HTML/CSS/JS on GitHub Pages, fed by a daily GitHub Action that pulls and cleans data from [OpenStates, maintained by Plural](https://pluralpolicy.com/open/) (openstates.org now redirects there; the v3 API host is unchanged).
 
 ## What it shows
 
