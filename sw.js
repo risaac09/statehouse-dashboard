@@ -1,5 +1,5 @@
 /* Service worker: cache-first for the app shell, network-first for data. */
-var CACHE = 'statehouse-v8';
+var CACHE = 'statehouse-v9';
 var SHELL = ['./', 'index.html', 'app.css', 'app.js', 'manifest.json',
   'fonts/fraunces-latin.woff2', 'fonts/fraunces-latin-ext.woff2',
   'fonts/inter-latin.woff2', 'fonts/inter-latin-ext.woff2'];
