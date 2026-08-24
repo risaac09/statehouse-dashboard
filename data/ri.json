@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-08-23T13:35:57.266Z",
+  "updated": "2026-08-24T13:56:00.409Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -8486,6 +8486,131 @@
           },
           "members": [
             {
+              "name": "Nardone",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Newberry",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Noret",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "O'Brien",
+              "party": "U",
+              "option": "other"
+            },
+            {
+              "name": "Paplauskas",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Perez",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Phillips",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Place",
+              "party": "U",
+              "option": "other"
+            },
+            {
+              "name": "Potter",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Quattrocchi",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Read",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Roberts",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Sanchez",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Santucci",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Serpa",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "ShallcrossSmith",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Shanley",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Shekarchi",
+              "party": "U",
+              "option": "other"
+            },
+            {
+              "name": "Slater",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Solomon",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Speakman",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Spears",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Stewart",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Tanzi",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Voas",
+              "party": "U",
+              "option": "yes"
+            },
+            {
               "name": "Abney",
               "party": "U",
               "option": "yes"
@@ -8732,131 +8857,6 @@
             },
             {
               "name": "Mr. Speaker",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Nardone",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Newberry",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Noret",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "O'Brien",
-              "party": "U",
-              "option": "other"
-            },
-            {
-              "name": "Paplauskas",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Perez",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Phillips",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Place",
-              "party": "U",
-              "option": "other"
-            },
-            {
-              "name": "Potter",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Quattrocchi",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Read",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Roberts",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Sanchez",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Santucci",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Serpa",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "ShallcrossSmith",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Shanley",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Shekarchi",
-              "party": "U",
-              "option": "other"
-            },
-            {
-              "name": "Slater",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Solomon",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Speakman",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Spears",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Stewart",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Tanzi",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Voas",
               "party": "U",
               "option": "yes"
             }
@@ -12810,6 +12810,131 @@
           },
           "members": [
             {
+              "name": "Nardone",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Newberry",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Noret",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "O'Brien",
+              "party": "U",
+              "option": "other"
+            },
+            {
+              "name": "Paplauskas",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Perez",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Phillips",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Place",
+              "party": "U",
+              "option": "other"
+            },
+            {
+              "name": "Potter",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Quattrocchi",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Read",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Roberts",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Sanchez",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Santucci",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Serpa",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "ShallcrossSmith",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Shanley",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Shekarchi",
+              "party": "U",
+              "option": "other"
+            },
+            {
+              "name": "Slater",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Solomon",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Speakman",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Spears",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Stewart",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Tanzi",
+              "party": "U",
+              "option": "yes"
+            },
+            {
+              "name": "Voas",
+              "party": "U",
+              "option": "yes"
+            },
+            {
               "name": "Abney",
               "party": "U",
               "option": "yes"
@@ -13056,131 +13181,6 @@
             },
             {
               "name": "Mr. Speaker",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Nardone",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Newberry",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Noret",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "O'Brien",
-              "party": "U",
-              "option": "other"
-            },
-            {
-              "name": "Paplauskas",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Perez",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Phillips",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Place",
-              "party": "U",
-              "option": "other"
-            },
-            {
-              "name": "Potter",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Quattrocchi",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Read",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Roberts",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Sanchez",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Santucci",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Serpa",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "ShallcrossSmith",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Shanley",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Shekarchi",
-              "party": "U",
-              "option": "other"
-            },
-            {
-              "name": "Slater",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Solomon",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Speakman",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Spears",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Stewart",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Tanzi",
-              "party": "U",
-              "option": "yes"
-            },
-            {
-              "name": "Voas",
               "party": "U",
               "option": "yes"
             }
