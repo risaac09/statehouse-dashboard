@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-09-01T17:15:20.959Z",
+  "updated": "2026-09-02T17:05:20.339Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -11848,9 +11848,14 @@
           },
           "byParty": {
             "U": {
-              "yes": 63,
+              "yes": 62,
               "no": 9,
               "other": 3
+            },
+            "D": {
+              "yes": 1,
+              "no": 0,
+              "other": 0
             }
           },
           "members": [
@@ -11901,7 +11906,7 @@
             },
             {
               "name": "Blazejewski",
-              "party": "U",
+              "party": "D",
               "option": "yes"
             },
             {
