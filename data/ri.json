@@ -1,7 +1,7 @@
 {
   "jurisdiction": "Rhode Island",
   "state": "ri",
-  "updated": "2026-09-21T18:34:05.373Z",
+  "updated": "2026-09-22T17:34:56.900Z",
   "source": "OpenStates v3",
   "count": 40,
   "subjects": [
@@ -124,12 +124,7 @@
             "U": {
               "yes": 72,
               "no": 0,
-              "other": 2
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 3
             }
           },
           "members": [
@@ -470,7 +465,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -609,12 +604,7 @@
             "U": {
               "yes": 72,
               "no": 0,
-              "other": 2
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 3
             }
           },
           "members": [
@@ -955,7 +945,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -1065,12 +1055,7 @@
             "U": {
               "yes": 56,
               "no": 0,
-              "other": 18
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 19
             }
           },
           "members": [
@@ -1411,7 +1396,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -1550,12 +1535,7 @@
             "U": {
               "yes": 69,
               "no": 0,
-              "other": 5
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 6
             }
           },
           "members": [
@@ -1896,7 +1876,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -2254,12 +2234,7 @@
             "U": {
               "yes": 71,
               "no": 0,
-              "other": 3
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 4
             }
           },
           "members": [
@@ -2600,7 +2575,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -2737,12 +2712,7 @@
             "U": {
               "yes": 71,
               "no": 0,
-              "other": 3
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 4
             }
           },
           "members": [
@@ -3083,7 +3053,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -3234,12 +3204,7 @@
             "U": {
               "yes": 70,
               "no": 0,
-              "other": 4
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 5
             }
           },
           "members": [
@@ -3580,7 +3545,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -3717,12 +3682,7 @@
             "U": {
               "yes": 69,
               "no": 0,
-              "other": 5
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 6
             }
           },
           "members": [
@@ -4063,7 +4023,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -4423,12 +4383,7 @@
             "U": {
               "yes": 67,
               "no": 0,
-              "other": 7
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 8
             }
           },
           "members": [
@@ -4769,7 +4724,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -5129,12 +5084,7 @@
             "U": {
               "yes": 70,
               "no": 0,
-              "other": 4
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 5
             }
           },
           "members": [
@@ -5475,7 +5425,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -5633,12 +5583,7 @@
             "U": {
               "yes": 70,
               "no": 0,
-              "other": 4
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 5
             }
           },
           "members": [
@@ -5979,7 +5924,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -6116,12 +6061,7 @@
             "U": {
               "yes": 72,
               "no": 0,
-              "other": 2
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 3
             }
           },
           "members": [
@@ -6462,7 +6402,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -6834,12 +6774,7 @@
             "U": {
               "yes": 67,
               "no": 0,
-              "other": 7
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 8
             }
           },
           "members": [
@@ -7180,7 +7115,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -7339,12 +7274,7 @@
             "U": {
               "yes": 66,
               "no": 4,
-              "other": 4
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 5
             }
           },
           "members": [
@@ -7685,7 +7615,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -8052,12 +7982,7 @@
             "U": {
               "yes": 51,
               "no": 5,
-              "other": 18
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 19
             }
           },
           "members": [
@@ -8398,7 +8323,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -8556,12 +8481,7 @@
             "U": {
               "yes": 68,
               "no": 0,
-              "other": 6
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 7
             }
           },
           "members": [
@@ -8902,7 +8822,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -9291,12 +9211,7 @@
             "U": {
               "yes": 66,
               "no": 4,
-              "other": 4
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 5
             }
           },
           "members": [
@@ -9637,7 +9552,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -9995,12 +9910,7 @@
             "U": {
               "yes": 73,
               "no": 0,
-              "other": 1
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 2
             }
           },
           "members": [
@@ -10341,7 +10251,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -10699,12 +10609,7 @@
             "U": {
               "yes": 71,
               "no": 0,
-              "other": 3
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 4
             }
           },
           "members": [
@@ -11045,7 +10950,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -11427,12 +11332,7 @@
             "U": {
               "yes": 68,
               "no": 0,
-              "other": 6
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 7
             }
           },
           "members": [
@@ -11773,7 +11673,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -11948,9 +11848,14 @@
           },
           "byParty": {
             "U": {
-              "yes": 63,
+              "yes": 62,
               "no": 9,
               "other": 3
+            },
+            "D": {
+              "yes": 1,
+              "no": 0,
+              "other": 0
             }
           },
           "members": [
@@ -12001,7 +11906,7 @@
             },
             {
               "name": "Blazejewski",
-              "party": "U",
+              "party": "D",
               "option": "yes"
             },
             {
@@ -12401,12 +12306,7 @@
             "U": {
               "yes": 56,
               "no": 0,
-              "other": 18
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 19
             }
           },
           "members": [
@@ -12747,7 +12647,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -12905,12 +12805,7 @@
             "U": {
               "yes": 68,
               "no": 0,
-              "other": 6
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 7
             }
           },
           "members": [
@@ -13251,7 +13146,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -13609,12 +13504,7 @@
             "U": {
               "yes": 69,
               "no": 0,
-              "other": 5
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 6
             }
           },
           "members": [
@@ -13955,7 +13845,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -14558,12 +14448,7 @@
             "U": {
               "yes": 68,
               "no": 0,
-              "other": 6
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 7
             }
           },
           "members": [
@@ -14904,7 +14789,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -15041,12 +14926,7 @@
             "U": {
               "yes": 71,
               "no": 0,
-              "other": 3
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 4
             }
           },
           "members": [
@@ -15387,7 +15267,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -15546,12 +15426,7 @@
             "U": {
               "yes": 66,
               "no": 4,
-              "other": 4
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 5
             }
           },
           "members": [
@@ -15892,7 +15767,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -16060,12 +15935,7 @@
             "U": {
               "yes": 66,
               "no": 4,
-              "other": 4
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 5
             }
           },
           "members": [
@@ -16406,7 +16276,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -16764,12 +16634,7 @@
             "U": {
               "yes": 72,
               "no": 0,
-              "other": 2
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 3
             }
           },
           "members": [
@@ -17110,7 +16975,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -17477,12 +17342,7 @@
             "U": {
               "yes": 51,
               "no": 5,
-              "other": 18
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 19
             }
           },
           "members": [
@@ -17823,7 +17683,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -17960,12 +17820,7 @@
             "U": {
               "yes": 71,
               "no": 0,
-              "other": 3
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 4
             }
           },
           "members": [
@@ -18306,7 +18161,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -18445,12 +18300,7 @@
             "U": {
               "yes": 69,
               "no": 0,
-              "other": 5
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 6
             }
           },
           "members": [
@@ -18791,7 +18641,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -19163,12 +19013,7 @@
             "U": {
               "yes": 62,
               "no": 3,
-              "other": 9
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 10
             }
           },
           "members": [
@@ -19509,7 +19354,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -19648,12 +19493,7 @@
             "U": {
               "yes": 72,
               "no": 0,
-              "other": 2
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 3
             }
           },
           "members": [
@@ -19994,7 +19834,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -20354,12 +20194,7 @@
             "U": {
               "yes": 69,
               "no": 0,
-              "other": 5
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 6
             }
           },
           "members": [
@@ -20700,7 +20535,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -20837,12 +20672,7 @@
             "U": {
               "yes": 69,
               "no": 0,
-              "other": 5
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 6
             }
           },
           "members": [
@@ -21183,7 +21013,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -21543,12 +21373,7 @@
             "U": {
               "yes": 70,
               "no": 0,
-              "other": 4
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 5
             }
           },
           "members": [
@@ -21889,7 +21714,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -22026,12 +21851,7 @@
             "U": {
               "yes": 71,
               "no": 0,
-              "other": 3
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 4
             }
           },
           "members": [
@@ -22372,7 +22192,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -22732,12 +22552,7 @@
             "U": {
               "yes": 67,
               "no": 0,
-              "other": 7
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 8
             }
           },
           "members": [
@@ -23078,7 +22893,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
@@ -23217,12 +23032,7 @@
             "U": {
               "yes": 67,
               "no": 0,
-              "other": 7
-            },
-            "D": {
-              "yes": 0,
-              "no": 0,
-              "other": 1
+              "other": 8
             }
           },
           "members": [
@@ -23563,7 +23373,7 @@
             },
             {
               "name": "Shekarchi",
-              "party": "D",
+              "party": "U",
               "option": "other"
             },
             {
