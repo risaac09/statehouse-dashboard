@@ -18,6 +18,4 @@ Daily GitHub Action (`refresh.yml`, 13:00 UTC) refreshes `data/` from OpenStates
 - A committed live RI snapshot (`data/ri.json`, `data/meta.json`), refreshed daily by the Action, ships in the repo so the dashboard works with zero setup; pulling data yourself needs the OpenStates key configured as a repo secret.
 
 ## Routing
-- Tier: none, a self-running public-facing app, not a stack-data consumer. The spine is stack-data, Tier 1, the operational source of truth, a sibling clone (`../stack-data`).
-- The six phase-zero trigger phrases work here through the deployed `.claude/` kit: "activate all agents", "engage global awareness", "refresh global awareness", "delegate to your orchestrator", "engage the orchestrator", "engage your orchestrator".
-- Route research, citation, and lineage tasks to stack-data and its `research-bibliographer` agent.
+- Tier: none, a self-running public-facing app, not a stack-data consumer. Phase-zero triggers and session close come from the deployed `.claude/` kit (source: `rubinstein-productions-toolkit/phase-zero/`); research, citation, and lineage go to stack-data's `research-bibliographer` agent.
