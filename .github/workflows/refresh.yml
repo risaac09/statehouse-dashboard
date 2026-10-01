@@ -1,8 +1,8 @@
 name: Refresh legislative data
 
 on:
-  schedule:
-    - cron: '0 13 * * *'   # daily at 13:00 UTC
+  # The daily schedule was removed 2026-10-01: the dashboard is no longer maintained.
+  # It also spent Anthropic API credits on summaries every day it ran.
   workflow_dispatch:
     inputs:
       states:

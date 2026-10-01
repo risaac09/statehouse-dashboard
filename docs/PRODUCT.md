@@ -46,9 +46,8 @@ The repo also serves as a portfolio demonstration piece. Who it is shown to, and
 
 Tier: none. A public app outside the personal stack; it is absent from the stack-data tier registry. It is a phase-zero kit consumer: the `.claude/` kit is deployed here (listed among the consumers in rubinstein-productions-toolkit/CLAUDE.md, the roster of record) and the repo carries its own CLAUDE.md with the routing section.
 
-Status of the README's "Possible next steps" list against the code: LLM-written summaries shipped (`scripts/summarize.mjs`, wired through fetch.mjs and refresh.yml). Member profiles, email/RSS alerts, and a federal Congress.gov mode remain unbuilt.
+Closed 2026-10-01: Isaac stopped maintaining the dashboard. LLM-written summaries shipped (`scripts/summarize.mjs`, wired through fetch.mjs and refresh.yml); member profiles, email/RSS alerts and a federal Congress.gov mode will not be built. The daily refresh is switched off, so the page serves its last snapshot (2026-10-01).
 
-Gap: no in-repo record says which of the remaining next steps Isaac still intends; the README list is the only forward-looking statement and it predates the summaries shipping. The answer would come from Isaac ruling on the list.
 
 ## Workflows
 

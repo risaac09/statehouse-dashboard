@@ -1,5 +1,7 @@
 # Statehouse Dashboard
 
+> **No longer maintained (2026-10-01).** The daily data refresh is switched off and no further changes are planned. The page keeps serving its last snapshot, so bills and votes may be out of date.
+
 A plain-language dashboard for what your **state legislature** is actually doing: recent bills, how members voted, and the topics that affect you. Built because the official trackers answer "find me bill AB-1042," not "what happened this week and why should I care."
 
 **Live:** https://risaac09.github.io/statehouse-dashboard/
@@ -54,11 +56,9 @@ OPENSTATES_API_KEY=your_key node scripts/fetch.mjs ri
 python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
-## Possible next steps
+## Not built, and not planned
 
-- Member profiles: voting record and attendance per legislator.
-- Email/RSS alerts when a followed topic moves.
-- Federal (US Congress) mode via the Congress.gov API.
+Member profiles, email/RSS alerts and a federal (Congress.gov) mode were ideas for later. They will not be built.
 
 ## Notes
 
